@@ -1,0 +1,4 @@
+.vs
+sfml
+*.vcxproj.user
+out
