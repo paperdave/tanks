@@ -11,32 +11,32 @@ bool loadingThreadComplete = false;
 
 DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 	// Load up all resources
-	loadTexture("tank0.png", "player-0");
-	loadTexture("tank1.png", "player-1");
-	loadTexture("tank2.png", "player-2");
-	loadTexture("tank3.png", "player-3");
-	loadTexture("tank4.png", "player-4");
-	loadTexture("tank_tip.png", "player-gun");
-	loadTexture("bullet_0.png", "bullet_0");
-	loadTexture("bullet_1.png", "bullet_1");
-	loadTexture("bullet_2.png", "bullet_2");
-	loadTexture("powerA.png", "power1");
-	loadTexture("powerB.png", "power2");
-	loadTexture("powerC.png", "power3");
-	loadTexture("powerD.png", "power4");
-	loadTexture("powerE.png", "power5");
-	loadSound("damage.wav", "a-lot-of-damage");
-	loadSound("menu1.wav", "menu1");
-	loadSound("menu2.wav", "menu2");
-	loadSound("dead1.wav", "dead1");
-	loadSound("dead2.wav", "dead2");
-	loadSound("bullet.wav", "bullet");
-	loadSound("powerup.wav", "powerup");
-	loadSound("round_switch.wav", "round_switch");
-	loadSound("round_end.wav", "round_end");
-	loadSound("damage.wav", "a-lot-of-damage");
+	loadTexture("tank-0");
+	loadTexture("tank-1");
+	loadTexture("tank-2");
+	loadTexture("tank-3");
+	loadTexture("tank-4");
+	loadTexture("test-image");
+	loadTexture("tank-tip");
+	loadTexture("bullet-0.png");
+	loadTexture("bullet-1.png");
+	loadTexture("bullet-2.png");
+	loadTexture("power-0.png");
+	loadTexture("power-B.png");
+	loadTexture("power-C.png");
+	loadTexture("power-D.png");
+	loadTexture("power-E.png");
+	loadSound("menu1");
+	loadSound("menu2");
+	loadSound("dead1");
+	loadSound("dead2");
+	loadSound("bullet");
+	loadSound("powerup");
+	loadSound("round_switch");
+	loadSound("round_end");
 
-	Sleep(1000); // >:)
+	if (false)
+		Sleep(1000); // >:)
 
 	loadingThreadComplete = true;
 
@@ -47,7 +47,7 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 // and choose a loading line.
 LoadingScene::LoadingScene() {
 	
-	loadFont("ProggyClean.ttf", "proggy");
+	loadFont("clean");
 
 	std::deque<std::string> loadingLines;
 	std::ifstream fin("../res/tips.txt");
@@ -80,7 +80,7 @@ void LoadingScene::render(sf::RenderTarget* g) {
 	long int time = st.wMilliseconds + st.wSecond * 1000 + st.wMinute * 60000;
 
 	sf::Text splashtext;
-	splashtext.setFont(getFont("proggy"));
+	splashtext.setFont(getFont("clean"));
 	splashtext.setString("Loading...");
 	splashtext.setPosition(g->getSize().x / 2, g->getSize().y / 2 + sin(time / 300.0f) * 15);
 	splashtext.setCharacterSize(96);
@@ -88,7 +88,7 @@ void LoadingScene::render(sf::RenderTarget* g) {
 	splashtext.setFillColor(sf::Color::White);
 
 	sf::Text loadingline;
-	loadingline.setFont(getFont("proggy"));
+	loadingline.setFont(getFont("clean"));
 	loadingline.setString(this->loadingLine);
 	loadingline.setPosition(32, g->getSize().y - 32);
 	loadingline.setCharacterSize(24);
@@ -105,7 +105,7 @@ void LoadingScene::render(sf::RenderTarget* g) {
 		}
 
 		sf::RectangleShape fadetop;
-		fadetop.setFillColor(sf::Color(10, 10, 10, this->fadetop_opacity));
+		fadetop.setFillColor(sf::Color(30, 30, 30, this->fadetop_opacity));
 		fadetop.setPosition(0, 0);
 		fadetop.setSize(sf::Vector2f(1280, 720));
 
