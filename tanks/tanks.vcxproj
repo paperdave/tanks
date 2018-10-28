@@ -63,7 +63,7 @@
       <Message />
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)sfml\bin\openal32.dll $(SolutionDir)out\openal32.dll</Command>
+      <Command>copy "$(SolutionDir)sfml\bin\openal32.dll" "$(SolutionDir)out\openal32.dll"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copying OpenAL</Message>
