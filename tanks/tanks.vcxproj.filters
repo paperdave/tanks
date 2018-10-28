@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Build Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Main\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScene.cpp">
+      <Filter>Scenes\Loading Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.h">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneHandling.h">
+      <Filter>Main\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneHandling.cpp">
+      <Filter>Main\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="DaveTanks.cpp" />
+    <ClCompile Include="Resources.cpp">
+      <Filter>Main\Resources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Build Files">
+      <UniqueIdentifier>{4141887a-ba02-4477-8f50-5dd0437ead35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{16a80d43-ba77-4467-bc78-e9256818d0ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{ccc6994e-c38c-4fef-8bc5-710efaecfdc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Loading Scene">
+      <UniqueIdentifier>{d33dfce5-4d15-4739-8168-9f9aa787dba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Resources">
+      <UniqueIdentifier>{a87e5c6f-f4c6-4886-b912-8f73396b70ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene">
+      <UniqueIdentifier>{ba3fd23b-531b-4e7f-8d0c-fae47a54e1c1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Build Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Main\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScene.h">
+      <Filter>Scenes\Loading Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>Main\Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

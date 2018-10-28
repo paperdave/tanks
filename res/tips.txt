@@ -1,0 +1,2 @@
+Your bullets can hit yourself.
+The Wall Builder powerup lets you place walls, you can deflect bullets with this.
