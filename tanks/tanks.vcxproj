@@ -70,6 +70,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BackgroundScene.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Resources.h" />
@@ -78,6 +79,7 @@
     <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundScene.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="LoadingScene.cpp" />

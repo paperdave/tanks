@@ -1,4 +1,19 @@
+Thinkings
+
+- to what scale do i want this on: small project, full game? I THINK MEDIUM GAME
+- GFX: do i want a more fancy lighting system.
+- new sprites? music? better menu?
+- more gamemodes?
+- sprite stacking 3d looked super cool i wanna try it out.
+
 Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
-[ ] 
+[ ] GameObject Base Class
+[ ] Player Class
+	[ ] Players in the box
+	[ ] Loading Player Controls
+	[ ] Player Movement
+	[ ] Player Collision
+	[ ] Draw Sprite Stacked Player
+[ ]

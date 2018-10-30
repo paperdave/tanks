@@ -38,6 +38,7 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 	loadSound("powerup");
 	loadSound("round_switch");
 	loadSound("round_end");
+	loadTexture("background");
 
 	if (false)
 		Sleep(1000); // >:)
