@@ -10,7 +10,6 @@ private:
 	int fadetop_opacity;
 public:
 	LoadingScene();
-	~LoadingScene();
 	void render(sf::RenderTarget* g);
 	
 };

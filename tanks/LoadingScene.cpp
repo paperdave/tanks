@@ -1,8 +1,12 @@
 #pragma once
 #include "pch.h"
 #include "LoadingScene.h"
+
+#include "Scene.h"
+#include "GameScene.h"
 #include "SFML/Graphics.hpp"
 #include "Resources.h"
+#include "Constants.h"
 #include <Windows.h>
 #include <fstream>
 #include <deque>
@@ -18,14 +22,14 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 	loadTexture("tank-4");
 	loadTexture("test-image");
 	loadTexture("tank-tip");
-	loadTexture("bullet-0.png");
-	loadTexture("bullet-1.png");
-	loadTexture("bullet-2.png");
-	loadTexture("power-0.png");
-	loadTexture("power-B.png");
-	loadTexture("power-C.png");
-	loadTexture("power-D.png");
-	loadTexture("power-E.png");
+	loadTexture("bullet-0");
+	loadTexture("bullet-1");
+	loadTexture("bullet-2");
+	loadTexture("power-0");
+	loadTexture("power-1");
+	loadTexture("power-2");
+	loadTexture("power-3");
+	loadTexture("power-4");
 	loadSound("menu1");
 	loadSound("menu2");
 	loadSound("dead1");
@@ -39,6 +43,7 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 		Sleep(1000); // >:)
 
 	loadingThreadComplete = true;
+	resourcesLoaded = true;
 
 	return 0;
 }
@@ -63,10 +68,6 @@ LoadingScene::LoadingScene() {
 
 	DWORD threadID;
 	HANDLE hand = CreateThread(0, 0, resourceLoaderThread, 0, 0, &threadID);
-}
-
-LoadingScene::~LoadingScene() {
-	
 }
 
 void LoadingScene::render(sf::RenderTarget* g) {
@@ -102,6 +103,8 @@ void LoadingScene::render(sf::RenderTarget* g) {
 	if (loadingThreadComplete) {
 		if (this->fadetop_opacity < 255) {
 			this->fadetop_opacity++;
+		} else {
+			currentScene = new GameScene();
 		}
 
 		sf::RectangleShape fadetop;

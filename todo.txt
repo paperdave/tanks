@@ -1,0 +1,4 @@
+Finish items in the todo list, doesnt have to be in order, but
+going downwards is generally the right order
+
+[ ] 

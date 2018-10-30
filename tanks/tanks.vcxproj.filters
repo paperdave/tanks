@@ -10,19 +10,14 @@
     <ClCompile Include="LoadingScene.cpp">
       <Filter>Scenes\Loading Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Util.h">
-      <Filter>Main</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneHandling.h">
-      <Filter>Main\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneHandling.cpp">
-      <Filter>Main\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="DaveTanks.cpp" />
     <ClCompile Include="Resources.cpp">
       <Filter>Main\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Scenes\Game Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -43,6 +38,9 @@
     <Filter Include="Main\Scene">
       <UniqueIdentifier>{ba3fd23b-531b-4e7f-8d0c-fae47a54e1c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes\Game Scene">
+      <UniqueIdentifier>{454c9407-b772-469d-bc76-3e1886238ca3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -57,5 +55,9 @@
     <ClInclude Include="Resources.h">
       <Filter>Main\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Scenes\Game Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h" />
   </ItemGroup>
 </Project>
