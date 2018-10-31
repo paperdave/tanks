@@ -9,6 +9,10 @@ GameScene::GameScene() {
 	maze = generateMaze(false);
 }
 
+void GameScene::update() {
+
+}
+
 void GameScene::render(sf::RenderTarget* g) {
 	// move the view so the 600x600 area is the center
 	sf::View view = g->getView();

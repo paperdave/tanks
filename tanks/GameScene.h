@@ -12,5 +12,6 @@ public:
 	GameScene();
 
 	void render(sf::RenderTarget* g);
+	void update();
 };
 

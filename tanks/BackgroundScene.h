@@ -8,5 +8,6 @@ private:
 public:
 	BackgroundScene();
 	virtual void render(sf::RenderTarget* g);
+	void update();
 };
 

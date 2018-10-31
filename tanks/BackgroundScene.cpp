@@ -9,11 +9,13 @@ BackgroundScene::BackgroundScene() {
 	background_size = getTexture("background").getSize().x * bg.getScale().x;
 }
 
-void BackgroundScene::render(sf::RenderTarget* g) {
+void BackgroundScene::update() {
 	// Move BG
 	bg_offset = (bg_offset + 0.1);
 	if (bg_offset >= background_size) bg_offset -= background_size;
+}
 
+void BackgroundScene::render(sf::RenderTarget* g) {
 	// Draw BG
 	for (float xx = bg_offset; xx < g->getSize().x + background_size + 32; xx += background_size) {
 		for (float yy = 0; yy < g->getSize().y + background_size; yy += background_size) {

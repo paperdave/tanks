@@ -71,16 +71,27 @@ LoadingScene::LoadingScene() {
 	HANDLE hand = CreateThread(0, 0, resourceLoaderThread, 0, 0, &threadID);
 }
 
+void LoadingScene::update() {
+	if (loadingThreadComplete) {
+			if (this->fadetop_opacity < 255) {
+				this->fadetop_opacity++;
+			} else {
+				currentScene = new GameScene();
+			}
+	}
+
+	SYSTEMTIME st;
+	GetSystemTime(&st);
+	time = st.wMilliseconds + st.wSecond * 1000 + st.wMinute * 60000;
+}
+
 void LoadingScene::render(sf::RenderTarget* g) {
 	sf::RectangleShape rs;
 	rs.setFillColor(sf::Color(20,20,20));
 	rs.setPosition(0, 0);
 	rs.setSize(sf::Vector2f(1280, 720));
 
-	SYSTEMTIME st;
-	GetSystemTime(&st);
-	long int time = st.wMilliseconds + st.wSecond * 1000 + st.wMinute * 60000;
-
+	
 	sf::Text splashtext;
 	splashtext.setFont(getFont("clean"));
 	splashtext.setString("Loading...");
@@ -102,12 +113,6 @@ void LoadingScene::render(sf::RenderTarget* g) {
 	g->draw(loadingline);
 
 	if (loadingThreadComplete) {
-		if (this->fadetop_opacity < 255) {
-			this->fadetop_opacity++;
-		} else {
-			currentScene = new GameScene();
-		}
-
 		sf::RectangleShape fadetop;
 		fadetop.setFillColor(sf::Color(30, 30, 30, this->fadetop_opacity));
 		fadetop.setPosition(0, 0);

@@ -8,9 +8,11 @@ class LoadingScene :
 private:
 	std::string loadingLine;
 	int fadetop_opacity;
+	long int time;
 public:
 	LoadingScene();
-	void render(sf::RenderTarget* g);
 	
+	void render(sf::RenderTarget* g);
+	void update();
 };
 
