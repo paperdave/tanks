@@ -10,10 +10,18 @@ Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
 [ ] GameObject Base Class
+[ ] tick method
+[X] Maze class
+[X] Generating the maze
+[X] Drawing of the maze
 [ ] Player Class
 	[ ] Players in the box
 	[ ] Loading Player Controls
 	[ ] Player Movement
 	[ ] Player Collision
 	[ ] Draw Sprite Stacked Player
-[ ]
+[ ] Bullets
+	[ ] Class
+	[ ] Shoot bullets
+	[ ] Movement of bullets
+	[ ] Collision of bullets

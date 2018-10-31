@@ -72,7 +72,10 @@
   <ItemGroup>
     <ClInclude Include="BackgroundScene.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Maze.h" />
+    <ClInclude Include="MazeGeneration.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="LoadingScene.h" />
     <ClInclude Include="pch.h" />
@@ -81,8 +84,11 @@
   <ItemGroup>
     <ClCompile Include="BackgroundScene.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="LoadingScene.cpp" />
+    <ClCompile Include="Maze.cpp" />
+    <ClCompile Include="MazeGeneration.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
