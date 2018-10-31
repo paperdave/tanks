@@ -5,19 +5,29 @@
 #include <map>
 #include <string>
 #include <deque>
+#include <windows.h>
 
 std::map<std::string, sf::Texture> textureRegistry;
 std::map<std::string, sf::Font> fontRegistry;
 std::map<std::string, sf::SoundBuffer> soundRegistry;
 std::deque<sf::Sound> playingSounds;
 
-sf::Texture& loadTexture(std::string name) {
+const std::string getRootFolder() {
+	DWORD ftyp = GetFileAttributesA("./res/");
+
+	if (ftyp != INVALID_FILE_ATTRIBUTES) {
+		return "res/";
+	} else {
+		return "../res/";
+	}
+}
+
+void loadTexture(std::string name) {
 	sf::Texture loaded;
-	std::string path = ("../res/texture/" + name + ".png");
+	std::string path = (getRootFolder() + "texture/" + name + ".png");
 	loaded.loadFromFile(path.c_str());
 	textureRegistry.insert(std::make_pair(name, loaded));
 	printf("Loading Texture %s from %s\n", name.c_str(), path.c_str());
-	return loaded;
 }
 sf::Texture& getTexture(std::string name) {
 	std::map<std::string, sf::Texture>::iterator itr = textureRegistry.find(name);
@@ -28,13 +38,12 @@ sf::Texture& getTexture(std::string name) {
 		return itr->second;
 	}
 }
-sf::Font& loadFont(std::string name) {
+void loadFont(std::string name) {
 	sf::Font loaded;
-	std::string path = ("../res/font/" + name + ".ttf");
+	std::string path = (getRootFolder() + "font/" + name + ".ttf");
 	loaded.loadFromFile(path.c_str());
 	fontRegistry.insert(std::make_pair(name, loaded));
 	printf("Loading Font %s from %s\n", name.c_str(), path.c_str());
-	return loaded;
 }
 sf::Font& getFont(std::string name) {
 	std::map<std::string, sf::Font>::iterator itr = fontRegistry.find(name);
@@ -45,13 +54,12 @@ sf::Font& getFont(std::string name) {
 		return itr->second;
 	}
 }
-sf::SoundBuffer& loadSound(std::string name) {
+void loadSound(std::string name) {
 	sf::SoundBuffer loaded;
-	std::string path = ("../res/audio/" + name + ".wav");
+	std::string path = (getRootFolder() + "audio/" + name + ".wav");
 	loaded.loadFromFile(path.c_str());
 	soundRegistry.insert(std::make_pair(name, loaded));
 	printf("Loading Sound %s from %s\n", name.c_str(), path.c_str());
-	return loaded;
 }
 sf::SoundBuffer& getSound(std::string name) {
 	std::map<std::string, sf::SoundBuffer>::iterator itr = soundRegistry.find(name);

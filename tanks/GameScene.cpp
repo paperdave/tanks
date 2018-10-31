@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "GameScene.h"
 #include "MazeGeneration.h"
+#include "Resources.h"
 #include "SFML/Graphics.hpp"
 
 
@@ -23,13 +24,18 @@ void GameScene::render(sf::RenderTarget* g) {
 	this->shadowSurface.clear(sf::Color::Transparent);
 	
 	// Draw Board
-	sf::RectangleShape rect;
-	rect.setFillColor(sf::Color(229, 229, 229, 255));
-	rect.setOutlineColor(sf::Color(0, 0, 0, 255));
-	rect.setOutlineThickness(4);
-	rect.setPosition(0, 0);
-	rect.setSize(sf::Vector2f(600, 600));
-	g->draw(rect);
+	sf::Sprite boardshadow;
+	boardshadow.setTexture(getTexture("board-shadow"));
+	boardshadow.setPosition(-50, -50);
+	g->draw(boardshadow);
+
+	sf::RectangleShape board;
+	board.setFillColor(sf::Color(229, 229, 229, 255));
+	board.setOutlineColor(sf::Color(0, 0, 0, 255));
+	board.setOutlineThickness(4);
+	board.setPosition(0, 0);
+	board.setSize(sf::Vector2f(600, 600));
+	g->draw(board);
 
 	// Draw Maze
 	for (int i = 0; i < 10; i++) {

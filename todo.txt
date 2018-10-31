@@ -15,6 +15,8 @@ going downwards is generally the right order
 [X] Maze class
 [X] Generating the maze
 [X] Drawing of the maze
+[ ] Board Shadow
+[ ] Autoload all files in res/
 [ ] Player Class
 	[ ] Players in the box
 	[ ] Loading Player Controls
