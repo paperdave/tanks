@@ -9,9 +9,9 @@ Thinkings
 Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
-[ ] GameObject Base Class
-[ ] update method
-[ ] update method in all scenes
+[X] GameObject Base Class
+[X] update method
+[X] update method in all scenes
 [X] Maze class
 [X] Generating the maze
 [X] Drawing of the maze

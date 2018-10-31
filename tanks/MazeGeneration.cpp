@@ -34,7 +34,7 @@ Maze generateMaze(bool log = false) {
 		pos p = subTrees.at(0);
 		int currentx = p.x;
 		int currenty = p.y;
-		if (log)printf("Starting Sub on (%d, %d) (size=%d)\n", p.x, p.y, subTrees.size());
+		if (log)printf("Starting Sub on (%d, %d) (size=%d)\n", p.x, p.y, (int)subTrees.size());
 		subTrees.erase(subTrees.begin());
 		while (true) {
 			if (log)printf("Coord = (%d, %d) >> ", currentx, currenty);

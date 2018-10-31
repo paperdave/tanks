@@ -76,6 +76,8 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MazeGeneration.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerControls.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="LoadingScene.h" />
     <ClInclude Include="pch.h" />
@@ -92,6 +94,8 @@
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerControls.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="DaveTanks.cpp" />

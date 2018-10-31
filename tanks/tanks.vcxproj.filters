@@ -30,6 +30,12 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Main\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerControls.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -65,6 +71,9 @@
     <Filter Include="Main\GameObject">
       <UniqueIdentifier>{5ecd7174-2bf7-4622-8702-018e7c2b68ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{2a08a5ec-d85b-4ce3-8ae8-1ed39ab89800}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -94,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Main\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerControls.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

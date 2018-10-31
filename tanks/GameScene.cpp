@@ -7,6 +7,7 @@
 GameScene::GameScene() {
 	shadowSurface.create(600, 600);
 	maze = generateMaze(false);
+	//objects.push_back();
 }
 
 void GameScene::update() {
@@ -31,8 +32,8 @@ void GameScene::render(sf::RenderTarget* g) {
 	g->draw(rect);
 
 	// Draw Maze
-	for (size_t i = 0; i < 10; i++) {
-		for (size_t j = 0; j < 10; j++) {
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
 			// Down Line
 			if (maze.grid[i][j].down) {
 				sf::RectangleShape lineDown;
