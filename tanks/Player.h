@@ -41,5 +41,8 @@ public:
 	void event_onKeyRelease(sf::Event::KeyEvent ev) {
 		HandleKeypress(ev.code, false);
 	}
+
+	virtual void update();
+	virtual void render(sf::RenderTarget* g);
 };
 

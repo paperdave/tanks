@@ -5,7 +5,7 @@ class GameObject
 public:
 	GameObject();
 
-	virtual void tick(sf::RenderTexture* g) = 0;
-	virtual void render(sf::RenderTexture* g) = 0;
+	virtual void update() = 0;
+	virtual void render(sf::RenderTarget* g) = 0;
 };
 

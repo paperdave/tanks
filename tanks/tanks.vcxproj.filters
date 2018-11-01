@@ -16,7 +16,6 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>Scenes\Game Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Constants.cpp" />
     <ClCompile Include="BackgroundScene.cpp">
       <Filter>Scenes\Background Scene</Filter>
     </ClCompile>
@@ -35,6 +34,12 @@
     </ClCompile>
     <ClCompile Include="PlayerControls.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,14 +70,14 @@
     <Filter Include="Maze">
       <UniqueIdentifier>{e21521e8-8ae6-42fb-85f4-880db9fe7888}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Objects">
-      <UniqueIdentifier>{fc563642-539b-4180-b6df-4955a1912d4a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\GameObject">
       <UniqueIdentifier>{5ecd7174-2bf7-4622-8702-018e7c2b68ad}</UniqueIdentifier>
     </Filter>
     <Filter Include="Player">
       <UniqueIdentifier>{2a08a5ec-d85b-4ce3-8ae8-1ed39ab89800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{98f7047e-f90d-46e7-9b08-d874ac1305bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +99,6 @@
     <ClInclude Include="BackgroundScene.h">
       <Filter>Scenes\Background Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Constants.h" />
     <ClInclude Include="Maze.h">
       <Filter>Maze</Filter>
     </ClInclude>
@@ -109,6 +113,12 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

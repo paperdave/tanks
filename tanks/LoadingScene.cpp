@@ -41,8 +41,9 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 	loadSound("round_switch");
 	loadSound("round_end");
 
-	if (false)
+	if (false) {
 		Sleep(1000); // >:)
+	}
 
 	loadingThreadComplete = true;
 	resourcesLoaded = true;

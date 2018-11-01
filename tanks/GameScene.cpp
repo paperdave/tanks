@@ -9,10 +9,18 @@ GameScene::GameScene() {
 	shadowSurface.create(600, 600);
 	maze = generateMaze(false);
 	//objects.push_back();
+	player = new Player(sf::Vector2i(0,0), 0);
 }
 
 void GameScene::update() {
+	player->update();
+}
 
+void GameScene::event_onKeyPress(sf::Event::KeyEvent event) {
+	player->event_onKeyPress(event);
+}
+void GameScene::event_onKeyRelease(sf::Event::KeyEvent event) {
+	player->event_onKeyRelease(event);
 }
 
 void GameScene::render(sf::RenderTarget* g) {
@@ -71,8 +79,10 @@ void GameScene::render(sf::RenderTarget* g) {
 		}
 	}
 
+	player->render(&shadowSurface);
+
 	sf::Sprite shadows;
-	shadows.setTexture(this->shadowSurface.getTexture());
+	shadows.setTexture(shadowSurface.getTexture());
 	shadows.setPosition(0, 600 + 4);
 	shadows.setColor(sf::Color(0, 0, 0, 70));
 	shadows.setScale(sf::Vector2f(1, -1));
@@ -80,4 +90,5 @@ void GameScene::render(sf::RenderTarget* g) {
 	shadows.setColor(sf::Color::White);
 	shadows.setPosition(0, 600);
 	g->draw(shadows);
+
 }
