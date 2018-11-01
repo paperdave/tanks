@@ -9,7 +9,7 @@ GameScene::GameScene() {
 	shadowSurface.create(600, 600);
 	maze = generateMaze(false);
 	//objects.push_back();
-	player = new Player(sf::Vector2i(0,0), 0);
+	player = new Player(sf::Vector2i(0,0), 1);
 }
 
 void GameScene::update() {

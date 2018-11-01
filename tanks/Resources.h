@@ -20,3 +20,5 @@ sf::SoundBuffer& getSound(std::string name);
 
 void playSound(std::string id);
 void runSoundRecycler();
+
+const std::string getRootFolder();

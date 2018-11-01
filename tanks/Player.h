@@ -9,8 +9,8 @@ private:
 	double x = 30;
 	double y = 30;
 	double dir = 90;
-	float speed = 2;
-	int id = -1;
+	float speed;
+	int id;
 	float turnSpeed = 2.5;
 	float gunOffset = 0.0f;
 	bool dead = false;
@@ -28,7 +28,6 @@ private:
 	bool keyLeft = false;
 	bool keyRight = false;
 	bool keyAction = false;
-	int sat = 255;
 
 	void HandleKeypress(int code, bool state);
 public:

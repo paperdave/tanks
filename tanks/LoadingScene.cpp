@@ -10,36 +10,52 @@
 #include <Windows.h>
 #include <fstream>
 #include <deque>
+#include <iostream>
+#include <filesystem>
 
 bool loadingThreadComplete = false;
 
+namespace {
+	void replaceAll(std::string& str, const std::string& from, const std::string& to) {
+		if (from.empty())
+			return;
+		size_t start_pos = 0;
+		while ((start_pos = str.find(from, start_pos)) != std::string::npos) {
+			str.replace(start_pos, from.length(), to);
+			start_pos += to.length(); // In case 'to' contains 'from', like replacing 'x' with 'yx'
+		}
+	}
+	bool replace(std::string& str, const std::string& from, const std::string& to) {
+		size_t start_pos = str.find(from);
+		if (start_pos == std::string::npos)
+			return false;
+		str.replace(start_pos, from.length(), to);
+		return true;
+	}
+}
+
 DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 	// Load up all resources
-	loadTexture("tank-0");
-	loadTexture("tank-1");
-	loadTexture("tank-2");
-	loadTexture("tank-3");
-	loadTexture("tank-4");
-	loadTexture("test-image");
-	loadTexture("tank-tip");
-	loadTexture("bullet-0");
-	loadTexture("bullet-1");
-	loadTexture("bullet-2");
-	loadTexture("power-0");
-	loadTexture("power-1");
-	loadTexture("power-2");
-	loadTexture("power-3");
-	loadTexture("power-4");
-	loadTexture("board-shadow");
-	loadTexture("background");
-	loadSound("menu1");
-	loadSound("menu2");
-	loadSound("dead1");
-	loadSound("dead2");
-	loadSound("bullet");
-	loadSound("powerup");
-	loadSound("round_switch");
-	loadSound("round_end");
+	std::string root = getRootFolder();
+
+	#pragma warning(disable : 4996) // This is deprecated, not sure what else to use for now.
+	for (std::tr2::sys::recursive_directory_iterator i(root), end; i != end; ++i) {
+	#pragma warning(default : 4996) 
+
+		if (!is_directory(i->path())) {
+
+			std::string name = i->path().string().substr(root.length());
+
+			replaceAll(name, "\\", "/");
+
+			if (replace(name, "texture/", "")) {
+				loadTexture(name.substr(0, name.length() - 4));
+			}
+			if (replace(name, "audio/", "")) {
+				loadSound(name.substr(0, name.length() - 4));
+			}
+		}
+	}
 
 	if (false) {
 		Sleep(1000); // >:)
@@ -50,6 +66,7 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 
 	return 0;
 }
+
 
 // Load the proggy font, init the resource loader thread
 // and choose a loading line.
