@@ -57,7 +57,7 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 		}
 	}
 
-	if (false) {
+	if (true) {
 		Sleep(1000); // >:)
 	}
 
@@ -127,9 +127,18 @@ void LoadingScene::render(sf::RenderTarget* g) {
 	loadingline.setOrigin(0, 24);
 	loadingline.setFillColor(sf::Color::White);
 
+	sf::Text date;
+	date.setFont(getFont("clean"));
+	date.setString("Built on 2018-11-02");
+	date.setCharacterSize(24);
+	date.setOrigin(200, 24);
+	date.setPosition(g->getSize().x - 32, g->getSize().y - 32);
+	date.setFillColor(sf::Color::White);
+
 	g->draw(rs);
 	g->draw(splashtext);
 	g->draw(loadingline);
+	g->draw(date);
 
 	if (loadingThreadComplete) {
 		sf::RectangleShape fadetop;

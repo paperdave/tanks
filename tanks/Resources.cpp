@@ -13,7 +13,7 @@ std::map<std::string, sf::SoundBuffer> soundRegistry;
 std::deque<sf::Sound> playingSounds;
 
 const std::string getRootFolder() {
-	DWORD ftyp = GetFileAttributesA("./res/");
+	DWORD ftyp = GetFileAttributesA("res/");
 
 	if (ftyp != INVALID_FILE_ATTRIBUTES) {
 		return "res/";
@@ -32,6 +32,7 @@ void loadTexture(std::string name) {
 sf::Texture& getTexture(std::string name) {
 	std::map<std::string, sf::Texture>::iterator itr = textureRegistry.find(name);
 	if (itr == textureRegistry.end()) {
+		printf("Texture not found: %s\n", name.c_str());
 		throw "Texture Not Found";
 	}
 	else {
@@ -48,7 +49,8 @@ void loadFont(std::string name) {
 sf::Font& getFont(std::string name) {
 	std::map<std::string, sf::Font>::iterator itr = fontRegistry.find(name);
 	if (itr == fontRegistry.end()) {
-		throw "Font Not Exist";
+		printf("Font not found: %s\n", name.c_str());
+		throw "Font Not Found";
 	}
 	else {
 		return itr->second;
@@ -64,7 +66,8 @@ void loadSound(std::string name) {
 sf::SoundBuffer& getSound(std::string name) {
 	std::map<std::string, sf::SoundBuffer>::iterator itr = soundRegistry.find(name);
 	if (itr == soundRegistry.end()) {
-		throw "Sound Not Exist";
+		printf("Sound not found: %s\n", name.c_str());
+		throw "Sound Not Found";
 	}
 	else {
 		return itr->second;
