@@ -2,17 +2,17 @@
 #include "Scene.h"
 #include "Maze.h"
 #include "GameObject.h"
-#include "Player.h"
 #include <deque>
+
+class GameObject;
 
 class GameScene :
 	public Scene
 {
 private:
-	sf::RenderTexture shadowSurface;
-	std::deque<GameObject> objects;
-	Player* player;
-	Maze maze;
+	sf::RenderTexture wallSideSurface;
+	sf::RenderTexture wallSurface;
+	std::deque<GameObject*> objects;
 public:
 	GameScene();
 
@@ -20,5 +20,7 @@ public:
 	virtual void update();
 	virtual void event_onKeyPress(sf::Event::KeyEvent event);
 	virtual void event_onKeyRelease(sf::Event::KeyEvent event);
+	
+	Maze maze;
 };
 

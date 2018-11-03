@@ -10,7 +10,7 @@ BackgroundScene::BackgroundScene() {
 
 void BackgroundScene::update() {
 	// Move BG
-	bg_offset = (bg_offset + 0.1f);
+	bg_offset = (bg_offset + 0.6f);
 	if (bg_offset >= background_size) bg_offset -= background_size;
 }
 

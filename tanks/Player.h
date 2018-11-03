@@ -3,18 +3,20 @@
 #include "PlayerControls.h"
 #include "SFML/Graphics.hpp"
 
+class GameObject;
+
 class Player
 	: public GameObject {
 private:
 	double x = 30;
 	double y = 30;
 	double dir = 90;
-	float speed;
+	float speed = 2.0f;
 	int id;
-	float turnSpeed = 2.5;
+	float turnSpeed = 4.0f;
 	float gunOffset = 0.0f;
 	bool dead = false;
-	int hue;
+	sf::Color color;
 	sf::FloatRect bounds;
 	PlayerControls controls;
 	double delay = 100;
@@ -30,6 +32,8 @@ private:
 	bool keyAction = false;
 
 	void HandleKeypress(int code, bool state);
+	bool collisionSquare(int squareX, int squareY);
+	bool collisionAt(double x, double y);
 public:
 	Player(sf::Vector2i position, int id);
 

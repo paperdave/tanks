@@ -15,14 +15,16 @@ going downwards is generally the right order
 [X] Maze class
 [X] Generating the maze
 [X] Drawing of the maze
-[ ] Board Shadow
-[ ] Autoload all files in res/
+[X] Board Shadow
+[X] Autoload all files in res/
 [ ] Player Class
-	[ ] Players in the box
-	[ ] Loading Player Controls
+	[X] Players in the box
+	[X] Player Controls
 	[X] Player Movement
-	[ ] Player Collision
-	[ ] Draw Sprite Stacked Player
+	[X] Player Collision
+	[X] Draw Sprite Stacked Player
+	[ ] Use files for controls
+	[X] Colored players
 [ ] Bullets
 	[ ] Class
 	[ ] Shoot bullets

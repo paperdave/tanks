@@ -49,3 +49,8 @@ PlayerControlsVisual getPlayerControlsVisualByID(const int id) {
 	case 4: return playerVisual4;
 	}
 }
+
+sf::Color player1Color(255, 255, 0);
+sf::Color player2Color(255, 0, 255);
+sf::Color player3Color(0, 255, 255);
+sf::Color player4Color(0, 255, 0);

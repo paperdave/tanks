@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 struct PlayerControls {
 	int left;
@@ -26,3 +27,8 @@ extern PlayerControlsVisual playerVisual4;
 
 PlayerControls getPlayerControlsByID(const int id);
 PlayerControlsVisual getPlayerControlsVisualByID(const int id);
+
+extern sf::Color player1Color;
+extern sf::Color player2Color;
+extern sf::Color player3Color;
+extern sf::Color player4Color;

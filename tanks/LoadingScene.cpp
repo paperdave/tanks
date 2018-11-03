@@ -93,7 +93,7 @@ LoadingScene::LoadingScene() {
 void LoadingScene::update() {
 	if (loadingThreadComplete) {
 			if (this->fadetop_opacity < 255) {
-				this->fadetop_opacity++;
+				this->fadetop_opacity += 20;
 			} else {
 				currentScene = new GameScene();
 			}

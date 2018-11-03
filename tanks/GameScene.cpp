@@ -1,26 +1,37 @@
 #include "pch.h"
 #include "GameScene.h"
 #include "MazeGeneration.h"
+#include "Player.h"
 #include "Resources.h"
 #include "SFML/Graphics.hpp"
 
-
 GameScene::GameScene() {
-	shadowSurface.create(600, 600);
+	wallSurface.create(600, 600);
+	wallSideSurface.create(600, 600);
 	maze = generateMaze(false);
-	//objects.push_back();
-	player = new Player(sf::Vector2i(0,0), 1);
+
+	for (int i = 1; i <= 4; i++) {
+		Player* player = new Player(sf::Vector2i(2, 2 + i), i);
+		player->scene = this;
+		objects.push_back(player);
+	}
 }
 
 void GameScene::update() {
-	player->update();
+	for (auto obj : objects) {
+		obj->update();
+	}
 }
 
 void GameScene::event_onKeyPress(sf::Event::KeyEvent event) {
-	player->event_onKeyPress(event);
+	for (auto obj : objects) {
+		obj->event_onKeyPress(event);
+	}
 }
 void GameScene::event_onKeyRelease(sf::Event::KeyEvent event) {
-	player->event_onKeyRelease(event);
+	for (auto obj : objects) {
+		obj->event_onKeyRelease(event);
+	}
 }
 
 void GameScene::render(sf::RenderTarget* g) {
@@ -29,7 +40,8 @@ void GameScene::render(sf::RenderTarget* g) {
 	view.move(-340, -60);
 	g->setView(view);
 
-	this->shadowSurface.clear(sf::Color::Transparent);
+	wallSurface.clear(sf::Color::Transparent);
+	wallSideSurface.clear(sf::Color::Transparent);
 	
 	// Draw Board
 	sf::Sprite boardshadow;
@@ -49,22 +61,34 @@ void GameScene::render(sf::RenderTarget* g) {
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
 			// Down Line
-			if (maze.grid[i][j].down) {
+			if (j < 9 && maze.grid[i][j].down) {
 				sf::RectangleShape lineDown;
 				lineDown.setOutlineColor(sf::Color(0, 0, 0, 255));
 				lineDown.setOutlineThickness(2);
 				lineDown.setPosition(i * 60, j * 60 + 60);
 				lineDown.setSize(sf::Vector2f(60, 0));
-				this->shadowSurface.draw(lineDown);
+				wallSurface.draw(lineDown);
+
+				sf::Sprite wall;
+				wall.setTexture(getTexture("wall/side-h"));
+				wall.setPosition(i * 60 - 2, j * 60 + 60 + 2);
+				wallSideSurface.draw(wall);
+
 			}
 			// Right Line
-			if (maze.grid[i][j].right) {
+			if (i < 9 && maze.grid[i][j].right) {
 				sf::RectangleShape lineRight;
 				lineRight.setOutlineColor(sf::Color(0, 0, 0, 255));
 				lineRight.setOutlineThickness(2);
 				lineRight.setPosition(i * 60 + 60, j * 60);
-				lineRight.setSize(sf::Vector2f(0, 60));
-				this->shadowSurface.draw(lineRight);
+				lineRight.setSize(sf::Vector2f(0, 62));
+				wallSurface.draw(lineRight);
+				
+				sf::Sprite wall;
+				wall.setTexture(getTexture("wall/side-v"));
+				wall.setPosition(i * 60 + 60 - 2, j * 60 + 60 + 2);
+				wallSideSurface.draw(wall);
+
 			}
 			// non edge
 			if (j != 0 && i != 0) {
@@ -73,22 +97,25 @@ void GameScene::render(sf::RenderTarget* g) {
 					dot.setFillColor(sf::Color(0, 0, 0, 255));
 					dot.setPosition(i * 60 - 2, j * 60 - 2);
 					dot.setSize(sf::Vector2f(4, 4));
-					this->shadowSurface.draw(dot);
+					wallSurface.draw(dot);
 				}
 			}
 		}
 	}
 
-	player->render(&shadowSurface);
+	sf::Sprite walls;
+	walls.setTexture(wallSideSurface.getTexture());
+	walls.setPosition(0, 600);
+	walls.setScale(sf::Vector2f(1, -1));
+	walls.setColor(sf::Color(255, 255, 255, 120));
+	g->draw(walls);
 
-	sf::Sprite shadows;
-	shadows.setTexture(shadowSurface.getTexture());
-	shadows.setPosition(0, 600 + 4);
-	shadows.setColor(sf::Color(0, 0, 0, 70));
-	shadows.setScale(sf::Vector2f(1, -1));
-	g->draw(shadows);
-	shadows.setColor(sf::Color::White);
-	shadows.setPosition(0, 600);
-	g->draw(shadows);
+	walls.setColor(sf::Color(255, 255, 255, 255));
+	walls.setTexture(wallSurface.getTexture());
+	g->draw(walls);
+
+	for (auto obj : objects) {
+		obj->render(g);
+	}
 
 }
