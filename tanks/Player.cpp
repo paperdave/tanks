@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Player.h"
+#include "Bullet.h"
 #include "Utility.h"
 #include "Resources.h"
 
@@ -20,6 +21,7 @@ Player::Player(sf::Vector2i position, int playerID) {
 	id = playerID;
 }
 
+// Keybinds
 void Player::HandleKeypress(int code, bool state) {
 	if (code == controls.up) {
 		this->keyFoward = state;
@@ -60,10 +62,10 @@ void Player::update() {
 		move_y -= lengthdir_y(this->speed, this->dir);
 	}
 
-	while (collisionAt(x + move_x, this->y)) {
+	while (collisionAt(x + move_x, y)) {
 		move_x -= sign(move_x) * 0.1;
 	}
-	while (collisionAt(x + move_x, this->y + move_y)) {
+	while (collisionAt(x + move_x, y + move_y)) {
 		move_y -= sign(move_y) * 0.1;
 	}
 
@@ -72,7 +74,9 @@ void Player::update() {
 
 	if (keyAction) {
 		keyAction = false;
-		gunOffset = 10;
+		gunOffset = 20;
+		
+		createObject(new Bullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir));
 	}
 
 	gunOffset *= 0.5;
@@ -139,6 +143,7 @@ void Player::render(sf::RenderTarget* g) {
 
 }
 
+// Collision
 bool Player::collisionSquare(int squareX, int squareY) {
 	Maze maze = getMaze();
 	if (maze.wallDown(squareX, squareY, false)) {
@@ -171,7 +176,6 @@ bool Player::collisionSquare(int squareX, int squareY) {
 	}
 	return false;
 }
-
 bool Player::collisionAt(double x, double y) {
 	if (x <= 15) return true;
 	if (x >= 600 - 15) return true;

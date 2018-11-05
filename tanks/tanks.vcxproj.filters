@@ -41,6 +41,18 @@
     <ClCompile Include="Constants.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Scenes\Menu Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -76,8 +88,14 @@
     <Filter Include="Player">
       <UniqueIdentifier>{2a08a5ec-d85b-4ce3-8ae8-1ed39ab89800}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bullet">
+      <UniqueIdentifier>{d379aa95-75f7-4077-96ed-ab90bd860ada}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Utility">
       <UniqueIdentifier>{98f7047e-f90d-46e7-9b08-d874ac1305bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Menu Scene">
+      <UniqueIdentifier>{4bbf0de7-b0ef-4710-a590-6c1aa890f301}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +137,18 @@
     </ClInclude>
     <ClInclude Include="Constants.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Scenes\Menu Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

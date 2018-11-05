@@ -20,5 +20,7 @@ public:
 	GameScene* scene = nullptr;
 
 	Maze getMaze();
+	void createObject(GameObject* obj);
+	void destroySelf();
 };
 

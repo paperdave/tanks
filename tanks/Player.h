@@ -5,8 +5,7 @@
 
 class GameObject;
 
-class Player
-	: public GameObject {
+class Player : public GameObject {
 private:
 	double x = 30;
 	double y = 30;

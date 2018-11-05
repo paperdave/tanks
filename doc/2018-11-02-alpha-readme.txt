@@ -14,3 +14,7 @@ Player 1 (yellow):   W, A, S, D
 Player 2 (pink):     Arrow Keys
 Player 3 (blue):     J, L, I, K
 Player 4 (green):    Numpad 4, 6, 8, 5
+
+
+People who supported this project
+ - Filip Kin

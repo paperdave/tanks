@@ -12,7 +12,6 @@ class GameScene :
 private:
 	sf::RenderTexture wallSideSurface;
 	sf::RenderTexture wallSurface;
-	std::deque<GameObject*> objects;
 public:
 	GameScene();
 
@@ -22,5 +21,6 @@ public:
 	virtual void event_onKeyRelease(sf::Event::KeyEvent event);
 	
 	Maze maze;
+	std::deque<GameObject*> objects;
 };
 

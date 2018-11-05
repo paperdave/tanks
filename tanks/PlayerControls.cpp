@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "PlayerControls.h"
+#include "Color.h"
+#include "Utility.h"
 
 PlayerControls makePlayerControls(int left, int right, int up, int down, int action) {
 	PlayerControls c;
@@ -44,13 +46,13 @@ PlayerControls getPlayerControlsByID(const int id) {
 PlayerControlsVisual getPlayerControlsVisualByID(const int id) {
 	switch (id) {
 	case 1: return playerVisual1;
-	case 2: return playerVisual2;
+	case 2: return playerVisual2; 
 	case 3: return playerVisual3;
 	case 4: return playerVisual4;
 	}
 }
 
-sf::Color player1Color(255, 255, 0);
-sf::Color player2Color(255, 0, 255);
-sf::Color player3Color(0, 255, 255);
-sf::Color player4Color(0, 255, 0);
+sf::Color player1Color = HSL(  5, 270, 255).TurnToRGB();
+sf::Color player2Color = HSL( 95, 270, 255).TurnToRGB();
+sf::Color player3Color = HSL(185, 270, 255).TurnToRGB();
+sf::Color player4Color = HSL(275, 270, 255).TurnToRGB();

@@ -4,13 +4,17 @@
 
 #include "Scene.h"
 #include "GameScene.h"
+#include "MenuScene.h"
 #include "SFML/Graphics.hpp"
 #include "Resources.h"
+#include "Platform.h"
+#include "Utility.h"
 #include "Constants.h"
-#include <Windows.h>
 #include <fstream>
 #include <deque>
 #include <iostream>
+#include <thread>
+#include <chrono>
 #include <filesystem>
 
 bool loadingThreadComplete = false;
@@ -34,7 +38,7 @@ namespace {
 	}
 }
 
-DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
+void resourceThread() {
 	// Load up all resources
 	std::string root = getRootFolder();
 
@@ -56,15 +60,13 @@ DWORD WINAPI resourceLoaderThread(LPVOID lpParameter) {
 			}
 		}
 	}
-
-	if (true) {
-		Sleep(1000); // >:)
-	}
+	
+	#if 0
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	#endif
 
 	loadingThreadComplete = true;
 	resourcesLoaded = true;
-
-	return 0;
 }
 
 
@@ -75,7 +77,7 @@ LoadingScene::LoadingScene() {
 	loadFont("clean");
 
 	std::deque<std::string> loadingLines;
-	std::ifstream fin("../res/tips.txt");
+	std::ifstream fin(getRootFolder() + "tips.txt");
 	std::string line;
 	while (std::getline(fin, line)) {
 		loadingLines.push_back(line);
@@ -86,35 +88,40 @@ LoadingScene::LoadingScene() {
 	
 	this->fadetop_opacity = 0;
 
-	DWORD threadID;
-	HANDLE hand = CreateThread(0, 0, resourceLoaderThread, 0, 0, &threadID);
+	spawnThread(resourceThread);
+	
 }
 
 void LoadingScene::update() {
 	if (loadingThreadComplete) {
-			if (this->fadetop_opacity < 255) {
-				this->fadetop_opacity += 20;
+			if (fadetop_opacity < 255) {
+				fadetop_opacity += 10;
+				if (fadetop_opacity > 255) {
+					fadetop_opacity = 255;
+				}
 			} else {
-				currentScene = new GameScene();
+				// !!! Make a setScene to set it after a frame is completed.
+				if (util_file_exists("debug")) {
+					currentScene = new GameScene();
+				} else {
+					currentScene = new MenuScene();
+				}
 			}
 	}
-
-	SYSTEMTIME st;
-	GetSystemTime(&st);
-	time = st.wMilliseconds + st.wSecond * 1000 + st.wMinute * 60000;
 }
 
 void LoadingScene::render(sf::RenderTarget* g) {
 	sf::RectangleShape rs;
-	rs.setFillColor(sf::Color(20,20,20));
+	rs.setFillColor(sf::Color(20, 20, 20));
 	rs.setPosition(0, 0);
 	rs.setSize(sf::Vector2f(1280, 720));
 
-	
+	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
 	sf::Text splashtext;
 	splashtext.setFont(getFont("clean"));
 	splashtext.setString("Loading...");
-	splashtext.setPosition(g->getSize().x / 2, g->getSize().y / 2 + sin(time / 300.0f) * 15);
+	splashtext.setPosition(g->getSize().x / 2, g->getSize().y / 2 + sin(((double)(ms / 3)) / 100.0) * 15);
 	splashtext.setCharacterSize(96);
 	splashtext.setOrigin(splashtext.getLocalBounds().width / 2, splashtext.getLocalBounds().height);
 	splashtext.setFillColor(sf::Color::White);
@@ -129,7 +136,7 @@ void LoadingScene::render(sf::RenderTarget* g) {
 
 	sf::Text date;
 	date.setFont(getFont("clean"));
-	date.setString("Built on 2018-11-02");
+	date.setString("Built on " + BUILD_DATESTAMP);
 	date.setCharacterSize(24);
 	date.setOrigin(200, 24);
 	date.setPosition(g->getSize().x - 32, g->getSize().y - 32);

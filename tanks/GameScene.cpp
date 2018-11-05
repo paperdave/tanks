@@ -45,7 +45,7 @@ void GameScene::render(sf::RenderTarget* g) {
 	
 	// Draw Board
 	sf::Sprite boardshadow;
-	boardshadow.setTexture(getTexture("board-shadow"));
+	boardshadow.setTexture(getTexture("board/shadow"));
 	boardshadow.setPosition(-50, -50);
 	g->draw(boardshadow);
 

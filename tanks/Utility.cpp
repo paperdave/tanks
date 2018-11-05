@@ -63,3 +63,8 @@ bool str2int(int &i, char const *s) {
 	}
 	return true;
 }
+
+bool util_file_exists(const std::string& name) {
+	std::ifstream f(name.c_str());
+	return f.good();
+}

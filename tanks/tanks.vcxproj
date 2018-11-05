@@ -71,11 +71,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundScene.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MazeGeneration.h" />
+    <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerControls.h" />
     <ClInclude Include="Resources.h" />
@@ -86,20 +90,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackgroundScene.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="LoadingScene.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="MazeGeneration.cpp" />
+    <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerControls.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="DaveTanks.cpp" />
+    <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

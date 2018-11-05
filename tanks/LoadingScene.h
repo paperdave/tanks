@@ -8,7 +8,6 @@ class LoadingScene :
 private:
 	std::string loadingLine;
 	int fadetop_opacity;
-	long int time;
 public:
 	LoadingScene();
 	
