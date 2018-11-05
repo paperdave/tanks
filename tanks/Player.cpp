@@ -5,6 +5,8 @@
 #include "Resources.h"
 
 Player::Player(sf::Vector2i position, int playerID) {
+	type = GameObjectType::Player;
+
 	switch (playerID) {
 	case 1: color = player1Color; break;
 	case 2: color = player2Color; break;

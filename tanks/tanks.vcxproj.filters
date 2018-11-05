@@ -27,7 +27,7 @@
       <Filter>Maze</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Main\GameObject</Filter>
+      <Filter>Scenes\Game Scene\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Player</Filter>
@@ -82,9 +82,6 @@
     <Filter Include="Maze">
       <UniqueIdentifier>{e21521e8-8ae6-42fb-85f4-880db9fe7888}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\GameObject">
-      <UniqueIdentifier>{5ecd7174-2bf7-4622-8702-018e7c2b68ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Player">
       <UniqueIdentifier>{2a08a5ec-d85b-4ce3-8ae8-1ed39ab89800}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,9 @@
     </Filter>
     <Filter Include="Scenes\Menu Scene">
       <UniqueIdentifier>{4bbf0de7-b0ef-4710-a590-6c1aa890f301}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Game Scene\GameObject">
+      <UniqueIdentifier>{5ecd7174-2bf7-4622-8702-018e7c2b68ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -124,7 +124,7 @@
       <Filter>Maze</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Main\GameObject</Filter>
+      <Filter>Scenes\Game Scene\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="PlayerControls.h">
       <Filter>Player</Filter>

@@ -27,11 +27,12 @@ going downwards is generally the right order
 	[X] Make sure you cant crash the game
 	    from a collision
 [ ] GameObject API
-	[x] destroy self
+	[X] get maze
+	[X] destroy self
 	[ ] destroy other
-	[x] create obj
+	[X] create obj
 	[ ] collision with object
-	[ ] get obj list itself
+	[X] get obj list itself
 [ ] Scene API
 	[ ] Set Scene after frame ends
 	[ ] get scene
@@ -39,11 +40,13 @@ going downwards is generally the right order
 	
 [ ] Bullets
 	[X] Class
-	[ ] Render Sprite
-	[ ] Shoot bullets
-	[ ] Movement of bullets
-	[ ] Collision of bullets
+	[X] Render Sprite
+	[X] Shoot bullets
+	[X] Movement of bullets
+	[X] Collision of bullets
+	[X] timeout = destory bullet
 	[ ] Spark from the cannons
+	[ ] making players get died.
 [ ] Lighting Effect
 	[ ] literally copy the whole thing
 [ ] More Tips

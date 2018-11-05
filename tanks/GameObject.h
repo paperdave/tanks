@@ -5,8 +5,14 @@
  
 class GameScene;
 
-class GameObject
-{
+enum GameObjectType {
+	Player,
+	Bullet,
+	LightEffect,
+	Particle
+};
+
+class GameObject {
 public:
 	GameObject();
 
@@ -19,8 +25,13 @@ public:
 
 	GameScene* scene = nullptr;
 
+protected:
+	GameObjectType type;
 	Maze getMaze();
 	void createObject(GameObject* obj);
 	void destroySelf();
+	std::deque<GameObject*>* getObjectsList() {
+	GameObject* collisionWith(sf::FloatRect bounds, GameObjectType type);
+
 };
 

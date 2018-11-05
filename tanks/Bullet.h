@@ -14,6 +14,9 @@ class Bullet : public GameObject {
 	sf::FloatRect bounds;
 	int beforeTime = 5;
 	
+	int collisionAt(double x, double y, Maze maze);
+	int collisionSquare(int squareX, int squareY, Maze maze);
+
 public:
 	Bullet(double x, double y, double direction);
 
