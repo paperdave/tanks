@@ -26,14 +26,11 @@
     <ClCompile Include="MazeGeneration.cpp">
       <Filter>Maze</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Scenes\Game Scene\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Player</Filter>
+      <Filter>Objects\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerControls.cpp">
-      <Filter>Player</Filter>
+      <Filter>Objects\Player</Filter>
     </ClCompile>
     <ClCompile Include="Utility.cpp">
       <Filter>Utility</Filter>
@@ -48,10 +45,16 @@
       <Filter>Utility</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>Bullet</Filter>
+      <Filter>Objects\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="MenuScene.cpp">
       <Filter>Scenes\Menu Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Scenes\Game Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Objects\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,20 +85,23 @@
     <Filter Include="Maze">
       <UniqueIdentifier>{e21521e8-8ae6-42fb-85f4-880db9fe7888}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{2a08a5ec-d85b-4ce3-8ae8-1ed39ab89800}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Bullet">
-      <UniqueIdentifier>{d379aa95-75f7-4077-96ed-ab90bd860ada}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utility">
       <UniqueIdentifier>{98f7047e-f90d-46e7-9b08-d874ac1305bc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scenes\Menu Scene">
       <UniqueIdentifier>{4bbf0de7-b0ef-4710-a590-6c1aa890f301}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scenes\Game Scene\GameObject">
-      <UniqueIdentifier>{5ecd7174-2bf7-4622-8702-018e7c2b68ad}</UniqueIdentifier>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{47f7174d-1a63-4798-b708-149e30f9f299}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Bullet">
+      <UniqueIdentifier>{d379aa95-75f7-4077-96ed-ab90bd860ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Player">
+      <UniqueIdentifier>{2a08a5ec-d85b-4ce3-8ae8-1ed39ab89800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Light">
+      <UniqueIdentifier>{c3de3ecf-4592-45f6-b898-b66d2a885329}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,14 +129,11 @@
     <ClInclude Include="MazeGeneration.h">
       <Filter>Maze</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Scenes\Game Scene\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerControls.h">
-      <Filter>Player</Filter>
+      <Filter>Objects\Player</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Player</Filter>
+      <Filter>Objects\Player</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Utility</Filter>
@@ -145,10 +148,16 @@
       <Filter>Utility</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>Bullet</Filter>
+      <Filter>Objects\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="MenuScene.h">
       <Filter>Scenes\Menu Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Scenes\Game Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Objects\Light</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

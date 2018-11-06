@@ -52,7 +52,7 @@ int Bullet::collisionAt(double x, double y, Maze maze) {
 }
 
 Bullet::Bullet(double x, double y, double direction) {
-	type = GameObjectType::Bullet;
+	type = GameObjectType::BulletType;
 
 	this->x = x;
 	this->y = y;

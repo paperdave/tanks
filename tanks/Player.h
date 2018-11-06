@@ -16,7 +16,6 @@ private:
 	float gunOffset = 0.0f;
 	bool dead = false;
 	sf::Color color;
-	sf::FloatRect bounds;
 	PlayerControls controls;
 	double delay = 100;
 	double delayTotal = 18;

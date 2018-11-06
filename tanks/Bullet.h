@@ -11,13 +11,13 @@ class Bullet : public GameObject {
 	int collisionComboX = 0;
 	int collisionComboY = 0;
 	int life = 60 * 7.5;
-	sf::FloatRect bounds;
-	int beforeTime = 5;
 	
 	int collisionAt(double x, double y, Maze maze);
 	int collisionSquare(int squareX, int squareY, Maze maze);
 
 public:
+	int beforeTime = 5;
+
 	Bullet(double x, double y, double direction);
 
 	virtual void update();

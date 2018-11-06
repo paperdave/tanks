@@ -76,6 +76,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MazeGeneration.h" />
     <ClInclude Include="MenuScene.h" />
@@ -95,6 +96,7 @@
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="LoadingScene.cpp" />
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="MazeGeneration.cpp" />

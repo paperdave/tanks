@@ -3,6 +3,7 @@
 #include "Maze.h"
 #include "GameObject.h"
 #include <deque>
+#include <SFML/Graphics.hpp>
 
 class GameObject;
 

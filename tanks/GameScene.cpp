@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GameScene.h"
-#include "MazeGeneration.h"
 #include "Player.h"
+#include "MazeGeneration.h"
 #include "Resources.h"
 #include "SFML/Graphics.hpp"
 
@@ -11,6 +11,7 @@ GameScene::GameScene() {
 	maze = generateMaze(false);
 
 	for (int i = 1; i <= 4; i++) {
+		
 		Player* player = new Player(sf::Vector2i(2, 2 + i), i);
 		player->scene = this;
 		objects.push_back(player);

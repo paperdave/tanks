@@ -2,14 +2,15 @@
 #include "SFML/Graphics.hpp"
 #include "Maze.h"
 #include "GameScene.h"
+#include <deque>
  
 class GameScene;
 
 enum GameObjectType {
-	Player,
-	Bullet,
-	LightEffect,
-	Particle
+	PlayerType,
+	BulletType,
+	LightEffectType,
+	ParticleType
 };
 
 class GameObject {
@@ -23,6 +24,8 @@ public:
 	virtual void event_onKeyPress(sf::Event::KeyEvent event) {};
 	virtual void event_onKeyRelease(sf::Event::KeyEvent event) {};
 
+	sf::FloatRect bounds;
+
 	GameScene* scene = nullptr;
 
 protected:
@@ -30,8 +33,10 @@ protected:
 	Maze getMaze();
 	void createObject(GameObject* obj);
 	void destroySelf();
-	std::deque<GameObject*>* getObjectsList() {
-	GameObject* collisionWith(sf::FloatRect bounds, GameObjectType type);
+	void destroyOther(GameObject* obj);
+	std::deque<GameObject*>* getObjectsList();
+	GameObject* collisionWith(GameObjectType type);
 
+	void setScene(Scene* newScene);
+	void screenShake(float magnitude, int frames);
 };
-

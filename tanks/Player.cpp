@@ -2,10 +2,11 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Utility.h"
+#include "Light.h"
 #include "Resources.h"
 
 Player::Player(sf::Vector2i position, int playerID) {
-	type = GameObjectType::Player;
+	type = GameObjectType::PlayerType;
 
 	switch (playerID) {
 	case 1: color = player1Color; break;
@@ -79,9 +80,23 @@ void Player::update() {
 		gunOffset = 20;
 		
 		createObject(new Bullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir));
+
+		screenShake(1, 30);
 	}
 
 	gunOffset *= 0.5;
+
+	Bullet* collision = (Bullet*)collisionWith(BulletType);
+	if (collision && collision->beforeTime <= 0) {
+		destroyOther(collision);
+		destroySelf();
+
+		screenShake(10, 30);
+		
+		int squareX = (int)(x / 60);
+		int squareY = (int)(y / 60);
+		createObject(new Light(color, squareX, squareY));
+	}
 }
 
 void Player::render(sf::RenderTarget* g) {
