@@ -112,7 +112,7 @@ void Player::render(sf::RenderTarget* g) {
 	int sat = wave(255, 0, 0.8, 0);
 
 	sTop.setTexture(texL0);
-	sTop.setScale(0.7, 0.7);
+	sTop.setScale(0.7f, 0.7f);
 	sTop.setOrigin(sTop.getLocalBounds().width / 2 * 0.8, sTop.getLocalBounds().height / 2);
 
 	sTop.setRotation(dir);
@@ -123,7 +123,7 @@ void Player::render(sf::RenderTarget* g) {
 	sf::Sprite sBot;
 
 	sBot.setTexture(texL4);
-	sBot.setScale(0.7, 0.7);
+	sBot.setScale(0.7f, 0.7f);
 	sBot.setOrigin(sTop.getOrigin());
 
 	sBot.setRotation(dir);

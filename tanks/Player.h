@@ -7,11 +7,8 @@ class GameObject;
 
 class Player : public GameObject {
 private:
-	double x = 30;
-	double y = 30;
 	double dir = 90;
 	float speed = 2.0f;
-	int id;
 	float turnSpeed = 4.0f;
 	float gunOffset = 0.0f;
 	bool dead = false;
@@ -33,6 +30,9 @@ private:
 	bool collisionSquare(int squareX, int squareY);
 	bool collisionAt(double x, double y);
 public:
+	int id;
+	double x = 30;
+	double y = 30;
 	Player(sf::Vector2i position, int id);
 
 	// Bind key events easily

@@ -12,7 +12,7 @@ void MenuScene::update() {
 		if (scale < 0.05) {
 			scale = 0;
 			shadowOpacity = 255;
-			// !!! screenshake here
+			screenShake(20, 20);
 		}
 	}
 	else if (shadowOpacity > 100) {
@@ -29,11 +29,16 @@ void MenuScene::update() {
 }
 
 void MenuScene::render(sf::RenderTarget* g) {
+	sf::View windowView = g->getView();
+	g->setView(g->getDefaultView());
+
 	sf::RectangleShape fadetop;
 	fadetop.setFillColor(sf::Color(30, 30, 30, bgOpacity));
 	fadetop.setPosition(0, 0);
 	fadetop.setSize(sf::Vector2f(1280, 720));
 	g->draw(fadetop);
+
+	g->setView(windowView);
 
 	sf::Sprite shadow;
 	shadow.setTexture(getTexture("title-screen/shadow"));

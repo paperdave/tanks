@@ -111,7 +111,7 @@ void Bullet::render(sf::RenderTarget* g) {
 	sf::Sprite s;
 	s.setTexture(getTexture("bullet/basic"));
 	s.setPosition(this->x, this->y);
-	s.setScale(0.6, 0.6);
+	s.setScale(0.6f, 0.6f);
 	s.setOrigin(s.getLocalBounds().width / 2, s.getLocalBounds().height / 2);
 
 	g->draw(s);

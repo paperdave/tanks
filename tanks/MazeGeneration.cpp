@@ -90,8 +90,8 @@ Maze generateMaze(bool log = false) {
 	}
 
 	// Step 5. Break random walls down
-	int wallsLeft = 2 + (rand() % 4);
-	int wallsDown = 2 + (rand() % 4);
+	int wallsLeft = 4 + (rand() % 4);
+	int wallsDown = 4 + (rand() % 4);
 	while (wallsDown > 0) {
 		int xx = rand() % 10;
 		int yy = rand() % 10;

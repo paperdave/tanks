@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "GameScene.h"
 #include "Player.h"
+#include "Utility.h"
 #include "MazeGeneration.h"
 #include "Resources.h"
+#include "MenuScene.h"
 #include "SFML/Graphics.hpp"
 
 GameScene::GameScene() {
@@ -10,18 +12,71 @@ GameScene::GameScene() {
 	wallSideSurface.create(600, 600);
 	maze = generateMaze(false);
 
+	sf::Vector2i playerSpots[4];
+	for (size_t i = 0; i < 4; i++) {
+		bool valid = false;
+		while (!valid) {
+			int x = rand() % 10;
+			int y = rand() % 10;
+			valid = true;
+			for (size_t j = 0; j < i; j++)
+			{
+				float dist =
+					(playerSpots[j].x - x)*
+					(playerSpots[j].x - x)
+					+
+					(playerSpots[j].y - y)*
+					(playerSpots[j].y - y)
+					;
+				if (dist < 14) {
+					valid = false;
+					break;
+				}
+			}
+			playerSpots[i].x = x;
+			playerSpots[i].y = y;
+		}
+	}
+
 	for (int i = 1; i <= 4; i++) {
-		
-		Player* player = new Player(sf::Vector2i(2, 2 + i), i);
+		Player* player = new Player(playerSpots[i - 1], i);
 		player->scene = this;
 		objects.push_back(player);
 	}
 }
 
 void GameScene::update() {
-	for (auto obj : objects) {
-		obj->update();
+	int playersAlive = 0;
+	
+	switch (state) {
+	case RoundState::RoundStateInProgress:
+		for (auto obj : objects) {
+			obj->update();
+			if (typeid(*obj).name() == typeid(Player).name()) {
+				playersAlive++;
+				Player* plr = (Player*)obj;
+				winner = plr->id;
+			}
+		}
+		if (playersAlive == 1) {
+			roundEndTimeout--;
+			if (roundEndTimeout <= 0) {
+				state = RoundState::RoundStateEnded;
+				roundEndTimeout = 120;
+			}
+		}
+		if (playersAlive == 0) {
+			state = RoundState::RoundStateEnded;
+			winner = -1;
+			roundEndTimeout = 120;
+		}
+		break;
+	case RoundState::RoundStateEnded:
+		topBarsOffset *= 0.95;
+		endingZoom *= 0.95;
+		break;
 	}
+	
 }
 
 void GameScene::event_onKeyPress(sf::Event::KeyEvent event) {
@@ -39,8 +94,25 @@ void GameScene::render(sf::RenderTarget* g) {
 	// move the view so the 600x600 area is the center
 	sf::View view = g->getView();
 	view.move(-340, -60);
-	g->setView(view);
+	
+	Player* player = nullptr;
+	for (auto obj : objects) {
+		if (typeid(*obj).name() == typeid(Player).name()) {
+			player = (Player*)obj;
+		}
+	}
+		
+	if(player) {
+		int playerX = player->x;
+		int playerY = player->y;
 
+		view.move(lerp(-300 + playerX, 0, endingZoom * 0.5), lerp(-300 + playerY, 0, endingZoom * 0.5));
+		view.zoom(1 / (3 - endingZoom));
+	} else {
+		view.zoom(1 / ((3 - endingZoom) / 2));
+	}
+	g->setView(view);
+	
 	wallSurface.clear(sf::Color::Transparent);
 	wallSideSurface.clear(sf::Color::Transparent);
 	
@@ -111,12 +183,56 @@ void GameScene::render(sf::RenderTarget* g) {
 	walls.setColor(sf::Color(255, 255, 255, 120));
 	g->draw(walls);
 
+	for (auto obj : objects) {
+		obj->render(g);
+	}
+
 	walls.setColor(sf::Color(255, 255, 255, 255));
 	walls.setTexture(wallSurface.getTexture());
 	g->draw(walls);
 
-	for (auto obj : objects) {
-		obj->render(g);
+	if (state == RoundStateEnded) {
+		if (roundEndTimeout <= 0) {
+			topBarsOffset2 *= 0.85;
+		}
+		else {
+			roundEndTimeout--;
+		}
+
+		sf::Text roundEndText;
+		roundEndText.setString("round is over. GG WP. winner: " + std::to_string(winner));
+		roundEndText.setFont(getFont("clean"));
+		roundEndText.setPosition(-50, -50);
+		roundEndText.setCharacterSize(24);
+		
+		g->draw(roundEndText);
+
+		sf::View view = g->getDefaultView();
+		g->setView(view);
+
+		sf::RectangleShape topbar;
+		topbar.setPosition(0, 0);
+		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
+		topbar.setFillColor(sf::Color::Black);
+		g->draw(topbar);
+
+		topbar.setPosition(0, 720 - 130 + topBarsOffset - 230 + topBarsOffset2);
+		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
+		g->draw(topbar);
+
+		topbar.setFillColor(sf::Color(30, 30, 30, (int)lerp(255, 0, topBarsOffset2 / 230.0)));
+
+		topbar.setPosition(0, 0);
+		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
+		g->draw(topbar);
+
+		topbar.setPosition(0, 720 - 130 + topBarsOffset - 230 + topBarsOffset2);
+		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
+		g->draw(topbar);
+
+		if (topBarsOffset2 < 2) {
+			setScene(new MenuScene());
+		}
 	}
 
 }

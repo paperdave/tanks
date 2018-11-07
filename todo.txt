@@ -1,56 +1,14 @@
 Thinkings
 
-- to what scale do i want this on: small project, full game? I THINK MEDIUM GAME
+- medium game
 - GFX: do i want a more fancy lighting system.
-- new sprites? music? better menu?
 - more gamemodes?
-- sprite stacking 3d looked super cool i wanna try it out.
 
 Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
-[X] GameObject Base Class
-[X] update method
-[X] update method in all scenes
-[X] Maze class
-[X] Generating the maze
-[X] Drawing of the maze
-[X] Board Shadow
-[X] Autoload all files in res/
-[X] Player Class
-	[X] Players in the box
-	[X] Player Controls
-	[X] Player Movement
-	[X] Player Collision
-	[X] Draw Sprite Stacked Player
-	[X] Colored players
-	[X] Make sure you cant crash the game
-	    from a collision
-[X] GameObject API
-	[X] get maze
-	[X] destroy self
-	[X] destroy other
-	[X] create obj
-	[X] collision with object
-	[X] get obj list itself
-[X] Scene API
-	[X] Set Scene after frame ends
-	[X] shake screen
-	[X] actual screen shaking
-[ ] menu scene
-
-[ ] Bullets
-	[X] Class
-	[X] Render Sprite
-	[X] Shoot bullets
-	[X] Movement of bullets
-	[X] Collision of bullets
-	[X] timeout = destory bullet
-	[ ] Spark from the cannons
-	[X] making players get died.
-[X] Lighting Effect
-	[X] literally copy the whole thing
 [ ] More Tips
-
-
-[ ] ok what if we use the multiply/add blendmodes to make a "no lights" maze gamemode
+[ ] Spark from cannons
+[ ] Menu
+[ ] Trial/Preview version that only is active while a
+    certain file exists on site

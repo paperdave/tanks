@@ -18,5 +18,5 @@ void Scene::setScene(Scene* newScene) {
 void Scene::screenShake(float magnitude, int frames) {
 	shakeMagnitude = std::max(shakeRemain, magnitude);
 	shakeRemain += magnitude;
-	shakeRemain = frames;
+	shakeLength = frames;
 }

@@ -68,3 +68,7 @@ bool util_file_exists(const std::string& name) {
 	std::ifstream f(name.c_str());
 	return f.good();
 }
+
+double lerp(double from, double to, double percent) {
+	return from + (to - from) * percent;
+}

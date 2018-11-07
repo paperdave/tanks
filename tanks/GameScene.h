@@ -7,12 +7,23 @@
 
 class GameObject;
 
-class GameScene :
-	public Scene
-{
+enum RoundState {
+	RoundStateInProgress,
+	RoundStateEnded
+};
+
+class GameScene : public Scene {
 private:
 	sf::RenderTexture wallSideSurface;
 	sf::RenderTexture wallSurface;
+	int roundEndTimeout = 90;
+	RoundState state = RoundStateInProgress;
+	int winner = -1;
+
+	int topBarsOffset = 130;
+	int topBarsOffset2 = 230;
+	double endingZoom = 2;
+
 public:
 	GameScene();
 

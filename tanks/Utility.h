@@ -13,3 +13,5 @@ std::vector<std::string> getNextLineAndSplitIntoTokens(std::istream& str);
 bool str2int(int &i, char const *s);
 
 bool util_file_exists(const std::string& name);
+
+double lerp(double from, double to, double percent);
