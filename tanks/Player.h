@@ -7,7 +7,6 @@ class GameObject;
 
 class Player : public GameObject {
 private:
-	double dir = 90;
 	float speed = 2.0f;
 	float turnSpeed = 4.0f;
 	float gunOffset = 0.0f;
@@ -33,6 +32,8 @@ public:
 	int id;
 	double x = 30;
 	double y = 30;
+	double dir = 90;
+
 	Player(sf::Vector2i position, int id);
 
 	// Bind key events easily

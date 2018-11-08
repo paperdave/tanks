@@ -56,6 +56,10 @@
     <ClCompile Include="Light.cpp">
       <Filter>Objects\Light</Filter>
     </ClCompile>
+    <ClCompile Include="Trial.cpp" />
+    <ClCompile Include="PreviewExpiredScene.cpp">
+      <Filter>Scenes\Preview Expired Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -102,6 +106,9 @@
     </Filter>
     <Filter Include="Objects\Light">
       <UniqueIdentifier>{c3de3ecf-4592-45f6-b898-b66d2a885329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Preview Expired Scene">
+      <UniqueIdentifier>{90a17f28-d705-4f4a-bb69-4d20c52da7e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +165,10 @@
     </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Objects\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Trial.h" />
+    <ClInclude Include="PreviewExpiredScene.h">
+      <Filter>Scenes\Preview Expired Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
