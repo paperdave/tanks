@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MenuScene.h"
 #include "Resources.h"
+#include "GameScene.h"
 
 MenuScene::MenuScene() {
 
@@ -25,6 +26,9 @@ void MenuScene::update() {
 	else if (bgOpacity > 0) {
 		bgOpacity -= 3;
 		if (bgOpacity < 0) bgOpacity = 0;
+	}
+	else {
+		setScene(new GameScene());
 	}
 }
 

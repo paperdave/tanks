@@ -56,9 +56,11 @@
     <ClCompile Include="Light.cpp">
       <Filter>Objects\Light</Filter>
     </ClCompile>
-    <ClCompile Include="Trial.cpp" />
     <ClCompile Include="PreviewExpiredScene.cpp">
       <Filter>Scenes\Preview Expired Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Trial.cpp">
+      <Filter>Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,9 +168,11 @@
     <ClInclude Include="Light.h">
       <Filter>Objects\Light</Filter>
     </ClInclude>
-    <ClInclude Include="Trial.h" />
     <ClInclude Include="PreviewExpiredScene.h">
       <Filter>Scenes\Preview Expired Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Trial.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

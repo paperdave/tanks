@@ -56,3 +56,21 @@ sf::Color player1Color = HSL(  5, 270, 255).TurnToRGB();
 sf::Color player2Color = HSL( 95, 270, 255).TurnToRGB();
 sf::Color player3Color = HSL(185, 270, 255).TurnToRGB();
 sf::Color player4Color = HSL(275, 270, 255).TurnToRGB();
+
+sf::Color getPlayerColorByID(const int id) {
+	switch (id) {
+	case 1: return player1Color;
+	case 2: return player2Color;
+	case 3: return player3Color;
+	case 4: return player4Color;
+	}
+}
+
+std::string getPlayerNameByID(const int id) {
+	switch (id) {
+	case 1: return "Red";
+	case 2: return "Green";
+	case 3: return "Blue";
+	case 4: return "Purple";
+	}
+}

@@ -23,6 +23,7 @@ private:
 	int topBarsOffset = 130;
 	int topBarsOffset2 = 230;
 	double endingZoom = 2;
+	double textOffset = 1000;
 
 public:
 	GameScene();

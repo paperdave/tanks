@@ -10,5 +10,6 @@ going downwards is generally the right order
 [ ] More Tips
 [ ] Spark from cannons
 [ ] Menu
-[ ] Trial/Preview version that only is active while a
+[X] finish the game end thingyy
+[X] Trial/Preview version that only is active while a
     certain file exists on site

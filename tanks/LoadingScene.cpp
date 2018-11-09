@@ -102,9 +102,9 @@ void LoadingScene::update() {
 			} else {
 				// !!! Make a setScene to set it after a frame is completed.
 				if (util_file_exists("debug")) {
-					currentScene = new GameScene();
+					setScene(new GameScene());
 				} else {
-					currentScene = new MenuScene();
+					setScene(new MenuScene());
 				}
 			}
 	}

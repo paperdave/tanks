@@ -74,6 +74,12 @@ void GameScene::update() {
 	case RoundState::RoundStateEnded:
 		topBarsOffset *= 0.95;
 		endingZoom *= 0.95;
+		textOffset *= 0.945;
+
+		if (topBarsOffset2 < 2) {
+			setScene(new GameScene());
+		}
+
 		break;
 	}
 	
@@ -199,14 +205,6 @@ void GameScene::render(sf::RenderTarget* g) {
 			roundEndTimeout--;
 		}
 
-		sf::Text roundEndText;
-		roundEndText.setString("round is over. GG WP. winner: " + std::to_string(winner));
-		roundEndText.setFont(getFont("clean"));
-		roundEndText.setPosition(-50, -50);
-		roundEndText.setCharacterSize(24);
-		
-		g->draw(roundEndText);
-
 		sf::View view = g->getDefaultView();
 		g->setView(view);
 
@@ -220,6 +218,22 @@ void GameScene::render(sf::RenderTarget* g) {
 		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
 		g->draw(topbar);
 
+		sf::Text roundEndText;
+		roundEndText.setFont(getFont("clean"));
+		roundEndText.setPosition(640 - textOffset, (130 - topBarsOffset + 230 - topBarsOffset2)/2);
+		roundEndText.setCharacterSize(48);
+		if (winner >= 1) {
+			roundEndText.setString(getPlayerNameByID(winner) + " Wins!");
+			roundEndText.setFillColor(getPlayerColorByID(winner));
+		}
+		else {
+			roundEndText.setFillColor(sf::Color::White);
+			roundEndText.setString("It's a Draw!");
+		}
+
+		roundEndText.setOrigin(roundEndText.getLocalBounds().width / 2, roundEndText.getLocalBounds().height);
+		g->draw(roundEndText);
+
 		topbar.setFillColor(sf::Color(30, 30, 30, (int)lerp(255, 0, topBarsOffset2 / 230.0)));
 
 		topbar.setPosition(0, 0);
@@ -229,10 +243,5 @@ void GameScene::render(sf::RenderTarget* g) {
 		topbar.setPosition(0, 720 - 130 + topBarsOffset - 230 + topBarsOffset2);
 		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
 		g->draw(topbar);
-
-		if (topBarsOffset2 < 2) {
-			setScene(new MenuScene());
-		}
 	}
-
 }

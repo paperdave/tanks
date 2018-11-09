@@ -1,1 +1,16 @@
-<script>location.replace("https://davecode.me/")</script>
+<h1>
+    Dave's Tanks
+</h1>
+<p>
+    wip, for now view the page on <a href="https://davecode.me/">davecode.me</a>
+</p>
+<p id="warp"></p>
+<script>
+    if(location.replace && setTimeout) {
+        var warp = document.getElementById("warp");
+        warp.innerHTML = "Warping to url in three seconds...";
+        setTimeout(function() {
+            location.replace("https://davecode.me/");
+        }, 3000);
+    }
+</script>

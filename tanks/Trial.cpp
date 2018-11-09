@@ -3,7 +3,7 @@
 #include <iostream>
 
 bool verify() {
-	sf::Http http("http://davetanksdata.surge.sh");
+	sf::Http http("http://davetanks.surge.sh");
 
 	sf::Http::Request request;
 	request.setMethod(sf::Http::Request::Get);

@@ -25,10 +25,12 @@ extern PlayerControlsVisual playerVisual3;
 extern PlayerControls playerControls4;
 extern PlayerControlsVisual playerVisual4;
 
-PlayerControls getPlayerControlsByID(const int id);
-PlayerControlsVisual getPlayerControlsVisualByID(const int id);
-
 extern sf::Color player1Color;
 extern sf::Color player2Color;
 extern sf::Color player3Color;
 extern sf::Color player4Color;
+
+PlayerControls getPlayerControlsByID(const int id);
+PlayerControlsVisual getPlayerControlsVisualByID(const int id);
+sf::Color getPlayerColorByID(const int id);
+std::string getPlayerNameByID(const int id);
