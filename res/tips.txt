@@ -1,2 +1,5 @@
 Your bullets can hit yourself.
 The Wall Builder powerup lets you place walls, you can deflect bullets with this.
+Play up to four players at once.
+Check out davecode.me for more cool stuff.
+Shields only last for 15 seconds.

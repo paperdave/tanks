@@ -4,7 +4,7 @@
 #include "Utility.h"
 #include "MazeGeneration.h"
 #include "Resources.h"
-#include "MenuScene.h"
+#include "IntroScene.h"
 #include "SFML/Graphics.hpp"
 
 GameScene::GameScene() {
@@ -112,10 +112,10 @@ void GameScene::render(sf::RenderTarget* g) {
 		int playerX = player->x;
 		int playerY = player->y;
 
-		view.move(lerp(-300 + playerX, 0, endingZoom * 0.5), lerp(-300 + playerY, 0, endingZoom * 0.5));
+		view.move(lerp(-300 + playerX, 0, powf(endingZoom * 0.5, 2)), lerp(-300 + playerY, 0, powf(endingZoom * 0.5, 2)));
 		view.zoom(1 / (3 - endingZoom));
 	} else {
-		view.zoom(1 / ((3 - endingZoom) / 2));
+		view.zoom(1 / ((4 - endingZoom) / 2));
 	}
 	g->setView(view);
 	

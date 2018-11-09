@@ -10,6 +10,8 @@ going downwards is generally the right order
 [ ] More Tips
 [ ] Spark from cannons
 [ ] Menu
+[X] zoom bug
+[X] zoom bug v2
 [X] finish the game end thingyy
 [X] Trial/Preview version that only is active while a
-    certain file exists on site
+    certain file exists on site.

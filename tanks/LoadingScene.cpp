@@ -2,14 +2,15 @@
 #include "pch.h"
 #include "LoadingScene.h"
 
-#include "Scene.h"
-#include "GameScene.h"
 #include "MenuScene.h"
+#include "GameScene.h"
+#include "Scene.h"
 #include "SFML/Graphics.hpp"
 #include "Resources.h"
 #include "Platform.h"
 #include "Utility.h"
 #include "Constants.h"
+#include "MenuContent.h"
 #include <fstream>
 #include <deque>
 #include <iostream>
@@ -60,13 +61,17 @@ void resourceThread() {
 			}
 		}
 	}
+
+	registerAllMenus();
 	
-	#if 0
+	#if 1
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	#endif
 
 	loadingThreadComplete = true;
 	resourcesLoaded = true;
+
+	printf("Loading Completed");
 }
 
 
@@ -101,11 +106,7 @@ void LoadingScene::update() {
 				}
 			} else {
 				// !!! Make a setScene to set it after a frame is completed.
-				if (util_file_exists("debug")) {
-					setScene(new GameScene());
-				} else {
-					setScene(new MenuScene());
-				}
+				setScene(new GameScene());
 			}
 	}
 }

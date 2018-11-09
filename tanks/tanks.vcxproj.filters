@@ -47,8 +47,8 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Objects\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="MenuScene.cpp">
-      <Filter>Scenes\Menu Scene</Filter>
+    <ClCompile Include="IntroScene.cpp">
+      <Filter>Scenes\Intro Scene</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Scenes\Game Scene</Filter>
@@ -61,6 +61,15 @@
     </ClCompile>
     <ClCompile Include="Trial.cpp">
       <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Scenes\Menu Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Scenes\Menu Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuContent.cpp">
+      <Filter>Scenes\Menu Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,9 +103,6 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{98f7047e-f90d-46e7-9b08-d874ac1305bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scenes\Menu Scene">
-      <UniqueIdentifier>{4bbf0de7-b0ef-4710-a590-6c1aa890f301}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Objects">
       <UniqueIdentifier>{47f7174d-1a63-4798-b708-149e30f9f299}</UniqueIdentifier>
     </Filter>
@@ -111,6 +117,12 @@
     </Filter>
     <Filter Include="Scenes\Preview Expired Scene">
       <UniqueIdentifier>{90a17f28-d705-4f4a-bb69-4d20c52da7e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Intro Scene">
+      <UniqueIdentifier>{4bbf0de7-b0ef-4710-a590-6c1aa890f301}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Menu Scene">
+      <UniqueIdentifier>{2935350e-af52-42a8-a2db-3bff2b9b51e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -159,8 +171,8 @@
     <ClInclude Include="Bullet.h">
       <Filter>Objects\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="MenuScene.h">
-      <Filter>Scenes\Menu Scene</Filter>
+    <ClInclude Include="IntroScene.h">
+      <Filter>Scenes\Intro Scene</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Scenes\Game Scene</Filter>
@@ -173,6 +185,15 @@
     </ClInclude>
     <ClInclude Include="Trial.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Scenes\Menu Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Scenes\Menu Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuContent.h">
+      <Filter>Scenes\Menu Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
