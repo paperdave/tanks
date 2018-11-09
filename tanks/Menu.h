@@ -27,7 +27,8 @@ struct MenuItem {
 	const char* target;
 };
 
-struct Menu {
+class Menu {
+public:
 	Menu(const char* title) {
 		this->title = title;
 	}
@@ -35,6 +36,5 @@ struct Menu {
 	std::deque<MenuItem> items;
 };
 
-Menu getMenu(std::string name);
-
-void registerMenu(std::string name, Menu menu);
+Menu* getMenu(std::string name);
+void registerMenu(std::string name, Menu* menu);

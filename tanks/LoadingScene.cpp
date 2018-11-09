@@ -106,7 +106,7 @@ void LoadingScene::update() {
 				}
 			} else {
 				// !!! Make a setScene to set it after a frame is completed.
-				setScene(new GameScene());
+				setScene(new MenuScene());
 			}
 	}
 }

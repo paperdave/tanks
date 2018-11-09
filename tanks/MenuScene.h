@@ -1,8 +1,12 @@
 #pragma once
 #include "Scene.h"
-class MenuScene :
-	public Scene
-{
+#include "Menu.h"
+
+class MenuScene : public Scene {
+private:
+	Menu* currentMenu;
+	int selected = 0;
+
 public:
 	MenuScene();
 	
