@@ -3,6 +3,8 @@
 #include <string>
 #include <map>
 
+typedef void(*ActionCallback)(void);
+
 enum MenuItemType {
 	MenuItemTypeLabel,
 	MenuItemTypeButton,
@@ -27,8 +29,7 @@ struct MenuItem {
 	const char* target;
 };
 
-class Menu {
-public:
+struct Menu {
 	Menu(const char* title) {
 		this->title = title;
 	}
@@ -37,4 +38,6 @@ public:
 };
 
 Menu* getMenu(std::string name);
+void executeAction(std::string name);
 void registerMenu(std::string name, Menu* menu);
+void registerAction(std::string name, ActionCallback);

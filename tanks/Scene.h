@@ -5,8 +5,7 @@ extern float shakeRemain;
 extern float shakeMagnitude;
 extern float shakeLength;
 
-class Scene
-{
+class Scene {
 public:
 	Scene();
 	// Required Render Function
@@ -16,11 +15,10 @@ public:
 	// Event Handlers
 	virtual void event_onKeyPress(sf::Event::KeyEvent event) {};
 	virtual void event_onKeyRelease(sf::Event::KeyEvent event) {};
-
-protected:
-	void setScene(Scene* newScene);
-	void screenShake(float magnitude, int frames);
 };
+
+void setScene(Scene* newScene);
+void screenShake(float magnitude, int frames);
 
 extern Scene* currentScene;
 extern Scene* nextScene;

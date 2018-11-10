@@ -12,10 +12,10 @@ Scene* nextScene = nullptr;
 
 Scene::Scene() {}
 
-void Scene::setScene(Scene* newScene) {
+void setScene(Scene* newScene) {
 	nextScene = newScene;
 }
-void Scene::screenShake(float magnitude, int frames) {
+void screenShake(float magnitude, int frames) {
 	shakeMagnitude = std::max(shakeRemain, magnitude);
 	shakeRemain += magnitude;
 	shakeLength = frames;

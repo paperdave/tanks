@@ -2,9 +2,7 @@
 #include "Scene.h"
 #include <string>
 
-class LoadingScene :
-	public Scene
-{
+class LoadingScene : public Scene {
 private:
 	std::string loadingLine;
 	int fadetop_opacity;
