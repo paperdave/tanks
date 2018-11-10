@@ -9,6 +9,10 @@ Maze::Maze() {
 		}
 	}
 }
+Maze::~Maze() {
+	
+}
+
 bool Maze::wallRight(int spaceX, int spaceY, bool def = true) {
 	if (spaceY >= 9) return def;
 	if (spaceX > 9) return def;

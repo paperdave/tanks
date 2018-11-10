@@ -62,6 +62,9 @@ Bullet::Bullet(double x, double y, double direction) {
 	this->bounds.width = 10;
 	this->bounds.height = 10;
 }
+Bullet::~Bullet() {
+
+}
 
 void Bullet::update() {
 	if (beforeTime > -1) beforeTime--;

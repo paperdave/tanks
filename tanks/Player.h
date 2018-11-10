@@ -35,14 +35,11 @@ public:
 	double dir = 90;
 
 	Player(sf::Vector2i position, int id);
+	~Player();
 
 	// Bind key events easily
-	void event_onKeyPress(sf::Event::KeyEvent ev) {
-		HandleKeypress(ev.code, true);
-	}
-	void event_onKeyRelease(sf::Event::KeyEvent ev) {
-		HandleKeypress(ev.code, false);
-	}
+	void event_onKeyPress(sf::Event::KeyEvent ev)   { HandleKeypress(ev.code, true);  }
+	void event_onKeyRelease(sf::Event::KeyEvent ev) { HandleKeypress(ev.code, false); }
 
 	virtual void update();
 	virtual void render(sf::RenderTarget* g);

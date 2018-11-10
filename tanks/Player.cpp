@@ -23,6 +23,9 @@ Player::Player(sf::Vector2i position, int playerID) {
 	bounds.height = 30;
 	id = playerID;
 }
+Player::~Player() {
+
+}
 
 // Keybinds
 void Player::HandleKeypress(int code, bool state) {

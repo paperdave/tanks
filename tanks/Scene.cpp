@@ -13,6 +13,9 @@ Scene* nextScene = nullptr;
 Scene::Scene() {}
 
 void setScene(Scene* newScene) {
+	if (nextScene != nullptr) {
+		delete nextScene;
+	}
 	nextScene = newScene;
 }
 void screenShake(float magnitude, int frames) {

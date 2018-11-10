@@ -8,6 +8,7 @@ class Maze {
 public:
 	MazeGridCell grid[10][10];
 	Maze();
+	~Maze();
 
 	bool wallRight(int spaceX, int spaceY, bool def);
 	bool wallLeft(int spaceX, int spaceY, bool def);

@@ -19,6 +19,7 @@ public:
 	int beforeTime = 5;
 
 	Bullet(double x, double y, double direction);
+	~Bullet();
 
 	virtual void update();
 	virtual void render(sf::RenderTarget* g);
