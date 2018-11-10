@@ -2,9 +2,6 @@
 *.vcxproj.user
 
 sfml
-libcurl
 
 out
 releases
-
-tanks/debug

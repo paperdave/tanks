@@ -9,15 +9,11 @@ going downwards is generally the right order
 
 By 2018-11-16:
 [ ] More Tips
-[X] Menu
-[ ] submenus
-	[X] entering
-	[X] drawing the box
-	[X] drawing items
-	[ ] drawing items smoothly
-	[ ] moving all the other items
-	[X] esc = eixt
+[ ] Fix Sub Menus
+[ ] Option to not have four ppls
 [ ] Reduce pointer usage, and use smart pointers
 
 Later:
 [ ] Spark from cannons
+[ ] Memory Leaks
+[ ] Directional Screen Shake
