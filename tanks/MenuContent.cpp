@@ -18,6 +18,8 @@ void registerQuickPlayOptionsMenu() {
 	menu->items.push_back(MenuItem("Sub Menu", MenuItemTypeButton, "none"));
 	menu->items.push_back(MenuItem("It's Very", MenuItemTypeButton, "none"));
 	menu->items.push_back(MenuItem("Cool", MenuItemTypeButton, "close-sub"));
+	menu->items.push_back(MenuItem(MenuItemTypeDivider));
+	menu->items.push_back(MenuItem("Don't Ya think???", MenuItemTypeButton, "close-sub"));
 	registerMenu("quick-play", menu);
 }
 

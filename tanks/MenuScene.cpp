@@ -12,7 +12,6 @@ void MenuScene::update() {
 
 	selectBoxTarget.top = 115;
 	selectBoxTarget.left = (currentSubMenu != nullptr) ? 0 : 10;
-	selectBoxTarget.width = 0;
 	selectBoxTarget.height = 44;
 	int index = 0;
 	if (selected < 0) selected = 0;
@@ -55,10 +54,9 @@ void MenuScene::update() {
 	
 	width = lerp(width, widthTarget, 0.1);
 
-	selectBox.left = lerp(selectBox.left, selectBoxTarget.left, 0.5);
-	selectBox.top = lerp(selectBox.top, selectBoxTarget.top, 0.5);
-	selectBox.width = lerp(selectBox.width, selectBoxTarget.width, 0.5);
-	selectBox.height = lerp(selectBox.height, selectBoxTarget.height, 0.5);
+	selectBox.left = lerp(selectBox.left, selectBoxTarget.left, 0.2);
+	selectBox.top = lerp(selectBox.top, selectBoxTarget.top, 0.35);
+	selectBox.height = lerp(selectBox.height, selectBoxTarget.height, 0.35);
 }
 
 void MenuScene::render(sf::RenderTarget* g) {
@@ -112,6 +110,7 @@ void MenuScene::render(sf::RenderTarget* g) {
 		}
 
 		if (index == subMenuIndex) {
+			int oldY = y;
 			y += 5;
 			for (auto subitem : currentSubMenu->items) {
 				if (subitem.type == MenuItemTypeButton) {
@@ -133,8 +132,7 @@ void MenuScene::render(sf::RenderTarget* g) {
 					throw "MenuError";
 				}
 			}
-			y += 5;
-
+			y = selectBox.height + oldY + 5;
 		}
 	}
 }
@@ -146,7 +144,7 @@ void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
 	else if (event.code == sf::Keyboard::Down) {
 		selected++;
 	}
-	else if (event.code == sf::Keyboard::Space) {
+	else if (event.code == sf::Keyboard::Space || event.code == sf::Keyboard::Enter) {
 		int index = 0;
 		for (auto item : currentMenu->items) {
 			if (item.type == MenuItemTypeButton) {
