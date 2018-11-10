@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "MenuScene.h"
 
 namespace {
 	std::map<std::string, Menu*> menuRegistry;
@@ -6,8 +7,17 @@ namespace {
 }
 
 void registerMenu(std::string name, Menu* menu) {
+	// Register
 	printf("Registering Menu %s\n", name.c_str());
 	menuRegistry.insert(std::make_pair(name, menu));
+
+	// Handler for switching to it
+	registerAction("menu:" + name, [name](MenuScene* menu) {
+		menu->setMenu(getMenu(name));
+	});
+	registerAction("sub:" + name, [name](MenuScene* menu) {
+		menu->setSubMenu(getMenu(name));
+	});
 }
 void registerAction(std::string name, ActionCallback func) {
 	printf("Registering Action %s\n", name.c_str());
@@ -25,12 +35,12 @@ Menu* getMenu(std::string name) {
 	}
 }
 
-void executeAction(std::string name) {
+void executeAction(std::string name, MenuScene* menu) {
 	std::map<std::string, ActionCallback>::iterator itr = actionRegistry.find(name);
 	if (itr == actionRegistry.end()) {
-		printf("WARN: Action not '%s' not found\n");
+		printf("WARN: Action not '%s' not found\n", name.c_str());
 	}
 	else {
-		(*itr->second)();
+		(itr->second)(menu);
 	}
 }

@@ -7,12 +7,17 @@ Thinkings
 Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
+By 2018-11-16:
 [ ] More Tips
-[ ] Spark from cannons
 [ ] Menu
-[X] zoom bug
-[X] zoom bug v2
-[X] finish the game end thingyy
-[X] Trial/Preview version that only is active while a
-    certain file exists on site.
+[ ] submenus
+	[ ] entering
+	[X] drawing the box
+	[X] drawing items
+	[ ] drawing items smoothly
+	[ ] moving all the other shit out of way
+	[X] esc = eixt
 [ ] Reduce pointer usage, and use smart pointers
+
+Later:
+[ ] Spark from cannons

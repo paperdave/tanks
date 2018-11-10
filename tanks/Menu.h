@@ -2,8 +2,11 @@
 #include <deque>
 #include <string>
 #include <map>
+#include <functional>
 
-typedef void(*ActionCallback)(void);
+class MenuScene;
+
+typedef std::function<void(MenuScene*)> ActionCallback;
 
 enum MenuItemType {
 	MenuItemTypeLabel,
@@ -38,6 +41,6 @@ struct Menu {
 };
 
 Menu* getMenu(std::string name);
-void executeAction(std::string name);
+void executeAction(std::string name, MenuScene* menu);
 void registerMenu(std::string name, Menu* menu);
 void registerAction(std::string name, ActionCallback);

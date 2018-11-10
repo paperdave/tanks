@@ -6,7 +6,9 @@
 class MenuScene : public Scene {
 private:
 	Menu* currentMenu;
+	Menu* currentSubMenu;
 	int selected = 0;
+	int subMenuIndex = -1;
 
 	int width = 1280;
 	int widthTarget = 450;
@@ -24,5 +26,5 @@ public:
 	virtual void event_onKeyRelease(sf::Event::KeyEvent event);
 
 	void setMenu(Menu* newMenu, int defaultPos = 0);
-	void openSubMenu(Menu* newMenu);
+	void setSubMenu(Menu* newMenu);
 };

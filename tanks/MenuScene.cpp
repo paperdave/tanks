@@ -11,19 +11,42 @@ MenuScene::MenuScene() {
 void MenuScene::update() {
 
 	selectBoxTarget.top = 115;
-	selectBoxTarget.left = 10;
+	selectBoxTarget.left = (currentSubMenu != nullptr) ? 0 : 10;
 	selectBoxTarget.width = 0;
 	selectBoxTarget.height = 44;
-	if (currentMenu) {
-		int index = 0;
-		for (auto item : currentMenu->items) {
-			if (item.type == MenuItemTypeButton) {
-				selectBoxTarget.top += 40;
-				index++;
+	int index = 0;
+	if (selected < 0) selected = 0;
+	for (auto item : currentMenu->items) {
+		// Increase index on selectable items.
+		if (item.type == MenuItemTypeButton) {
+			index++;
+		}
+		
+		// Move Main Menu Selection Box
+		if (item.type == MenuItemTypeButton) {
+			selectBoxTarget.top += 40;
+		}
+		else if (item.type == MenuItemTypeDivider) {
+			selectBoxTarget.top += 20;
+		}
+
+		if (currentSubMenu != nullptr) {
+			if (index == subMenuIndex + 1) {
+				selectBoxTarget.top += 45;
+				selectBoxTarget.height = 4;
+				for (auto item : currentSubMenu->items) {
+					if (item.type == MenuItemTypeButton) {
+						selectBoxTarget.height += 40;
+					}
+					else if (item.type == MenuItemTypeDivider) {
+						selectBoxTarget.height += 20;
+					}
+				}
+				break;
 			}
-			else if (item.type == MenuItemTypeDivider) {
-				selectBoxTarget.top += 20;
-			}
+		}
+		else {
+			// If we selected this, box is done!
 			if (selected + 1 == index) {
 				break;
 			}
@@ -58,35 +81,60 @@ void MenuScene::render(sf::RenderTarget* g) {
 	g->draw(select);
 
 	int y = 100;
-	if (currentMenu) {
 
-		sf::Text tx;
-		tx.setFont(getFont("clean"));
-		tx.setFillColor(sf::Color::White);
-		tx.setString(currentMenu->title);
-		tx.setCharacterSize(96);
-		tx.setPosition(640, 10);
-		tx.setOrigin(tx.getLocalBounds().width / 2, tx.getOrigin().y);
-		g->draw(tx);
+	sf::Text tx;
+	tx.setFont(getFont("clean"));
+	tx.setFillColor(sf::Color::White);
+	tx.setString(currentMenu->title);
+	tx.setCharacterSize(96);
+	tx.setPosition(640, 10);
+	tx.setOrigin(tx.getLocalBounds().width / 2, tx.getOrigin().y);
+	g->draw(tx);
+	int index = -1;
+	for (auto item : currentMenu->items) {
+		if (item.type == MenuItemTypeButton) {
+			y += 40;
+			sf::Text tx;
+			tx.setFont(getFont("clean"));
+			tx.setFillColor(sf::Color::White);
+			tx.setString(item.label);
+			tx.setCharacterSize(48);
+			tx.setPosition(offsetX + 10, y);
+			g->draw(tx);
+			index++;
+		}
+		else if (item.type == MenuItemTypeDivider) {
+			y += 20;
+		}
+		else if (item.type == MenuItemTypeLabel) {
+			printf("Error: Menu type Label not implemented");
+			throw "MenuError";
+		}
 
-		for (auto item : currentMenu->items) {
-			if (item.type == MenuItemTypeButton) {
-				y += 40;
-				sf::Text tx;
-				tx.setFont(getFont("clean"));
-				tx.setFillColor(sf::Color::White);
-				tx.setString(item.label);
-				tx.setCharacterSize(48);
-				tx.setPosition(offsetX + 10, y);
-				g->draw(tx);
+		if (index == subMenuIndex) {
+			y += 5;
+			for (auto subitem : currentSubMenu->items) {
+				if (subitem.type == MenuItemTypeButton) {
+					y += 40;
+					sf::Text tx;
+					tx.setFont(getFont("clean"));
+					tx.setFillColor(sf::Color::White);
+					tx.setString(subitem.label);
+					tx.setCharacterSize(48);
+					tx.setPosition(offsetX + 30, y);
+					g->draw(tx);
+					index++;
+				}
+				else if (subitem.type == MenuItemTypeDivider) {
+					y += 20;
+				}
+				else if (subitem.type == MenuItemTypeLabel) {
+					printf("Error: Menu type Label not implemented");
+					throw "MenuError";
+				}
 			}
-			else if (item.type == MenuItemTypeDivider) {
-				y += 20;
-			}
-			else if (item.type == MenuItemTypeLabel) {
-				printf("Error: Menu type Label not implemented");
-				throw "MenuError";
-			}
+			y += 5;
+
 		}
 	}
 }
@@ -105,12 +153,30 @@ void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
 				index++;
 			}
 			if (selected + 1 == index) {
-				executeAction(item.target);
+				executeAction(item.target, this);
 				break;
 			}
 		}
 	}
+	else if (event.code == sf::Keyboard::Escape) {
+		setSubMenu(nullptr);
+	}
 }
 void MenuScene::event_onKeyRelease(sf::Event::KeyEvent event) {
 
+}
+
+void MenuScene::setMenu(Menu* newMenu, int defaultPos) {
+	currentMenu = newMenu;
+	selected = defaultPos;
+}
+void MenuScene::setSubMenu(Menu* newMenu) {
+	if (newMenu == nullptr) {
+		currentSubMenu = nullptr;
+		subMenuIndex = -1;
+	}
+	else {
+		currentSubMenu = newMenu;
+		subMenuIndex = selected;
+	}
 }
