@@ -117,7 +117,8 @@ void LoadingScene::render(sf::RenderTarget* g) {
 	rs.setPosition(0, 0);
 	rs.setSize(sf::Vector2f(1280, 720));
 
-	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+	using namespace std::chrono;
+	auto ms = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 
 	sf::Text splashtext;
 	splashtext.setFont(getFont("clean"));
