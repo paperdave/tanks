@@ -93,6 +93,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Trial.h" />
     <ClInclude Include="Utility.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackgroundScene.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Trial.cpp" />
     <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

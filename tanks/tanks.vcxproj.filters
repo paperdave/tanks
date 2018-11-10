@@ -71,6 +71,9 @@
     <ClCompile Include="MenuContent.cpp">
       <Filter>Scenes\Menu Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -194,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="MenuContent.h">
       <Filter>Scenes\Menu Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
