@@ -74,6 +74,9 @@
     <ClCompile Include="Window.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Scenes\Transition Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -126,6 +129,9 @@
     </Filter>
     <Filter Include="Scenes\Menu Scene">
       <UniqueIdentifier>{2935350e-af52-42a8-a2db-3bff2b9b51e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Transition Scene">
+      <UniqueIdentifier>{983c1f21-0da9-47da-bd4c-4abb8cb38c50}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>Scenes\Transition Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

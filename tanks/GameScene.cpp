@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "GameScene.h"
 #include "Player.h"
+#include "Transition.h"
 #include "Utility.h"
 #include "MazeGeneration.h"
 #include "Resources.h"
@@ -76,8 +77,8 @@ void GameScene::update() {
 		endingZoom *= 0.95;
 		textOffset *= 0.945;
 
-		if (topBarsOffset2 < 2) {
-			setScene(new GameScene());
+		if (topBarsOffset2 < 12) {
+			setScene(new Transition(new GameScene()));
 		}
 
 		break;
