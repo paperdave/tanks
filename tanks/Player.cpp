@@ -82,6 +82,8 @@ void Player::update() {
 		createObject(new Bullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir));
 
 		screenShake(1, 30);
+
+		playSound("tank/bullet");
 	}
 
 	gunOffset *= 0.5;
@@ -96,6 +98,8 @@ void Player::update() {
 		int squareX = (int)(x / 60);
 		int squareY = (int)(y / 60);
 		createObject(new Light(color, squareX, squareY));
+
+		playSound("tank/dead");
 	}
 }
 

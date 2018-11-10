@@ -74,11 +74,27 @@ sf::SoundBuffer& getSound(std::string name) {
 	}
 }
 
-void playSound(std::string id) {
+void playSoundRaw(std::string id) {
 	sf::Sound snd;
 	playingSounds.push_back(snd);
 	playingSounds[playingSounds.size() - 1].setBuffer(getSound(id));
 	playingSounds[playingSounds.size() - 1].play();
+}
+
+void playSound(std::string id) {
+	std::map<std::string, sf::SoundBuffer>::iterator itr = soundRegistry.find(id + "1");
+	if (itr != soundRegistry.end()) {
+		// random sound chooser
+		if (rand() % 2 == 0) {
+			playSoundRaw(id + "1");
+		}
+		else {
+			playSoundRaw(id + "2");
+		}
+	} else {
+		// just play it
+		playSoundRaw(id);
+	}
 }
 void runSoundRecycler() {
 	for (size_t i = 0; i < playingSounds.size(); i++) {

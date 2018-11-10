@@ -83,7 +83,6 @@ void GameScene::update() {
 
 		break;
 	}
-	
 }
 
 void GameScene::event_onKeyPress(sf::Event::KeyEvent event) {
