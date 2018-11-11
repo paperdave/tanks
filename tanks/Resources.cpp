@@ -27,12 +27,16 @@ void loadTexture(std::string name) {
 	std::string path = (getRootFolder() + "texture/" + name + ".png");
 	loaded.loadFromFile(path.c_str());
 	textureRegistry.insert(std::make_pair(name, loaded));
+#if PRINTF_ENABLE
 	printf("Loading Texture %s from %s\n", name.c_str(), path.c_str());
+#endif
 }
 sf::Texture& getTexture(std::string name) {
 	std::map<std::string, sf::Texture>::iterator itr = textureRegistry.find(name);
 	if (itr == textureRegistry.end()) {
+#if PRINTF_ENABLE
 		printf("Texture not found: %s\n", name.c_str());
+#endif
 		throw "Texture Not Found";
 	}
 	else {
@@ -44,12 +48,16 @@ void loadFont(std::string name) {
 	std::string path = (getRootFolder() + "font/" + name + ".ttf");
 	loaded.loadFromFile(path.c_str());
 	fontRegistry.insert(std::make_pair(name, loaded));
+#if PRINTF_ENABLE
 	printf("Loading Font %s from %s\n", name.c_str(), path.c_str());
+#endif
 }
 sf::Font& getFont(std::string name) {
 	std::map<std::string, sf::Font>::iterator itr = fontRegistry.find(name);
 	if (itr == fontRegistry.end()) {
+#if PRINTF_ENABLE
 		printf("Font not found: %s\n", name.c_str());
+#endif
 		throw "Font Not Found";
 	}
 	else {
@@ -61,12 +69,16 @@ void loadSound(std::string name) {
 	std::string path = (getRootFolder() + "audio/" + name + ".wav");
 	loaded.loadFromFile(path.c_str());
 	soundRegistry.insert(std::make_pair(name, loaded));
+#if PRINTF_ENABLE
 	printf("Loading Sound %s from %s\n", name.c_str(), path.c_str());
+#endif
 }
 sf::SoundBuffer& getSound(std::string name) {
 	std::map<std::string, sf::SoundBuffer>::iterator itr = soundRegistry.find(name);
 	if (itr == soundRegistry.end()) {
+#if PRINTF_ENABLE
 		printf("Sound not found: %s\n", name.c_str());
+#endif
 		throw "Sound Not Found";
 	}
 	else {

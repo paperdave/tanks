@@ -16,7 +16,9 @@ Maze generateMaze(bool log = false) {
 
 	int startx = rand() % 10;
 	int starty = rand() % 10;
-	if (log)printf("Starting coord = (%d, %d)\n", startx, starty);
+	if (log)#if PRINTF_ENABLE
+printf("Starting coord = (%d, %d)\n", startx, starty);
+#endif
 	pos position1;
 	position1.x = startx;
 	position1.y = starty;
@@ -34,10 +36,14 @@ Maze generateMaze(bool log = false) {
 		pos p = subTrees.at(0);
 		int currentx = p.x;
 		int currenty = p.y;
-		if (log)printf("Starting Sub on (%d, %d) (size=%d)\n", p.x, p.y, (int)subTrees.size());
+		if (log)#if PRINTF_ENABLE
+printf("Starting Sub on (%d, %d) (size=%d)\n", p.x, p.y, (int)subTrees.size());
+#endif
 		subTrees.erase(subTrees.begin());
 		while (true) {
-			if (log)printf("Coord = (%d, %d) >> ", currentx, currenty);
+			if (log)#if PRINTF_ENABLE
+printf("Coord = (%d, %d) >> ", currentx, currenty);
+#endif
 
 			std::vector<int> dirs;
 			if (currentx != 0) if (!visitedMap[currentx - 1][currenty]) {
@@ -54,29 +60,39 @@ Maze generateMaze(bool log = false) {
 			}
 
 			if (dirs.size() == 0) {
-				if (log)printf("Done!\n");
+				if (log)#if PRINTF_ENABLE
+printf("Done!\n");
+#endif
 				break;
 			};
 
 			int rd = rand() % dirs.size();
 			switch (dirs[rd]) {
 			case 2: // UP
-				if (log)printf("up\n");
+				if (log)#if PRINTF_ENABLE
+printf("up\n");
+#endif
 				m.setWallUp(currentx, currenty, false);
 				currenty--;
 				break;
 			case 3: // DOWN
-				if (log)printf("down\n");
+				if (log)#if PRINTF_ENABLE
+printf("down\n");
+#endif
 				m.setWallDown(currentx, currenty, false);
 				currenty++;
 				break;
 			case 0: // LEFT
-				if (log)printf("left\n");
+				if (log)#if PRINTF_ENABLE
+printf("left\n");
+#endif
 				m.setWallLeft(currentx, currenty, false);
 				currentx--;
 				break;
 			case 1: // RIGHT
-				if (log)printf("right\n");
+				if (log)#if PRINTF_ENABLE
+printf("right\n");
+#endif
 				m.setWallRight(currentx, currenty, false);
 				currentx++;
 				break;
@@ -111,7 +127,9 @@ Maze generateMaze(bool log = false) {
 
 	// D O N E
 	if(log)
+#if PRINTF_ENABLE
 		printf("Maze Generation Completed\n");
+#endif
 
 	return m;
 }

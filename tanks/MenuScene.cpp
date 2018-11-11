@@ -105,7 +105,9 @@ void MenuScene::render(sf::RenderTarget* g) {
 			y += 20;
 		}
 		else if (item.type == MenuItemTypeLabel) {
+#if PRINTF_ENABLE
 			printf("Error: Menu type Label not implemented");
+#endif
 			throw "MenuError";
 		}
 
@@ -128,7 +130,9 @@ void MenuScene::render(sf::RenderTarget* g) {
 					y += 20;
 				}
 				else if (subitem.type == MenuItemTypeLabel) {
+#if PRINTF_ENABLE
 					printf("Error: Menu type Label not implemented");
+#endif
 					throw "MenuError";
 				}
 			}

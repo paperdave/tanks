@@ -71,7 +71,9 @@ void resourceThread() {
 	loadingThreadComplete = true;
 	resourcesLoaded = true;
 
+#if PRINTF_ENABLE
 	printf("Loading Completed\n");
+#endif
 }
 
 
