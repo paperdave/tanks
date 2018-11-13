@@ -18,10 +18,12 @@ DWORD WINAPI thread_func(LPVOID lpParameter) {
 	return 0;
 }
 
+// Creates a thread calling `void f()`
 void spawnThread(void(*f)()) {
 	CreateThread(NULL, 0, thread_func, new thread_data(f), 0, 0);
 }
 
+// Creates a pop up console window.
 void createDevConsole() {
 	AllocConsole();
 	SetConsoleTitle(L"Dave's Tanks");
