@@ -29,26 +29,9 @@ void MenuScene::update() {
 			selectBoxTarget.top += 20;
 		}
 
-		if (currentSubMenu != nullptr) {
-			if (index == subMenuIndex + 1) {
-				selectBoxTarget.top += 45;
-				selectBoxTarget.height = 4;
-				for (auto item : currentSubMenu->items) {
-					if (item.type == MenuItemTypeButton) {
-						selectBoxTarget.height += 40;
-					}
-					else if (item.type == MenuItemTypeDivider) {
-						selectBoxTarget.height += 20;
-					}
-				}
-				break;
-			}
-		}
-		else {
-			// If we selected this, box is done!
-			if (selected + 1 == index) {
-				break;
-			}
+		// If we selected this, box is done!
+		if (selected + 1 == index) {
+			break;
 		}
 	}
 	
@@ -109,34 +92,6 @@ void MenuScene::render(sf::RenderTarget* g) {
 			printf("Error: Menu type Label not implemented");
 #endif
 			throw "MenuError";
-		}
-
-		if (index == subMenuIndex) {
-			int oldY = y;
-			y += 5;
-			for (auto subitem : currentSubMenu->items) {
-				if (subitem.type == MenuItemTypeButton) {
-					y += 40;
-					sf::Text tx;
-					tx.setFont(getFont("clean"));
-					tx.setFillColor(sf::Color::White);
-					tx.setString(subitem.label);
-					tx.setCharacterSize(48);
-					tx.setPosition(offsetX + 30, y);
-					g->draw(tx);
-					index++;
-				}
-				else if (subitem.type == MenuItemTypeDivider) {
-					y += 20;
-				}
-				else if (subitem.type == MenuItemTypeLabel) {
-#if PRINTF_ENABLE
-					printf("Error: Menu type Label not implemented");
-#endif
-					throw "MenuError";
-				}
-			}
-			y = selectBox.height + oldY + 5;
 		}
 	}
 }
