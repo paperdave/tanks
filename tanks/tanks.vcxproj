@@ -87,11 +87,14 @@
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerControls.h" />
+    <ClInclude Include="Powerup.h" />
+    <ClInclude Include="PowerupEntity.h" />
     <ClInclude Include="PreviewExpiredScene.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="LoadingScene.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SpeedPowerup.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="Trial.h" />
     <ClInclude Include="Utility.h" />
@@ -118,11 +121,14 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerControls.cpp" />
+    <ClCompile Include="Powerup.cpp" />
+    <ClCompile Include="PowerupEntity.cpp" />
     <ClCompile Include="PreviewExpiredScene.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="DaveTanks.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="SpeedPowerup.cpp" />
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="Trial.cpp" />
     <ClCompile Include="Utility.cpp" />

@@ -128,12 +128,5 @@ void MenuScene::setMenu(Menu* newMenu, int defaultPos) {
 	selected = defaultPos;
 }
 void MenuScene::setSubMenu(Menu* newMenu) {
-	if (newMenu == nullptr) {
-		currentSubMenu = nullptr;
-		subMenuIndex = -1;
-	}
-	else {
-		currentSubMenu = newMenu;
-		subMenuIndex = selected;
-	}
+	// TODO: Reimplement
 }

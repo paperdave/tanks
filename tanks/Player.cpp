@@ -4,6 +4,7 @@
 #include "Utility.h"
 #include "Light.h"
 #include "Resources.h"
+#include "PowerupEntity.h"
 
 Player::Player(sf::Vector2i position, int playerID) {
 	type = GameObjectType::PlayerType;
@@ -103,6 +104,13 @@ void Player::update() {
 		createObject(new Light(color, squareX, squareY));
 
 		playSound("tank/dead");
+
+		return;
+	}
+	PowerupEntity* powerup_collision = (PowerupEntity*)collisionWith(PowerupEntityType);
+	if (powerup_collision) {
+		printf("!!!\n");
+		destroyOther(powerup_collision);
 	}
 }
 
@@ -221,4 +229,11 @@ bool Player::collisionAt(double x, double y) {
 	if (collisionSquare(squareX + 1, squareY)) { return true; }
 
 	return false;
+}
+
+void Player::activatePowerup(Powerup* powerup) {
+	powerup->player = this;
+	powerup->activate();
+	if (activePowerup) delete activePowerup;
+	activePowerup = powerup;
 }

@@ -19,7 +19,6 @@
     <ClCompile Include="BackgroundScene.cpp">
       <Filter>Scenes\Background Scene</Filter>
     </ClCompile>
-    <ClCompile Include="DaveTanks.cpp" />
     <ClCompile Include="Maze.cpp">
       <Filter>Maze</Filter>
     </ClCompile>
@@ -77,6 +76,16 @@
     <ClCompile Include="Transition.cpp">
       <Filter>Scenes\Transition Scene</Filter>
     </ClCompile>
+    <ClCompile Include="DaveTanks.cpp" />
+    <ClCompile Include="PowerupEntity.cpp">
+      <Filter>Objects\Powerup Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Powerup.cpp">
+      <Filter>Powerups</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeedPowerup.cpp">
+      <Filter>Powerups\Speed</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -132,6 +141,15 @@
     </Filter>
     <Filter Include="Scenes\Transition Scene">
       <UniqueIdentifier>{983c1f21-0da9-47da-bd4c-4abb8cb38c50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Powerup Entity">
+      <UniqueIdentifier>{5d978a5a-e85b-4fc2-8f40-dd65c5dec27d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Powerups">
+      <UniqueIdentifier>{b98c4e86-00d2-45ee-ad08-1c421615bb2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Powerups\Speed">
+      <UniqueIdentifier>{2f05957e-30b9-48a0-8bc4-ef64b83510cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +227,15 @@
     </ClInclude>
     <ClInclude Include="Transition.h">
       <Filter>Scenes\Transition Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerupEntity.h">
+      <Filter>Objects\Powerup Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerup.h">
+      <Filter>Powerups</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeedPowerup.h">
+      <Filter>Powerups\Speed</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

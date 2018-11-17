@@ -10,7 +10,8 @@ enum GameObjectType {
 	PlayerType,
 	BulletType,
 	LightEffectType,
-	ParticleType
+	ParticleType,
+	PowerupEntityType
 };
 
 class GameObject {

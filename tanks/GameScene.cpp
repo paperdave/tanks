@@ -6,6 +6,7 @@
 #include "MazeGeneration.h"
 #include "Resources.h"
 #include "IntroScene.h"
+#include "PowerupEntity.h"
 #include "SFML/Graphics.hpp"
 
 GameScene::GameScene() {
@@ -39,11 +40,16 @@ GameScene::GameScene() {
 		}
 	}
 
+	PowerupEntity* pe = new PowerupEntity(4, 7, PowerupTypeSpeed);
+	pe->scene = this;
+	objects.push_back(pe);
+	
 	for (int i = 1; i <= 4; i++) {
 		Player* player = new Player(playerSpots[i - 1], i);
 		player->scene = this;
 		objects.push_back(player);
 	}
+
 }
 
 void GameScene::update() {

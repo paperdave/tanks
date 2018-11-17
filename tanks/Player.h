@@ -1,12 +1,13 @@
 #pragma once
 #include "GameObject.h"
 #include "PlayerControls.h"
+#include "Powerup.h"
 #include "SFML/Graphics.hpp"
 
 class GameObject;
 
 class Player : public GameObject {
-private:
+public:
 	float speed = 2.0f;
 	float turnSpeed = 4.0f;
 	float gunOffset = 0.0f;
@@ -28,7 +29,7 @@ private:
 	void HandleKeypress(int code, bool state);
 	bool collisionSquare(int squareX, int squareY);
 	bool collisionAt(double x, double y);
-public:
+	
 	int id;
 	double x = 30;
 	double y = 30;
@@ -43,5 +44,9 @@ public:
 
 	virtual void update();
 	virtual void render(sf::RenderTarget* g);
+
+	Powerup* activePowerup = nullptr;
+
+	void activatePowerup(Powerup *);
 };
 
