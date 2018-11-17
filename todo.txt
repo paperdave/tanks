@@ -1,7 +1,6 @@
 Thinkings
 
 - medium game
-- GFX: do i want a more fancy lighting system.
 - more gamemodes?
 
 Finish items in the todo list, doesnt have to be in order, but
@@ -12,6 +11,14 @@ By 2018-11-16:
 [ ] Fix Sub Menus
 [ ] Option to not have four ppls
 [ ] Reduce pointer usage, and use smart pointers
+
+[ ] powerups display name on gather
+[ ] speed power
+[ ] rapid fire
+[ ] fix regualar rapid fire to not work
+[ ] wall maker powerup
+[ ] fast bullet powerup
+[ ] big bullet boi
 
 Later:
 [ ] Spark from cannons
