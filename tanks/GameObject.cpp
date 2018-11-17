@@ -13,14 +13,18 @@ void GameObject::destroySelf() {
 	auto objects = getObjectsList();
 	for (size_t i = 0; i < objects->size(); i++) {
 		if (objects->at(i) == this) {
-			if (objects->at(i)->bounds.intersects(bounds)) {
-				objects->at(i)->isDestroyed = true;
-			}
+			objects->at(i)->isDestroyed = true;
 		}
 	}
 }
 void GameObject::destroyOther(GameObject* obj) {
-	scene->objects.erase(std::remove(scene->objects.begin(), scene->objects.end(), obj), scene->objects.end());
+	auto objects = getObjectsList();
+	for (size_t i = 0; i < objects->size(); i++) {
+		if (objects->at(i) == obj) {
+			objects->at(i)->isDestroyed = true;
+			return;
+		}
+	}
 }
 void GameObject::createObject(GameObject* obj) {
 	obj->scene = scene;

@@ -29,6 +29,8 @@ public:
 
 	GameScene* scene = nullptr;
 
+	bool isDestroyed = false;
+
 protected:
 	GameObjectType type;
 	Maze getMaze();
@@ -40,6 +42,4 @@ protected:
 
 	void setScene(Scene* newScene);
 	void screenShake(float magnitude, int frames);
-
-	bool isDestroyed = false;
 };

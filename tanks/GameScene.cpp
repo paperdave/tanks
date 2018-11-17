@@ -60,7 +60,15 @@ void GameScene::update() {
 			pe->scene = this;
 			objects.push_back(pe);
 		}
-		for (auto obj : objects) {
+		for (std::size_t i = 0; i != objects.size(); ++i) {
+			auto obj = objects[i];
+
+			if (obj->isDestroyed) {
+				objects.erase(std::remove(objects.begin(), objects.end(), obj), objects.end());
+				delete obj;
+				i--;
+				continue;
+			}
 			obj->update();
 			if (typeid(*obj).name() == typeid(Player).name()) {
 				playersAlive++;
