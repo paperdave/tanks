@@ -5,7 +5,7 @@ public:
 	SpeedPowerup();
 	~SpeedPowerup();
 
-	int timer = 60 * 10;
+	int timer = 60 * 5.5;
 
 	void activate();
 	void deactivate();

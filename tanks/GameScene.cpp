@@ -40,23 +40,26 @@ GameScene::GameScene() {
 		}
 	}
 
-	PowerupEntity* pe = new PowerupEntity(4, 7, PowerupTypeSpeed);
-	pe->scene = this;
-	objects.push_back(pe);
-	
 	for (int i = 1; i <= 4; i++) {
 		Player* player = new Player(playerSpots[i - 1], i);
 		player->scene = this;
 		objects.push_back(player);
 	}
-
 }
 
 void GameScene::update() {
 	int playersAlive = 0;
-	
+
 	switch (state) {
 	case RoundState::RoundStateInProgress:
+		powerupSpawnCooldown--;
+		if (powerupSpawnCooldown <= 0) {
+			powerupSpawnCooldown = 450 + rand() % 400;
+
+			PowerupEntity* pe = new PowerupEntity(rand() % 10, rand() % 10, PowerupTypeSpeed);
+			pe->scene = this;
+			objects.push_back(pe);
+		}
 		for (auto obj : objects) {
 			obj->update();
 			if (typeid(*obj).name() == typeid(Player).name()) {

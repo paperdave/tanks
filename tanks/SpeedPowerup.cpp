@@ -6,11 +6,11 @@ SpeedPowerup::SpeedPowerup() {}
 SpeedPowerup::~SpeedPowerup() {}
 
 void SpeedPowerup::activate() {
-	player->speed += 5;
+	player->speed += 2;
 	player->turnSpeed += 3;
 }
 void SpeedPowerup::deactivate() {
-	player->speed -= 5;
+	player->speed -= 2;
 	player->turnSpeed -= 3;
 }
 void SpeedPowerup::update() {

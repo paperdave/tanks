@@ -40,4 +40,6 @@ protected:
 
 	void setScene(Scene* newScene);
 	void screenShake(float magnitude, int frames);
+
+	bool isDestroyed = false;
 };

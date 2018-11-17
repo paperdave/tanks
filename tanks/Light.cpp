@@ -42,6 +42,9 @@ void Light::render(sf::RenderTarget* g) {
 			rect.setFillColor(sf::Color(color.r, color.g, color.b, visitedmap[i][j]));
 			rect.setPosition(i * 60, j * 60);
 			rect.setSize(sf::Vector2f(60, 60));
+			g->draw(rect, sf::BlendAdd);
+
+			rect.setFillColor(sf::Color(color.r, color.g, color.b, visitedmap[i][j] / 3.6));
 			g->draw(rect);
 		}
 	}

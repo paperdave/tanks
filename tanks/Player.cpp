@@ -5,6 +5,7 @@
 #include "Light.h"
 #include "Resources.h"
 #include "PowerupEntity.h"
+#include "SpeedPowerup.h"
 
 Player::Player(sf::Vector2i position, int playerID) {
 	type = GameObjectType::PlayerType;
@@ -109,8 +110,17 @@ void Player::update() {
 	}
 	PowerupEntity* powerup_collision = (PowerupEntity*)collisionWith(PowerupEntityType);
 	if (powerup_collision) {
-		printf("!!!\n");
+		activatePowerup(new SpeedPowerup());
 		destroyOther(powerup_collision);
+	}
+
+	if (activePowerup) {
+		activePowerup->update();
+		if (!activePowerup->active) {
+			activePowerup->deactivate();
+			activePowerup = nullptr;
+			delete activePowerup;
+		}
 	}
 }
 
@@ -172,6 +182,8 @@ void Player::render(sf::RenderTarget* g) {
 	sBot.setTexture(texL6);
 	sBot.move(0, -1);
 	g->draw(sBot);
+
+	if (activePowerup) activePowerup->render(g);
 
 }
 

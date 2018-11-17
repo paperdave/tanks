@@ -19,6 +19,7 @@ private:
 	int roundEndTimeout = 90;
 	RoundState state = RoundStateInProgress;
 	int winner = -1;
+	int powerupSpawnCooldown = 350 + rand() % 100;
 
 	int topBarsOffset = 130;
 	int topBarsOffset2 = 230;
