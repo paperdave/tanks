@@ -77,6 +77,8 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="LargeBullet.h" />
+    <ClInclude Include="LargeBulletPowerup.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="MazeGeneration.h" />
@@ -90,6 +92,7 @@
     <ClInclude Include="Powerup.h" />
     <ClInclude Include="PowerupEntity.h" />
     <ClInclude Include="PreviewExpiredScene.h" />
+    <ClInclude Include="RapidFirePowerup.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="LoadingScene.h" />
     <ClInclude Include="pch.h" />
@@ -107,6 +110,8 @@
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="LargeBullet.cpp" />
+    <ClCompile Include="LargeBulletPowerup.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="LoadingScene.cpp" />
     <ClCompile Include="Maze.cpp" />
@@ -124,6 +129,7 @@
     <ClCompile Include="Powerup.cpp" />
     <ClCompile Include="PowerupEntity.cpp" />
     <ClCompile Include="PreviewExpiredScene.cpp" />
+    <ClCompile Include="RapidFirePowerup.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="DaveTanks.cpp" />

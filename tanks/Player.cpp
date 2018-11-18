@@ -4,8 +4,10 @@
 #include "Utility.h"
 #include "Light.h"
 #include "Resources.h"
+#include "LargeBullet.h"
 #include "PowerupEntity.h"
 #include "SpeedPowerup.h"
+#include "RapidFirePowerup.h"
 
 Player::Player(sf::Vector2i position, int playerID) {
 	type = GameObjectType::PlayerType;
@@ -44,10 +46,7 @@ void Player::HandleKeypress(int code, bool state) {
 		this->keyRight = state;
 	}
 	else if (code == controls.action) {
-		// one way
-		if (state)
-			this->keyAction = true;
-		if (state == false) this->keyAction = false;
+		this->keyAction = state;
 	}
 }
 
@@ -85,10 +84,10 @@ void Player::update() {
 	}
 
 	if (keyAction && reload == 0) {
-		keyAction = false;
+		keyAction = rapidFire;
 		gunOffset = 20;
-		
-		createObject(new Bullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir));
+
+		createObject(new LargeBullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir, bulletSpeed));
 
 		screenShake(1, 30);
 
@@ -115,8 +114,11 @@ void Player::update() {
 		return;
 	}
 	PowerupEntity* powerup_collision = (PowerupEntity*)collisionWith(PowerupEntityType);
-	if (powerup_collision) {
-		activatePowerup(new SpeedPowerup());
+	if (powerup_collision && !activePowerup) {
+		switch (powerup_collision->powerupType) {
+		case PowerupTypeSpeed: activatePowerup(new SpeedPowerup()); break;
+		case PowerupTypeRapidFire: activatePowerup(new RapidFirePowerup()); break;
+		}
 		destroyOther(powerup_collision);
 	}
 

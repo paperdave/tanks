@@ -30,7 +30,7 @@ void PowerupEntity::render(sf::RenderTarget* g) {
 	sf::RectangleShape beam;
 	beam.setSize(sf::Vector2f(beamwidth, 200 + 60 * y));
 	beam.setPosition(60 * x + (60 - beamwidth) * 0.5, -200 + 30);
-	beam.setFillColor(sf::Color(0, 255, 255));
+	beam.setFillColor(getPowerupColor(this->powerupType));
 	g->draw(beam, sf::BlendAdd);
 
 	sf::Sprite spr;

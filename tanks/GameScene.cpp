@@ -56,7 +56,7 @@ void GameScene::update() {
 		if (powerupSpawnCooldown <= 0) {
 			powerupSpawnCooldown = 450 + rand() % 400;
 
-			PowerupEntity* pe = new PowerupEntity(rand() % 10, rand() % 10, PowerupTypeSpeed);
+			PowerupEntity* pe = new PowerupEntity(rand() % 10, rand() % 10, (PowerupType)(rand() % 2));
 			pe->scene = this;
 			objects.push_back(pe);
 		}

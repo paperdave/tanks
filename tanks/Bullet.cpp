@@ -51,14 +51,14 @@ int Bullet::collisionAt(double x, double y, Maze maze) {
 	return false;
 }
 
-Bullet::Bullet(double x, double y, double direction) {
+Bullet::Bullet(double x, double y, double direction, float speed) {
 	type = GameObjectType::BulletType;
-
+	
 	this->x = x;
 	this->y = y;
 	this->dir = direction + (((float)(rand() % 10)) / 5.0f) - 1.0f;
-	this->mx = lengthdir_x(this->speed, this->dir);
-	this->my = lengthdir_y(this->speed, this->dir);
+	this->mx = lengthdir_x(speed, this->dir);
+	this->my = lengthdir_y(speed, this->dir);
 	this->bounds.width = 10;
 	this->bounds.height = 10;
 }

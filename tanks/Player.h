@@ -10,6 +10,7 @@ class Player : public GameObject {
 public:
 	float speed = 2.0f;
 	float turnSpeed = 4.0f;
+	float bulletSpeed = 4.9f;
 	float gunOffset = 0.0f;
 	bool dead = false;
 	sf::Color color;
@@ -50,5 +51,6 @@ public:
 	void activatePowerup(Powerup *);
 
 	int reload = 30;
+	bool rapidFire = false;
 };
 
