@@ -11,10 +11,10 @@ Player::Player(sf::Vector2i position, int playerID) {
 	type = GameObjectType::PlayerType;
 
 	switch (playerID) {
-	case 1: color = player1Color; break;
-	case 2: color = player2Color; break;
-	case 3: color = player3Color; break;
-	case 4: color = player4Color; break;
+		case 1: color = player1Color; break;
+		case 2: color = player2Color; break;
+		case 3: color = player3Color; break;
+		case 4: color = player4Color; break;
 	}
 
 	controls = getPlayerControlsByID(playerID);
@@ -80,7 +80,11 @@ void Player::update() {
 	x += move_x;
 	y += move_y;
 
-	if (keyAction) {
+	if (reload > 0) {
+		reload--;
+	}
+
+	if (keyAction && reload == 0) {
 		keyAction = false;
 		gunOffset = 20;
 		
@@ -89,6 +93,8 @@ void Player::update() {
 		screenShake(1, 30);
 
 		playSound("tank/bullet");
+
+		reload = 10;
 	}
 
 	gunOffset *= 0.5;

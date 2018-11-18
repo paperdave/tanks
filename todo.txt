@@ -13,7 +13,7 @@ By 2018-11-16:
 [ ] Reduce pointer usage, and use smart pointers
 
 [ ] powerups display name on gather
-[ ] speed power
+[X] speed power
 [ ] rapid fire
 [ ] fix regualar rapid fire to not work
 [ ] wall maker powerup

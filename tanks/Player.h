@@ -48,5 +48,7 @@ public:
 	Powerup* activePowerup = nullptr;
 
 	void activatePowerup(Powerup *);
+
+	int reload = 30;
 };
 
