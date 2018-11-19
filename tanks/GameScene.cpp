@@ -48,6 +48,7 @@ GameScene::GameScene() {
 }
 
 GameScene::~GameScene() {
+	printf("GameScene::~GameScene()\n");
 	for (size_t i = 0; i < objects.size(); i++) {
 		delete objects.at(i);
 	}

@@ -97,6 +97,7 @@ LoadingScene::LoadingScene() {
 
 	spawnThread(resourceThread);
 	
+	fin.close();
 }
 
 void LoadingScene::update() {

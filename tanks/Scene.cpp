@@ -11,6 +11,9 @@ Scene* currentScene = nullptr;
 Scene* nextScene = nullptr;
 
 Scene::Scene() {}
+Scene::~Scene() {
+	printf("Scene::~Scene()\n");
+}
 
 void setScene(Scene* newScene) {
 	if (nextScene != nullptr) {

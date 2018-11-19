@@ -8,6 +8,7 @@ extern float shakeLength;
 class Scene {
 public:
 	Scene();
+	virtual ~Scene();
 	// Required Render Function
 	virtual void render(sf::RenderTarget* g) = 0;
 	virtual void update() = 0;

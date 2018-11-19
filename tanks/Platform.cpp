@@ -15,6 +15,7 @@ struct thread_data {
 DWORD WINAPI thread_func(LPVOID lpParameter) {
 	thread_data *td = (thread_data*)lpParameter;
 	td->func();
+	delete td;
 	return 0;
 }
 
