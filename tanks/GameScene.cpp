@@ -47,6 +47,12 @@ GameScene::GameScene() {
 	}
 }
 
+GameScene::~GameScene() {
+	for (size_t i = 0; i < objects.size(); i++) {
+		delete objects.at(i);
+	}
+}
+
 void GameScene::update() {
 	int playersAlive = 0;
 
@@ -56,7 +62,7 @@ void GameScene::update() {
 		if (powerupSpawnCooldown <= 0) {
 			powerupSpawnCooldown = 450 + rand() % 400;
 
-			PowerupEntity* pe = new PowerupEntity(rand() % 10, rand() % 10, (PowerupType)(rand() % 2));
+			PowerupEntity* pe = new PowerupEntity(rand() % 10, rand() % 10, (PowerupType)(rand() % 3));
 			pe->scene = this;
 			objects.push_back(pe);
 		}

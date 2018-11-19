@@ -28,6 +28,7 @@ private:
 
 public:
 	GameScene();
+	~GameScene();
 
 	virtual void render(sf::RenderTarget* g);
 	virtual void update();

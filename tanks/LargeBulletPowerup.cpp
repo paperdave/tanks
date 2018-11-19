@@ -1,12 +1,20 @@
+#include "pch.h"
 #include "LargeBulletPowerup.h"
+#include "Player.h"
 
+LargeBulletPowerup::LargeBulletPowerup() {}
+LargeBulletPowerup::~LargeBulletPowerup() {}
 
-
-LargeBulletPowerup::LargeBulletPowerup()
-{
+void LargeBulletPowerup::activate() {
+	player->usingLargeBullets = true;
 }
-
-
-LargeBulletPowerup::~LargeBulletPowerup()
-{
+void LargeBulletPowerup::deactivate() {
+	player->usingLargeBullets = false;
+}
+void LargeBulletPowerup::update() {
+	if (player->keyAction) {
+		active = false;
+	}
+}
+void LargeBulletPowerup::render(sf::RenderTarget* g) {
 }

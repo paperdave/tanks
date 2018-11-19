@@ -89,8 +89,12 @@
     <ClCompile Include="RapidFirePowerup.cpp">
       <Filter>Powerups\RapidFire</Filter>
     </ClCompile>
-    <ClCompile Include="LargeBulletPowerup.cpp" />
-    <ClCompile Include="LargeBullet.cpp" />
+    <ClCompile Include="LargeBullet.cpp">
+      <Filter>Powerups\LargeBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="LargeBulletPowerup.cpp">
+      <Filter>Powerups\LargeBullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -251,7 +255,11 @@
     <ClInclude Include="RapidFirePowerup.h">
       <Filter>Powerups\RapidFire</Filter>
     </ClInclude>
-    <ClInclude Include="LargeBulletPowerup.h" />
-    <ClInclude Include="LargeBullet.h" />
+    <ClInclude Include="LargeBulletPowerup.h">
+      <Filter>Powerups\LargeBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="LargeBullet.h">
+      <Filter>Powerups\LargeBullet</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

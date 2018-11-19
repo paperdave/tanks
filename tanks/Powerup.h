@@ -20,7 +20,8 @@ public:
 
 enum PowerupType {
 	PowerupTypeSpeed,
-	PowerupTypeRapidFire
+	PowerupTypeRapidFire,
+	PowerupTypeLargeBullet,
 };
 
 sf::Color getPowerupColor(PowerupType type);

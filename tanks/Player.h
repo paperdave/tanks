@@ -52,5 +52,6 @@ public:
 
 	int reload = 30;
 	bool rapidFire = false;
+	bool usingLargeBullets = false;
 };
 

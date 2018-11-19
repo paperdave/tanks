@@ -8,6 +8,7 @@
 #include "PowerupEntity.h"
 #include "SpeedPowerup.h"
 #include "RapidFirePowerup.h"
+#include "LargeBulletPowerup.h"
 
 Player::Player(sf::Vector2i position, int playerID) {
 	type = GameObjectType::PlayerType;
@@ -83,17 +84,33 @@ void Player::update() {
 		reload--;
 	}
 
+	if (activePowerup) {
+		activePowerup->update();
+	}
 	if (keyAction && reload == 0) {
 		keyAction = rapidFire;
 		gunOffset = 20;
 
-		createObject(new LargeBullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir, bulletSpeed));
+		if (usingLargeBullets) {
+			createObject(new LargeBullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir, bulletSpeed));
+		}
+		else {
+			createObject(new Bullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir, bulletSpeed));
+		}
 
 		screenShake(1, 30);
 
 		playSound("tank/bullet");
 
 		reload = 10;
+	}
+
+	if (activePowerup) {
+		if (!activePowerup->active) {
+			activePowerup->deactivate();
+			activePowerup = nullptr;
+			delete activePowerup;
+		}
 	}
 
 	gunOffset *= 0.5;
@@ -118,17 +135,9 @@ void Player::update() {
 		switch (powerup_collision->powerupType) {
 		case PowerupTypeSpeed: activatePowerup(new SpeedPowerup()); break;
 		case PowerupTypeRapidFire: activatePowerup(new RapidFirePowerup()); break;
+		case PowerupTypeLargeBullet: activatePowerup(new LargeBulletPowerup()); break;
 		}
 		destroyOther(powerup_collision);
-	}
-
-	if (activePowerup) {
-		activePowerup->update();
-		if (!activePowerup->active) {
-			activePowerup->deactivate();
-			activePowerup = nullptr;
-			delete activePowerup;
-		}
 	}
 }
 

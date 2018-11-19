@@ -21,16 +21,19 @@ public:
 			screenShake(30, 45);
 			//explode
 			for (size_t i = 0; i < 360; i += 24) {
-				createObject(new Bullet(this->x, this->y, i, 5));
+				auto bullet = new Bullet(this->x, this->y, i, 5);
+				bullet->life = 60 + (rand() % 30);
+				
+				createObject(bullet);
 			}
 			destroySelf();
 		}
 	}
 	virtual void render(sf::RenderTarget* g) {
 		sf::Sprite s;
-		s.setTexture(getTexture("bullet/basic"));
+		s.setTexture(getTexture("bullet/big"));
 		s.setPosition(x, y);
-		s.setScale(2.75, 2.75);
+		s.setScale(1, 1);
 		s.setOrigin(s.getLocalBounds().width / 2, s.getLocalBounds().height / 2);
 
 		g->draw(s);
