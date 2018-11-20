@@ -6,30 +6,21 @@
 Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
-[X] More Tips
-[ ] make the menu more finalized
-[X] everything scales with resoluton
 [ ] MENU: transition from logo
 [ ] MENU: main menu
 [ ] MENU: quick play
  - use the dkgray bg with the background.png overlayed at low opacity
 [ ] MENU: advanced gamemodes
 [ ] MENU: options
- - disable audio
- - fullscreen
- - configure controllers if i add that
-[X] f11 full screen
-[X] esc goto menu/close game
 
-[ ] powerups display name on gather
-[X] speed power
-[X] rapid fire
-[X] fix regualar rapid fire to not work
-[ ] wall maker powerup
-[ ] Shield powerup
-[ ] "lazer bullet powerup" ??
-[X] big bullet boi
+[ ] POWERUPS: powerups display name on gather
+[X] POWERUPS: speed power
+[X] POWERUPS: rapid fire
+[X] POWERUPS: big bullet
+[ ] POWERUPS: wall maker powerup
+[ ] POWERUPS: Shield powerup
+[ ] POWERUPS: "lazer bullet powerup" ??
 
-[X] fix bullet positioning, it is positioned slightly off the exact pixel
+[ ] bug test the shit out of it
 
 [ ] More More Tips
