@@ -95,7 +95,7 @@ void Player::update() {
 			createObject(new LargeBullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir, bulletSpeed));
 		}
 		else {
-			createObject(new Bullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir, bulletSpeed));
+			createObject(new Bullet(x + lengthdir_x(10, dir), y + lengthdir_y(10, dir) - 6, dir, bulletSpeed));
 		}
 
 		screenShake(1, 30);

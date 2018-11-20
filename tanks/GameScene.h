@@ -25,9 +25,13 @@ private:
 	int topBarsOffset2 = 230;
 	double endingZoom = 2;
 	double textOffset = 1000;
-
+	
+	bool player1;
+	bool player2;
+	bool player3;
+	bool player4;
 public:
-	GameScene();
+	GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4);
 	virtual ~GameScene();
 
 	virtual void render(sf::RenderTarget* g);
@@ -37,5 +41,8 @@ public:
 	
 	Maze maze;
 	std::deque<GameObject*> objects;
+
+	// clones starting state
+	GameScene* cloneStartState();
 };
 

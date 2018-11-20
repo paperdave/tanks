@@ -9,10 +9,15 @@
 #include "PowerupEntity.h"
 #include "SFML/Graphics.hpp"
 #include "Window.h"
-GameScene::GameScene() {
+GameScene::GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4) {
 	wallSurface.create(600, 600);
 	wallSideSurface.create(600, 600);
 	maze = generateMaze(false);
+
+	player1 = usePlayer1;
+	player2 = usePlayer2;
+	player3 = usePlayer3;
+	player4 = usePlayer4;
 
 	sf::Vector2i playerSpots[4];
 	for (size_t i = 0; i < 4; i++) {
@@ -41,6 +46,12 @@ GameScene::GameScene() {
 	}
 
 	for (int i = 1; i <= 4; i++) {
+
+		if (i == 1 && !usePlayer1) continue;
+		if (i == 2 && !usePlayer2) continue;
+		if (i == 3 && !usePlayer3) continue;
+		if (i == 4 && !usePlayer4) continue;
+
 		Player* player = new Player(playerSpots[i - 1], i);
 		player->scene = this;
 		objects.push_back(player);
@@ -101,7 +112,7 @@ void GameScene::update() {
 		textOffset *= 0.945;
 
 		if (topBarsOffset2 < 12) {
-			setScene(new Transition(new GameScene()));
+			setScene(new Transition(cloneStartState()));
 		}
 
 		break;
@@ -267,4 +278,8 @@ void GameScene::render(sf::RenderTarget* g) {
 		topbar.setPosition(0, g->getSize().y - (130 - topBarsOffset + 230 - topBarsOffset2) * WindowScaleFactor);
 		g->draw(topbar);
 	}
+}
+
+GameScene* GameScene::cloneStartState() {
+	return new GameScene(player1, player2, player3, player4);
 }

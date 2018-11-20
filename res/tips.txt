@@ -3,3 +3,5 @@ The Wall Builder powerup lets you place walls, you can deflect bullets with this
 Play up to four players at once.
 Check out davecode.me for more cool stuff.
 Shields only last for 15 seconds.
+Check out the advanced game modes section for more game modes.
+The Large Bullet powerup creates many bullets on contact, which is extremely deadly.

@@ -25,7 +25,7 @@ void registerActions() {
 		menu->setSubMenu(nullptr);
 	});
 	registerAction("start", [](MenuScene* menu) {
-		setScene(new GameScene());
+		setScene(new GameScene(true,true,false,false));
 	});
 	registerAction("menu", [](MenuScene* menu) {
 		setScene(new MenuScene());
