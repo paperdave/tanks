@@ -81,7 +81,8 @@ void resourceThread() {
 // Load the proggy font, init the resource loader thread
 // and choose a loading line.
 LoadingScene::LoadingScene() {
-	
+	escapeAction = "do-nothing";
+
 	loadFont("clean");
 
 	std::deque<std::string> loadingLines;

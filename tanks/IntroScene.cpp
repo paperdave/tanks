@@ -4,6 +4,7 @@
 #include "MenuScene.h"
 
 IntroScene::IntroScene() {
+	escapeAction = "exit";
 
 }
 

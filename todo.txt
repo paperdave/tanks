@@ -1,4 +1,4 @@
-Thinkings
+﻿Thinkings
 
 - medium game
 - more gamemodes?
@@ -18,16 +18,18 @@ going downwards is generally the right order
  - disable audio
  - fullscreen
  - configure controllers if i add that
+[✔] f11 full screen
+[✔] esc goto menu/close game
 
-[X] MEMORY LEAK PROBLEMS
+[✔] MEMORY LEAK PROBLEMS
 
 [ ] powerups display name on gather
-[X] speed power
-[X] rapid fire
-[X] fix regualar rapid fire to not work
+[✔] speed power
+[✔] rapid fire
+[✔] fix regualar rapid fire to not work
 [ ] wall maker powerup
 [ ] Shield powerup
 [ ] "lazer bullet powerup" ??
-[X] big bullet boi
+[✔] big bullet boi
 
 [ ] fix bullet positioning, it is positioned slightly off the exact pixel

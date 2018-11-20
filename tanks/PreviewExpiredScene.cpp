@@ -20,6 +20,7 @@ void expiredResourceLoaderThread() {
 
 
 PreviewExpiredScene::PreviewExpiredScene() {
+	escapeAction = "exit";
 	loadFont("clean");
 	spawnThread(expiredResourceLoaderThread);
 	playerDummy = new Player(sf::Vector2i(0,0), 2);

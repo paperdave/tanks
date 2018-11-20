@@ -27,7 +27,13 @@ void registerActions() {
 	registerAction("start", [](MenuScene* menu) {
 		setScene(new GameScene());
 	});
+	registerAction("menu", [](MenuScene* menu) {
+		setScene(new MenuScene());
+	});
 	registerAction("exit", [](MenuScene* menu) {
+		window.close();
+	});
+	registerAction("null", [](MenuScene* menu) {
 		window.close();
 	});
 }

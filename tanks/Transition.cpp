@@ -1,23 +1,31 @@
 #include "Transition.h"
+#include "Window.h"
 
 Transition::Transition(Scene* scene) {
 	this->scene = scene;
+	this->escapeAction = scene->escapeAction;
 }
 
 void Transition::render(sf::RenderTarget* g) {
 	sf::RectangleShape cover;
 	cover.setFillColor(sf::Color(30, 30, 30));
 	cover.setPosition(0, 0);
-	cover.setSize(sf::Vector2f(1280, (float)y));
+	cover.setSize(sf::Vector2f(g->getSize().x, ((float)(y)/1000) * g->getSize().y));
 
 	sf::View viewZoomed = g->getView();
 	viewZoomed.zoom((float)(1.0 - zoom));
 	g->setView(viewZoomed);
 	scene->render(g);
 	
-	sf::View view = g->getDefaultView();
-	g->setView(view);
-	g->draw(cover);
+	// !!! this breaks for no reason
+	try {
+		sf::View view = g->getDefaultView();
+		g->setView(view);
+		g->draw(cover);
+	}
+	catch (int e) {
+		// DO NOTHINGG
+	}
 }
 
 void Transition::update() {

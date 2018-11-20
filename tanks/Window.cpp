@@ -5,6 +5,8 @@ sf::RenderWindow window;
 bool currentWindowFullscreenMode = false;
 bool FullscreenMode = false;
 
+float WindowScaleFactor = 1;
+
 void createWindow() {
 	printf("createWindow();\n");
 
@@ -24,4 +26,5 @@ void createWindow() {
 	}
 	window.setKeyRepeatEnabled(false);
 
+	WindowScaleFactor = window.getSize().x / 1280.0f;
 }

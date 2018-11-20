@@ -8,7 +8,7 @@
 #include "IntroScene.h"
 #include "PowerupEntity.h"
 #include "SFML/Graphics.hpp"
-
+#include "Window.h"
 GameScene::GameScene() {
 	wallSurface.create(600, 600);
 	wallSideSurface.create(600, 600);
@@ -232,20 +232,20 @@ void GameScene::render(sf::RenderTarget* g) {
 
 		sf::View view = g->getDefaultView();
 		g->setView(view);
+		
 
 		sf::RectangleShape topbar;
 		topbar.setPosition(0, 0);
-		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
+		topbar.setSize(sf::Vector2f(g->getSize().x, (130 - topBarsOffset + 230 - topBarsOffset2)*WindowScaleFactor));
 		topbar.setFillColor(sf::Color::Black);
 		g->draw(topbar);
 
-		topbar.setPosition(0, 720 - 130 + topBarsOffset - 230 + topBarsOffset2);
-		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
+		topbar.setPosition(0, g->getSize().y - (130 - topBarsOffset + 230 - topBarsOffset2) * WindowScaleFactor);
 		g->draw(topbar);
 
 		sf::Text roundEndText;
 		roundEndText.setFont(getFont("clean"));
-		roundEndText.setPosition(640 - textOffset, (130 - topBarsOffset + 230 - topBarsOffset2)/2);
+		roundEndText.setPosition((g->getSize().x/2) - textOffset, ((130 - topBarsOffset + 230 - topBarsOffset2)*WindowScaleFactor)/2);
 		roundEndText.setCharacterSize(48);
 		if (winner >= 1) {
 			roundEndText.setString(getPlayerNameByID(winner) + " Wins!");
@@ -262,11 +262,9 @@ void GameScene::render(sf::RenderTarget* g) {
 		topbar.setFillColor(sf::Color(30, 30, 30, (int)lerp(255, 0, topBarsOffset2 / 230.0)));
 
 		topbar.setPosition(0, 0);
-		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
 		g->draw(topbar);
 
-		topbar.setPosition(0, 720 - 130 + topBarsOffset - 230 + topBarsOffset2);
-		topbar.setSize(sf::Vector2f(1280, 130 - topBarsOffset + 230 - topBarsOffset2));
+		topbar.setPosition(0, g->getSize().y - (130 - topBarsOffset + 230 - topBarsOffset2) * WindowScaleFactor);
 		g->draw(topbar);
 	}
 }

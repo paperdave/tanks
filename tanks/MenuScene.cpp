@@ -6,6 +6,7 @@
 
 MenuScene::MenuScene() {
 	currentMenu = getMenu("main");
+	escapeAction = "exit";
 }
 
 void MenuScene::update() {

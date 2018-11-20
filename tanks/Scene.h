@@ -16,6 +16,8 @@ public:
 	// Event Handlers
 	virtual void event_onKeyPress(sf::Event::KeyEvent event) {};
 	virtual void event_onKeyRelease(sf::Event::KeyEvent event) {};
+
+	std::string escapeAction = "menu";
 };
 
 void setScene(Scene* newScene);

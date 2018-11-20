@@ -3,7 +3,7 @@
 class Transition : public Scene {
 private:
 	Scene* scene;
-	double y = 720;
+	double y = 1000;
 	double zoom = 0.5;
 public:
 	Transition(Scene* scene);
