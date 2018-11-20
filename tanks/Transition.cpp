@@ -24,7 +24,7 @@ void Transition::render(sf::RenderTarget* g) {
 		g->draw(cover);
 	}
 	catch (int e) {
-		// DO NOTHINGG
+		printf("Error on Transition:" + __LINE__);
 	}
 }
 
@@ -33,9 +33,15 @@ void Transition::update() {
 	zoom *= 0.95;
 
 	scene->update();
-
-	if (zoom < 0.001) {
-		setScene(scene);
+	
+	// !!! this breaks for no reason
+	try {
+		if (zoom < 0.001) {
+			setScene(scene);
+		}
+	}
+	catch (int e) {
+		printf("Error on Transition:" + __LINE__);
 	}
 }
 

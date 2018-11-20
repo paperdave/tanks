@@ -105,15 +105,25 @@ void GameScene::update() {
 			winner = -1;
 			roundEndTimeout = 120;
 		}
+		
 		break;
 	case RoundState::RoundStateEnded:
 		topBarsOffset *= 0.95;
 		endingZoom *= 0.95;
 		textOffset *= 0.945;
 
+		if (roundEndTimeout <= 0) {
+			topBarsOffset2 *= 0.85;
+		}
+		else {
+			roundEndTimeout--;
+		}
+
 		if (topBarsOffset2 < 12) {
 			setScene(new Transition(cloneStartState()));
 		}
+
+
 
 		break;
 	}
@@ -234,12 +244,6 @@ void GameScene::render(sf::RenderTarget* g) {
 	g->draw(walls);
 
 	if (state == RoundStateEnded) {
-		if (roundEndTimeout <= 0) {
-			topBarsOffset2 *= 0.85;
-		}
-		else {
-			roundEndTimeout--;
-		}
 
 		sf::View view = g->getDefaultView();
 		g->setView(view);

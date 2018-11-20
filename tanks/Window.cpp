@@ -27,4 +27,6 @@ void createWindow() {
 	window.setKeyRepeatEnabled(false);
 
 	WindowScaleFactor = window.getSize().x / 1280.0f;
+
+	sf::sleep(sf::milliseconds(250));
 }
