@@ -5,3 +5,6 @@ Check out davecode.me for more cool stuff.
 Shields only last for 15 seconds.
 Check out the advanced game modes section for more game modes.
 The Large Bullet powerup creates many bullets on contact, which is extremely deadly.
+Keeping a TODO List is really useful for making things, for example this game.
+This game was copied from a flash game called Tank Trouble.
+This game was made by one person, Dave.

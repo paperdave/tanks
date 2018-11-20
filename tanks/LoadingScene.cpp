@@ -65,16 +65,14 @@ void resourceThread() {
 
 	registerAllMenus();
 	
-	#if 0
+	#if !PRINTF_ENABLE
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	#endif
 
 	loadingThreadComplete = true;
 	resourcesLoaded = true;
 
-#if PRINTF_ENABLE
-	printf("Loading Completed\n");
-#endif
+	LOG("Loading Completed\n");
 }
 
 

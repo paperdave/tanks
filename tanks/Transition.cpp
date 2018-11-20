@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Transition.h"
 #include "Window.h"
 
@@ -24,24 +25,25 @@ void Transition::render(sf::RenderTarget* g) {
 		g->draw(cover);
 	}
 	catch (int e) {
-		printf("Error on Transition:" + __LINE__);
+		LOG("Error on Transition:" + __LINE__);
 	}
 }
 
 void Transition::update() {
 	y *= 0.90;
-	zoom *= 0.95;
+	zoom *= 0.95f;
 
-	scene->update();
 	
 	// !!! this breaks for no reason
 	try {
+		if(scene!=nullptr) scene->update();
+
 		if (zoom < 0.001) {
 			setScene(scene);
 		}
 	}
 	catch (int e) {
-		printf("Error on Transition:" + __LINE__);
+		LOG("Error on Transition:" + __LINE__);
 	}
 }
 
