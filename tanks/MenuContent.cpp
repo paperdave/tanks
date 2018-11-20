@@ -8,19 +8,15 @@
 // Menus
 void registerMainMenu() {
 	Menu* menu = new Menu("main menu");
-	menu->items.push_back(MenuItem("Quick Play Menu", MenuItemTypeButton, "sub:quick-play"));
-	menu->items.push_back(MenuItem("Goto Game", MenuItemTypeButton, "start"));
+	menu->items.push_back(MenuItem("debug goto GameScene", MenuItemTypeButton, "start"));
+	menu->items.push_back(MenuItem(MenuItemTypeDivider));
+	menu->items.push_back(MenuItem("Quick Play", MenuItemTypeButton, "sub:quick-play"));
+	menu->items.push_back(MenuItem("More Game Modes", MenuItemTypeButton, "sub:advanced"));
+	menu->items.push_back(MenuItem(MenuItemTypeDivider));
+	menu->items.push_back(MenuItem("Options", MenuItemTypeButton, "sub:options"));
+	menu->items.push_back(MenuItem(MenuItemTypeDivider));
 	menu->items.push_back(MenuItem("Exit", MenuItemTypeButton, "exit"));
 	registerMenu("main", menu);
-}
-void registerQuickPlayOptionsMenu() {
-	Menu* menu = new Menu("submenu");
-	menu->items.push_back(MenuItem("Sub Menu", MenuItemTypeButton, "none"));
-	menu->items.push_back(MenuItem("It's Very", MenuItemTypeButton, "none"));
-	menu->items.push_back(MenuItem("Cool", MenuItemTypeButton, "close-sub"));
-	menu->items.push_back(MenuItem(MenuItemTypeDivider));
-	menu->items.push_back(MenuItem("Don't Ya think???", MenuItemTypeButton, "close-sub"));
-	registerMenu("quick-play", menu);
 }
 
 // Actions
@@ -38,7 +34,6 @@ void registerActions() {
 
 void registerAllMenus() {
 	registerMainMenu();
-	registerQuickPlayOptionsMenu();
 
 	registerActions();
 }

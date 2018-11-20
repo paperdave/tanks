@@ -43,13 +43,13 @@ void MenuScene::update() {
 }
 
 void MenuScene::render(sf::RenderTarget* g) {
-	int offsetX = 640 - width / 2;
+	int offsetX = (g->getSize().x / 2) - width / 2;
 
 	sf::RectangleShape bg;
 	bg.setFillColor(sf::Color(30, 30, 30));
 	bg.setOutlineColor(sf::Color(10, 10, 10));
 	bg.setOutlineThickness(10);
-	bg.setSize(sf::Vector2f(width, 740));
+	bg.setSize(sf::Vector2f(width, g->getSize().y + 20));
 	bg.setPosition(offsetX, -10);
 
 	g->draw(bg);
@@ -68,7 +68,7 @@ void MenuScene::render(sf::RenderTarget* g) {
 	tx.setFillColor(sf::Color::White);
 	tx.setString(currentMenu->title);
 	tx.setCharacterSize(96);
-	tx.setPosition(640, 10);
+	tx.setPosition(g->getSize().x/2, 10);
 	tx.setOrigin(tx.getLocalBounds().width / 2, tx.getOrigin().y);
 	g->draw(tx);
 	int index = -1;

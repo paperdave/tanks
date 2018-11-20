@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "LoadingScene.h"
 
-#include "MenuScene.h"
+#include "IntroScene.h"
 #include "GameScene.h"
 #include "Scene.h"
 #include "SFML/Graphics.hpp"
@@ -10,6 +10,7 @@
 #include "Platform.h"
 #include "Utility.h"
 #include "Constants.h"
+#include "Window.h"
 #include "MenuContent.h"
 #include <fstream>
 #include <deque>
@@ -109,7 +110,7 @@ void LoadingScene::update() {
 				}
 			} else {
 				// !!! Make a setScene to set it after a frame is completed.
-				setScene(new MenuScene());
+				setScene(new IntroScene());
 			}
 	}
 }
@@ -118,7 +119,7 @@ void LoadingScene::render(sf::RenderTarget* g) {
 	sf::RectangleShape rs;
 	rs.setFillColor(sf::Color(20, 20, 20));
 	rs.setPosition(0, 0);
-	rs.setSize(sf::Vector2f(1280, 720));
+	rs.setSize(sf::Vector2f(g->getSize().x, g->getSize().y));
 
 	using namespace std::chrono;
 	auto ms = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
@@ -156,7 +157,7 @@ void LoadingScene::render(sf::RenderTarget* g) {
 		sf::RectangleShape fadetop;
 		fadetop.setFillColor(sf::Color(30, 30, 30, this->fadetop_opacity));
 		fadetop.setPosition(0, 0);
-		fadetop.setSize(sf::Vector2f(1280, 720));
+		fadetop.setSize(sf::Vector2f(g->getSize().x, g->getSize().y));
 
 		g->draw(fadetop);
 	}

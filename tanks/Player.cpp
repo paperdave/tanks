@@ -117,7 +117,12 @@ void Player::update() {
 
 	Bullet* collision = (Bullet*)collisionWith(BulletType);
 	if (collision && collision->beforeTime <= 0) {
-		destroyOther(collision);
+		if (typeid(*collision).name() == typeid(LargeBullet).name()) {
+			((LargeBullet*)collision)->EXPLODE_TIME = 1;
+		}
+		else {
+			destroyOther(collision);
+		}
 		destroySelf();
 
 		screenShake(10, 30);

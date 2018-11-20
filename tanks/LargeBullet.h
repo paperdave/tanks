@@ -22,7 +22,7 @@ public:
 			//explode
 			for (size_t i = 0; i < 360; i += 24) {
 				auto bullet = new Bullet(this->x, this->y, i, 5);
-				bullet->life = 60 + (rand() % 30);
+				bullet->life = 90 + (rand() % 60);
 				
 				createObject(bullet);
 			}

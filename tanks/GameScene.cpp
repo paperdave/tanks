@@ -48,7 +48,6 @@ GameScene::GameScene() {
 }
 
 GameScene::~GameScene() {
-	printf("GameScene::~GameScene()\n");
 	for (size_t i = 0; i < objects.size(); i++) {
 		delete objects.at(i);
 	}
@@ -123,7 +122,9 @@ void GameScene::event_onKeyRelease(sf::Event::KeyEvent event) {
 void GameScene::render(sf::RenderTarget* g) {
 	// move the view so the 600x600 area is the center
 	sf::View view = g->getView();
-	view.move(-340, -60);
+	view.move(
+		((g->getSize().x / -2.0f) +300.0f),
+		((g->getSize().y / -2.0f) +300.0f));
 	
 	Player* player = nullptr;
 	for (auto obj : objects) {

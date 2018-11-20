@@ -10,7 +10,7 @@ private:
 	int selected = 0;
 	int subMenuIndex = -1;
 
-	int width = 1280;
+	int width = 0;
 	int widthTarget = 450;
 
 	sf::IntRect selectBoxTarget;
