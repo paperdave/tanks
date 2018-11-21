@@ -4,14 +4,15 @@
 #include "SFML/Graphics.hpp"
 
 class MenuScene : public Scene {
-private:
+public:
 	Menu* currentMenu;
 	int selected = 0;
 
 	int width = 500;
 
 	float yOffset = 1;
-	float titleImageY = 1;
+	float titleImageY = 0;
+	float titleImageYO = 1;
 
 	sf::IntRect selectBoxTarget;
 	sf::IntRect selectBox;
@@ -19,9 +20,9 @@ private:
 	MenuScene* sub;
 	int level;
 
-public:
 	MenuScene(std::string menuID, int level = 0);
 	MenuScene();
+	virtual ~MenuScene();
 	
 	void render(sf::RenderTarget* g);
 	void update();
@@ -34,3 +35,5 @@ public:
 
 	bool closing = false;
 };
+
+MenuScene* startingMenuScene();

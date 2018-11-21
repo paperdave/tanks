@@ -13,6 +13,15 @@ MenuScene::MenuScene() {
 	currentMenu = getMenu("main");
 	escapeAction = "exit";
 }
+MenuScene* startingMenuScene() {
+	auto menu = new MenuScene();
+	menu->titleImageY = 1;
+	menu->titleImageYO = 0;
+	return menu;
+}
+MenuScene::~MenuScene() {
+	if (sub) delete sub;
+}
 
 void MenuScene::update() {
 
@@ -47,6 +56,8 @@ void MenuScene::update() {
 
 	if (!closing) {
 		yOffset *= 0.88f;
+		titleImageY *= 0.9f;
+		titleImageYO *= 0.88f;
 	}
 	else {
 		yOffset = lerp(yOffset, 1, 0.1f);
@@ -56,7 +67,17 @@ void MenuScene::update() {
 	selectBox.top = lerp(selectBox.top, selectBoxTarget.top, 0.35);
 	selectBox.height = lerp(selectBox.height, selectBoxTarget.height, 0.35);
 
-	if (sub) sub->update();
+	if (sub) {
+		sub->update();
+		if (sub->closing && sub->yOffset > 0.99) {
+			delete sub;
+			sub = nullptr;
+		}
+		escapeAction = "null";
+	}
+	else {
+		escapeAction = "exit";
+	}
 }
 
 void MenuScene::render(sf::RenderTarget* g) {
@@ -92,7 +113,7 @@ void MenuScene::render(sf::RenderTarget* g) {
 		tx.setFillColor(sf::Color::White);
 		tx.setString(currentMenu->title);
 		tx.setCharacterSize(96);
-		tx.setPosition(640, -100 + (yOffset * g->getSize().x) + y);
+		tx.setPosition(g->getSize().x/2, -100 + (yOffset * g->getSize().x) + y);
 		tx.setOrigin(tx.getLocalBounds().width / 2, 0);
 		g->draw(tx);
 	}
@@ -151,10 +172,11 @@ void MenuScene::render(sf::RenderTarget* g) {
 		titleText.setPosition(g->getSize().x / 2,
 				g->getSize().y / 2
 				- ((g->getSize().y / 2) - 200)
-				+ yOffset * ((g->getSize().y / 2) - 200)
+				+ titleImageY * ((g->getSize().y / 2) - 200)
+				+ titleImageYO * g->getSize().x
 		);
 		titleText.setOrigin(1280 / 2, 720 / 2);
-		titleText.setScale(0.9f + yOffset * 0.1f, 0.9f + yOffset * 0.1f);
+		titleText.setScale(0.9f + titleImageY * 0.1f, 0.9f + titleImageY * 0.1f);
 
 		titleText.setTexture(getTexture("title-screen/text-blur"));
 		g->draw(titleText, sf::BlendAdd);
@@ -169,6 +191,13 @@ void MenuScene::render(sf::RenderTarget* g) {
 }
 
 void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
+	if (event.code == sf::Keyboard::Escape) {
+		if (sub) {
+			sub->closing = true;
+			return;
+		}
+	}
+
 	if (sub && !sub->closing) return sub->event_onKeyPress(event);
 
 	if (event.code == sf::Keyboard::Up) {

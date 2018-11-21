@@ -35,7 +35,7 @@ void IntroScene::update() {
 
 void IntroScene::event_onKeyPress(sf::Event::KeyEvent ev) {
 	if (ev.code == sf::Keyboard::Space || ev.code == sf::Keyboard::Enter) {
-		setScene(new MenuScene());
+		setScene(startingMenuScene());
 	}
 }
 

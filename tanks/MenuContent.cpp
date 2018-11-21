@@ -11,7 +11,7 @@
 void registerMainMenu() {
 	Menu* menu = new Menu("main menu");
 	menu->items.push_back(MenuItem("Quick Play", MenuItemTypeButton, "quick-play"));
-	menu->items.push_back(MenuItem("More Game Modes", MenuItemTypeLabel, "advanced"));
+	menu->items.push_back(MenuItem("More Game Modes", MenuItemTypeLabel, "sub:advanced"));
 	menu->items.push_back(MenuItem(MenuItemTypeDivider));
 	menu->items.push_back(MenuItem("Options", MenuItemTypeButton, "sub:options"));
 	menu->items.push_back(MenuItem(MenuItemTypeDivider));
@@ -27,6 +27,17 @@ void registerOptionsMenu() {
 	menu->items.push_back(MenuItem("Sounds", MenuItemTypeToggle, "audio"));
 	registerMenu("options", menu);
 }
+void registerAdvancedMenu() {
+	Menu* menu = new Menu("Advanced");
+	menu->items.push_back(MenuItem("Back", MenuItemTypeButton, "close-sub"));
+	menu->items.push_back(MenuItem(MenuItemTypeDivider));
+	menu->items.push_back(MenuItem("Speed Powerup", MenuItemTypeButton, "null"));
+	menu->items.push_back(MenuItem("Rapid Fire Powerup", MenuItemTypeButton, "null"));
+	menu->items.push_back(MenuItem("Large Bullet Powerup", MenuItemTypeButton, "null"));
+	menu->items.push_back(MenuItem(MenuItemTypeDivider));
+	menu->items.push_back(MenuItem("PLAY", MenuItemTypeButton, "start-advanced-game"));
+	registerMenu("advanced", menu);
+}
 // Actions
 void registerActions() {
 	
@@ -38,7 +49,6 @@ void registerActions() {
 		setScene(new Transition(new TankChooseMenuScene("quick-play-transition", "Quick Play")));
 	});
 
-	// Advanced Menu
 
 	// Misc
 	registerAction("menu", [](MenuScene* menu) {
@@ -51,13 +61,14 @@ void registerActions() {
 		window.close();
 	});
 	registerAction("null", [](MenuScene* menu) {
-		LOG("WARN: `null` action used.");
+		LOG("WARN: `null` action used.\n");
 	});
 }
 
 void registerAllMenus() {
 	registerMainMenu();
 	registerOptionsMenu();
+	registerAdvancedMenu();
 
 	registerActions();
 }

@@ -12,7 +12,7 @@ going downwards is generally the right order
 [ ] menu: transition into it somehow.
  - use the dkgray bg with the background.png overlayed at low opacity
 [ ] MENU: advanced gamemodes
-[ ] MENU: options
+[X] MENU: options
 
 [ ] POWERUPS: powerups display name on gather
 [X] POWERUPS: speed power
