@@ -95,7 +95,12 @@
     <ClCompile Include="LargeBulletPowerup.cpp">
       <Filter>Powerups\LargeBullet</Filter>
     </ClCompile>
-    <ClCompile Include="TankChooseMenuScene.cpp" />
+    <ClCompile Include="TankChooseMenuScene.cpp">
+      <Filter>Scenes\Tank Menu Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -166,6 +171,9 @@
     </Filter>
     <Filter Include="Powerups\LargeBullet">
       <UniqueIdentifier>{9d839e75-36fa-4349-b0dd-364190b3934f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Tank Menu Scene">
+      <UniqueIdentifier>{6b193501-4d3f-42cc-b3de-856512538eeb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +270,11 @@
     <ClInclude Include="LargeBullet.h">
       <Filter>Powerups\LargeBullet</Filter>
     </ClInclude>
-    <ClInclude Include="TankChooseMenuScene.h" />
+    <ClInclude Include="TankChooseMenuScene.h">
+      <Filter>Scenes\Tank Menu Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

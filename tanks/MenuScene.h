@@ -6,9 +6,7 @@
 class MenuScene : public Scene {
 private:
 	Menu* currentMenu;
-	Menu* currentSubMenu;
 	int selected = 0;
-	int subMenuIndex = -1;
 
 	int width = 500;
 
@@ -18,7 +16,11 @@ private:
 	sf::IntRect selectBoxTarget;
 	sf::IntRect selectBox;
 
+	MenuScene* sub;
+	int level;
+
 public:
+	MenuScene(std::string menuID, int level = 0);
 	MenuScene();
 	
 	void render(sf::RenderTarget* g);
@@ -28,5 +30,7 @@ public:
 	virtual void event_onKeyRelease(sf::Event::KeyEvent event);
 
 	void setMenu(Menu* newMenu, int defaultPos = 0);
-	void setSubMenu(Menu* newMenu);
+	void setSubMenu(std::string newMenu);
+
+	bool closing = false;
 };

@@ -17,8 +17,9 @@ private:
 	int timeOut = 0;
 
 	std::string endAction;
+	std::string title;
 public:
-	TankChooseMenuScene(std::string endActionStr);
+	TankChooseMenuScene(std::string endActionStr, std::string titleText);
 	~TankChooseMenuScene();
 
 	void render(sf::RenderTarget* g);

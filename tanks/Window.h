@@ -1,7 +1,8 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "Config.h"
+
 extern sf::RenderWindow window;
-extern bool FullscreenMode;
 extern float WindowScaleFactor;
 
 // Opens a window, and closes the current one if already open

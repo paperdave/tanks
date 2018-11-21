@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "Window.h"
+#include "Config.h"
 sf::RenderWindow window;
 
 bool currentWindowFullscreenMode = false;
-bool FullscreenMode = false;
 
 float WindowScaleFactor = 1;
 
@@ -11,13 +11,13 @@ void createWindow() {
 	printf("createWindow();\n");
 
 	if (window.isOpen()) {
-		if (currentWindowFullscreenMode == FullscreenMode) return;
+		if (currentWindowFullscreenMode == configFullscreen) return;
 		window.close();
 	}
 
-	currentWindowFullscreenMode = FullscreenMode;
+	currentWindowFullscreenMode = configFullscreen;
 
-	if (FullscreenMode) {
+	if (configFullscreen) {
 		sf::VideoMode desktop = sf::VideoMode().getDesktopMode();
 		window.create(desktop, "Dave's Tanks", sf::Style::None);
 	}

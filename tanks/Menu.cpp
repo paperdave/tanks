@@ -1,6 +1,21 @@
 #include "Menu.h"
 #include "MenuScene.h"
 #include "pch.h"
+#include "Window.h"
+
+bool getMenuToggle(std::string target) {
+	if (target == "fullscreen") return configFullscreen;
+	if (target == "audio") return configAudio;
+	if (target == "fps") return configFPS;
+}
+void toggleBoolean(std::string target) {
+	if (target == "fullscreen") {
+		configFullscreen = !configFullscreen;
+		createWindow();
+	};
+	if (target == "audio") configAudio = !configAudio;
+	if (target == "fps") configFPS = !configFPS;
+}
 
 namespace {
 	std::map<std::string, Menu*> menuRegistry;
@@ -17,7 +32,7 @@ void registerMenu(std::string name, Menu* menu) {
 		menu->setMenu(getMenu(name));
 	});
 	registerAction("sub:" + name, [name](MenuScene* menu) {
-		menu->setSubMenu(getMenu(name));
+		menu->setSubMenu(name);
 	});
 }
 void registerAction(std::string name, ActionCallback func) {

@@ -2,7 +2,7 @@
 #include "TankChooseMenuScene.h"
 #include "Resources.h"
 
-TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr) {
+TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr, std::string titleText) {
 	playerDummy1.id = 1;
 	playerDummy2.id = 2;
 	playerDummy3.id = 3;
@@ -23,6 +23,7 @@ TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr) {
 	playerDummy4.dir = rand() % 360;
 
 	endAction = endActionStr;
+	title = titleText;
 }
 
 TankChooseMenuScene::~TankChooseMenuScene() {
@@ -54,32 +55,45 @@ void TankChooseMenuScene::update() {
 	}
 }
 
+#define tank_not_chosen_gray sf::Color(80,80,80)
+
 void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	if (player1) {
 		playerDummy1.color = player1Color;
 	}
 	else {
-		playerDummy1.color = sf::Color(80, 80, 80);
+		playerDummy1.color = tank_not_chosen_gray;
 	}
 	if (player2) {
 		playerDummy2.color = player2Color;
 	}
 	else {
-		playerDummy2.color = sf::Color(80, 80, 80);
+		playerDummy2.color = tank_not_chosen_gray;
 	}
 	if (player3) {
 		playerDummy3.color = player3Color;
 	}
 	else {
-		playerDummy3.color = sf::Color(80, 80, 80);
+		playerDummy3.color = tank_not_chosen_gray;
 	}
 	if (player4) {
 		playerDummy4.color = player4Color;
 	}
 	else {
-		playerDummy4.color = sf::Color(80, 80, 80);
+		playerDummy4.color = tank_not_chosen_gray;
 	}
-	
+
+	sf::View view = g->getView();
+	g->setView(g->getDefaultView());
+
+	//BG
+	sf::RectangleShape bg;
+	bg.setSize(sf::Vector2f(g->getSize().x, g->getSize().y));
+	bg.setFillColor(sf::Color(230, 230, 230));
+	g->draw(bg, sf::BlendMultiply);
+
+	g->setView(view);
+
 	// DRAW BAR
 	sf::RectangleShape bar;
 	bar.setPosition(8, g->getSize().y - g->getSize().y / 16.0f - 8);
@@ -109,7 +123,7 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	// DRAW TOP TEXT
 	sf::Text top;
 	top.setFont(getFont("clean"));
-	top.setString("Quick Play");
+	top.setString(title);
 	top.setPosition(g->getSize().x / 2, 50);
 	top.setCharacterSize(48);
 	top.setOrigin(top.getLocalBounds().width / 2, 1.5*top.getLocalBounds().height);
@@ -117,8 +131,6 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	g->draw(top);
 
 	// DRAW PLAYERS
-	sf::View view = g->getView();
-
 	view.move(
 		((g->getSize().x / -3.25f)),
 		((g->getSize().y / -2.0f)));

@@ -7,8 +7,9 @@ Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
 [X] MENU: transition from logo
-[ ] MENU: main menu
-[ ] MENU: quick play
+[X] MENU: main menu
+[X] MENU: quick play
+[ ] menu: transition into it somehow.
  - use the dkgray bg with the background.png overlayed at low opacity
 [ ] MENU: advanced gamemodes
 [ ] MENU: options

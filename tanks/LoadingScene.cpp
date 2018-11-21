@@ -79,7 +79,7 @@ void resourceThread() {
 // Load the proggy font, init the resource loader thread
 // and choose a loading line.
 LoadingScene::LoadingScene() {
-	escapeAction = "do-nothing";
+	escapeAction = "null";
 
 	loadFont("clean");
 

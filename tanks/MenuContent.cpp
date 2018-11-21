@@ -10,36 +10,54 @@
 // Menus
 void registerMainMenu() {
 	Menu* menu = new Menu("main menu");
-	menu->items.push_back(MenuItem("Quick Play", MenuItemTypeButton, "start"));
-	menu->items.push_back(MenuItem("More Game Modes", MenuItemTypeButton, "sub:advanced"));
+	menu->items.push_back(MenuItem("Quick Play", MenuItemTypeButton, "quick-play"));
+	menu->items.push_back(MenuItem("More Game Modes", MenuItemTypeLabel, "advanced"));
 	menu->items.push_back(MenuItem(MenuItemTypeDivider));
 	menu->items.push_back(MenuItem("Options", MenuItemTypeButton, "sub:options"));
 	menu->items.push_back(MenuItem(MenuItemTypeDivider));
 	menu->items.push_back(MenuItem("Exit", MenuItemTypeButton, "exit"));
 	registerMenu("main", menu);
 }
-
+void registerOptionsMenu() {
+	Menu* menu = new Menu("Options");
+	menu->items.push_back(MenuItem("Back", MenuItemTypeButton, "close-sub"));
+	menu->items.push_back(MenuItem(MenuItemTypeDivider));
+	menu->items.push_back(MenuItem("Fullscreen", MenuItemTypeToggle, "fullscreen"));
+	menu->items.push_back(MenuItem("FPS", MenuItemTypeToggle, "fps"));
+	menu->items.push_back(MenuItem("Sounds", MenuItemTypeToggle, "audio"));
+	registerMenu("options", menu);
+}
 // Actions
 void registerActions() {
-	registerAction("start", [](MenuScene* menu) {
-		setScene(new TankChooseMenuScene("start-transition"));
+	
+	// Quick Play
+	registerAction("quick-play", [](MenuScene* menu) {
+		setScene(new TankChooseMenuScene("quick-play-transition", "Quick Play"));
 	});
-	registerAction("start-transition", [](MenuScene* menu) {
-		setScene(new Transition(new TankChooseMenuScene("start-transition")));
+	registerAction("quick-play-transition", [](MenuScene* menu) {
+		setScene(new Transition(new TankChooseMenuScene("quick-play-transition", "Quick Play")));
 	});
+
+	// Advanced Menu
+
+	// Misc
 	registerAction("menu", [](MenuScene* menu) {
 		setScene(new MenuScene());
+	});
+	registerAction("close-sub", [](MenuScene* menu) {
+		menu->closing = true;
 	});
 	registerAction("exit", [](MenuScene* menu) {
 		window.close();
 	});
 	registerAction("null", [](MenuScene* menu) {
-		window.close();
+		LOG("WARN: `null` action used.");
 	});
 }
 
 void registerAllMenus() {
 	registerMainMenu();
+	registerOptionsMenu();
 
 	registerActions();
 }

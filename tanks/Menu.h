@@ -11,7 +11,8 @@ typedef std::function<void(MenuScene*)> ActionCallback;
 enum MenuItemType {
 	MenuItemTypeLabel,
 	MenuItemTypeButton,
-	MenuItemTypeDivider
+	MenuItemTypeDivider,
+	MenuItemTypeToggle
 };
 
 struct MenuItem {
@@ -44,3 +45,6 @@ Menu* getMenu(std::string name);
 void executeAction(std::string name, MenuScene* menu);
 void registerMenu(std::string name, Menu* menu);
 void registerAction(std::string name, ActionCallback);
+
+bool getMenuToggle(std::string target);
+void toggleBoolean(std::string target);
