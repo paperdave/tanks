@@ -98,6 +98,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SpeedPowerup.h" />
+    <ClInclude Include="TankChooseMenuScene.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="Trial.h" />
     <ClInclude Include="Utility.h" />
@@ -135,6 +136,7 @@
     <ClCompile Include="DaveTanks.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="SpeedPowerup.cpp" />
+    <ClCompile Include="TankChooseMenuScene.cpp" />
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="Trial.cpp" />
     <ClCompile Include="Utility.cpp" />

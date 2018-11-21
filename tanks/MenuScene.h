@@ -10,8 +10,10 @@ private:
 	int selected = 0;
 	int subMenuIndex = -1;
 
-	int width = 0;
-	int widthTarget = 450;
+	int width = 500;
+
+	float yOffset = 1;
+	float titleImageY = 1;
 
 	sf::IntRect selectBoxTarget;
 	sf::IntRect selectBox;

@@ -9,7 +9,7 @@
 #include "PowerupEntity.h"
 #include "SFML/Graphics.hpp"
 #include "Window.h"
-GameScene::GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4) {
+GameScene::GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4, std::string afterGameFinished) {
 	wallSurface.create(600, 600);
 	wallSideSurface.create(600, 600);
 	maze = generateMaze(false);
@@ -18,6 +18,8 @@ GameScene::GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool use
 	player2 = usePlayer2;
 	player3 = usePlayer3;
 	player4 = usePlayer4;
+
+	afterAction = afterGameFinished;
 
 	sf::Vector2i playerSpots[4];
 	for (size_t i = 0; i < 4; i++) {
@@ -285,5 +287,5 @@ void GameScene::render(sf::RenderTarget* g) {
 }
 
 GameScene* GameScene::cloneStartState() {
-	return new GameScene(player1, player2, player3, player4);
+	return new GameScene(player1, player2, player3, player4, afterAction);
 }

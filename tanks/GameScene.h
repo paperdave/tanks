@@ -30,8 +30,10 @@ private:
 	bool player2;
 	bool player3;
 	bool player4;
+
+	std::string afterAction;
 public:
-	GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4);
+	GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4, std::string afterAction);
 	virtual ~GameScene();
 
 	virtual void render(sf::RenderTarget* g);

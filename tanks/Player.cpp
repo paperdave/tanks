@@ -156,8 +156,6 @@ void Player::render(sf::RenderTarget* g) {
 	sf::Texture &texL6 = getTexture("tank0/layer6");
 	sf::Sprite sTop;
 
-	int sat = wave(255, 0, 0.8, 0);
-
 	sTop.setTexture(texL0);
 	sTop.setScale(0.7f, 0.7f);
 	sTop.setOrigin(sTop.getLocalBounds().width / 2 * 0.8, sTop.getLocalBounds().height / 2);

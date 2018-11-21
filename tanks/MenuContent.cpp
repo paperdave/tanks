@@ -4,13 +4,12 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "Window.h"
+#include "TankChooseMenuScene.h"
 
 // Menus
 void registerMainMenu() {
 	Menu* menu = new Menu("main menu");
-	menu->items.push_back(MenuItem("debug goto GameScene", MenuItemTypeButton, "start"));
-	menu->items.push_back(MenuItem(MenuItemTypeDivider));
-	menu->items.push_back(MenuItem("Quick Play", MenuItemTypeButton, "sub:quick-play"));
+	menu->items.push_back(MenuItem("Quick Play", MenuItemTypeButton, "start"));
 	menu->items.push_back(MenuItem("More Game Modes", MenuItemTypeButton, "sub:advanced"));
 	menu->items.push_back(MenuItem(MenuItemTypeDivider));
 	menu->items.push_back(MenuItem("Options", MenuItemTypeButton, "sub:options"));
@@ -21,11 +20,9 @@ void registerMainMenu() {
 
 // Actions
 void registerActions() {
-	registerAction("close-sub", [](MenuScene* menu) {
-		menu->setSubMenu(nullptr);
-	});
 	registerAction("start", [](MenuScene* menu) {
-		setScene(new GameScene(true,true,false,false));
+		setScene(new TankChooseMenuScene());
+		//setScene(new GameScene(true,true,true,true, "menu"));
 	});
 	registerAction("menu", [](MenuScene* menu) {
 		setScene(new MenuScene());

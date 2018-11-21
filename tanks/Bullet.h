@@ -10,7 +10,7 @@ public:
 	double dir = 90;
 	int collisionComboX = 0;
 	int collisionComboY = 0;
-	int life = 60 * 7.5;
+	int life = (int)(60.0 * 7.5);
 	
 	int collisionAt(double x, double y, Maze maze);
 	int collisionSquare(int squareX, int squareY, Maze maze);

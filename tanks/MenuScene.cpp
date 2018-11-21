@@ -11,7 +11,7 @@ MenuScene::MenuScene() {
 
 void MenuScene::update() {
 
-	selectBoxTarget.top = 115;
+	selectBoxTarget.top = 15;
 	selectBoxTarget.left = (currentSubMenu != nullptr) ? 0 : 10;
 	selectBoxTarget.height = 44;
 	int index = 0;
@@ -35,8 +35,8 @@ void MenuScene::update() {
 			break;
 		}
 	}
-	
-	width = lerp(width, widthTarget, 0.1);
+
+	yOffset *= 0.9f;
 
 	selectBox.left = lerp(selectBox.left, selectBoxTarget.left, 0.2);
 	selectBox.top = lerp(selectBox.top, selectBoxTarget.top, 0.35);
@@ -51,27 +51,19 @@ void MenuScene::render(sf::RenderTarget* g) {
 	bg.setOutlineColor(sf::Color(10, 10, 10));
 	bg.setOutlineThickness(10);
 	bg.setSize(sf::Vector2f(width, g->getSize().y + 20));
-	bg.setPosition(offsetX, -10);
+	bg.setPosition(offsetX, -10 + (yOffset * g->getSize().x));
 
 	g->draw(bg);
 
+	int y = g->getSize().y / 2;
 	sf::RectangleShape select;
 	select.setFillColor(sf::Color(70, 70, 70));
-	select.setPosition(selectBox.left + offsetX, selectBox.top);
+	select.setPosition(selectBox.left + offsetX, selectBox.top + (yOffset * g->getSize().x) + y);
 	select.setSize(sf::Vector2f(width - selectBox.left * 2, selectBox.height));
 
 	g->draw(select);
 
-	int y = 100;
 
-	sf::Text tx;
-	tx.setFont(getFont("clean"));
-	tx.setFillColor(sf::Color::White);
-	tx.setString(currentMenu->title);
-	tx.setCharacterSize(96);
-	tx.setPosition(g->getSize().x/2, 10);
-	tx.setOrigin(tx.getLocalBounds().width / 2, tx.getOrigin().y);
-	g->draw(tx);
 	int index = -1;
 	for (auto item : currentMenu->items) {
 		if (item.type == MenuItemTypeButton) {
@@ -81,7 +73,7 @@ void MenuScene::render(sf::RenderTarget* g) {
 			tx.setFillColor(sf::Color::White);
 			tx.setString(item.label);
 			tx.setCharacterSize(48);
-			tx.setPosition(offsetX + 10, y);
+			tx.setPosition(offsetX + 10, y + (yOffset * g->getSize().x));
 			g->draw(tx);
 			index++;
 		}
@@ -93,6 +85,21 @@ void MenuScene::render(sf::RenderTarget* g) {
 			throw "MenuError";
 		}
 	}
+
+	sf::Sprite titleText;
+	titleText.setPosition(g->getSize().x / 2,
+			g->getSize().y / 2
+			- ((g->getSize().y / 2) - 200)
+			+ yOffset * ((g->getSize().y / 2) - 200)
+	);
+	titleText.setOrigin(1280 / 2, 720 / 2);
+	titleText.setScale(0.9f + yOffset * 0.1f, 0.9f + yOffset * 0.1f);
+
+	titleText.setTexture(getTexture("title-screen/text-blur"));
+	g->draw(titleText, sf::BlendAdd);
+
+	titleText.setTexture(getTexture("title-screen/text"));
+	g->draw(titleText);
 }
 
 void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {

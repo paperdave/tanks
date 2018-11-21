@@ -95,6 +95,7 @@
     <ClCompile Include="LargeBulletPowerup.cpp">
       <Filter>Powerups\LargeBullet</Filter>
     </ClCompile>
+    <ClCompile Include="TankChooseMenuScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -261,5 +262,6 @@
     <ClInclude Include="LargeBullet.h">
       <Filter>Powerups\LargeBullet</Filter>
     </ClInclude>
+    <ClInclude Include="TankChooseMenuScene.h" />
   </ItemGroup>
 </Project>

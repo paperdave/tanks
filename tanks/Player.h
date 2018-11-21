@@ -38,6 +38,9 @@ public:
 
 	Player(sf::Vector2i position, int id);
 	~Player();
+	Player() {
+		Player(sf::Vector2i(0, 0), 1);
+	}
 
 	// Bind key events easily
 	void event_onKeyPress(sf::Event::KeyEvent ev)   { HandleKeypress(ev.code, true);  }
