@@ -1,9 +1,8 @@
 #pragma once
 #include "Scene.h"
 #include "Player.h"
-#include "MenuScene.h"
 
-class TankChooseMenuScene : public MenuScene {
+class TankChooseMenuScene : public Scene {
 private:
 	bool player1 = false;
 	bool player2 = false;
