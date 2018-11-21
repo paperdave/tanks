@@ -4,6 +4,7 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "Window.h"
+#include "Transition.h"
 #include "TankChooseMenuScene.h"
 
 // Menus
@@ -21,8 +22,10 @@ void registerMainMenu() {
 // Actions
 void registerActions() {
 	registerAction("start", [](MenuScene* menu) {
-		setScene(new TankChooseMenuScene());
-		//setScene(new GameScene(true,true,true,true, "menu"));
+		setScene(new TankChooseMenuScene("start-transition"));
+	});
+	registerAction("start-transition", [](MenuScene* menu) {
+		setScene(new Transition(new TankChooseMenuScene("start-transition")));
 	});
 	registerAction("menu", [](MenuScene* menu) {
 		setScene(new MenuScene());

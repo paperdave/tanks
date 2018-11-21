@@ -14,10 +14,12 @@ private:
 	Player playerDummy3;
 	Player playerDummy4;
 
-public:
-	TankChooseMenuScene();
-	~TankChooseMenuScene();
+	int timeOut = 0;
 
+	std::string endAction;
+public:
+	TankChooseMenuScene(std::string endActionStr);
+	~TankChooseMenuScene();
 
 	void render(sf::RenderTarget* g);
 	void update();

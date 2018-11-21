@@ -9,6 +9,7 @@
 #include "PowerupEntity.h"
 #include "SFML/Graphics.hpp"
 #include "Window.h"
+#include "Menu.h"
 GameScene::GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4, std::string afterGameFinished) {
 	wallSurface.create(600, 600);
 	wallSideSurface.create(600, 600);
@@ -122,7 +123,12 @@ void GameScene::update() {
 		}
 
 		if (topBarsOffset2 < 12) {
-			setScene(new Transition(cloneStartState()));
+			if (afterAction == "") {
+				setScene(new Transition(cloneStartState()));
+			}
+			else {
+				executeAction(afterAction, nullptr);
+			}
 		}
 
 
