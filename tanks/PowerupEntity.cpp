@@ -28,8 +28,8 @@ void PowerupEntity::update() {
 
 void PowerupEntity::render(sf::RenderTarget* g) {
 	sf::RectangleShape beam;
-	beam.setSize(sf::Vector2f(beamwidth, 200 + 60 * y));
-	beam.setPosition(60 * x + (60 - beamwidth) * 0.5, -200 + 30);
+	beam.setSize(sf::Vector2f(beamwidth, 1000 + 60 * y));
+	beam.setPosition(60 * x + (60 - beamwidth) * 0.5, -1000 + 30);
 	beam.setFillColor(getPowerupColor(this->powerupType));
 	g->draw(beam, sf::BlendAdd);
 

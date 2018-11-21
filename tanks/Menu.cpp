@@ -2,6 +2,7 @@
 #include "MenuScene.h"
 #include "pch.h"
 #include "Window.h"
+#include <fstream>
 
 bool getMenuToggle(std::string target) {
 	if (target == "fullscreen") return configFullscreen;
@@ -15,6 +16,12 @@ void toggleBoolean(std::string target) {
 	};
 	if (target == "audio") configAudio = !configAudio;
 	if (target == "fps") configFPS = !configFPS;
+
+	std::ofstream out("config");
+	out << (configFullscreen ? "1" : "0")
+		<< (configFPS ? "1" : "0")
+		<< (configAudio ? "1" : "0");
+	out.close();
 }
 
 namespace {

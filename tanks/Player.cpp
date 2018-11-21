@@ -144,6 +144,7 @@ void Player::update() {
 		case PowerupTypeLargeBullet: activatePowerup(new LargeBulletPowerup()); break;
 		}
 		destroyOther(powerup_collision);
+		playSound("tank/powerup");
 	}
 }
 
@@ -168,17 +169,14 @@ void Player::render(sf::RenderTarget* g) {
 
 	sf::Sprite sBot;
 
-	sBot.setTexture(texL4);
 	sBot.setScale(0.7f, 0.7f);
-	sBot.setOrigin(sTop.getOrigin());
 
 	sBot.setRotation(dir);
-	sBot.setColor(color);
 
 	if (activePowerup) {
 		sBot.setTexture(getTexture("tank0/powered"));
 		sBot.setOrigin(sBot.getLocalBounds().width / 2 * 0.8, sBot.getLocalBounds().height / 2);
-		sBot.setPosition(x,y);
+		sBot.setPosition(x,y + 2);
 		sBot.setColor(getPowerupColor((PowerupType)activePowerupID));
 
 		g->draw(sBot);
@@ -188,9 +186,11 @@ void Player::render(sf::RenderTarget* g) {
 		g->draw(sBot);
 		sBot.move(0, -2);
 		g->draw(sBot);
-
 	}
 
+	sBot.setTexture(texL4);
+	sBot.setOrigin(sTop.getOrigin());
+	sBot.setColor(color);
 	sBot.setPosition(x + lengthdir_x(-gunOffset, (double)dir), y + lengthdir_y(-gunOffset, dir) - 4);
 
 	g->draw(sTop);

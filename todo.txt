@@ -6,22 +6,11 @@
 Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
-[X] MENU: transition from logo
-[X] MENU: main menu
-[X] MENU: quick play
-[ ] menu: transition into it somehow.
- - use the dkgray bg with the background.png overlayed at low opacity
-[ ] MENU: advanced gamemodes
-[X] MENU: options
+ [X] FIX THE GLOWING PLAYER
+ [ ] TRANSITIONS TO QUICK PLAY MENU
+ [ ] TRANSITIONS TO ACTUAL GAME
+ - maybe reveal one square at a time in a cool pattern
+ [ ] SOUND: ROUND START
 
-[ ] POWERUPS: powerups display name on gather
-[X] POWERUPS: speed power
-[X] POWERUPS: rapid fire
-[X] POWERUPS: big bullet
-[ ] POWERUPS: wall maker powerup
-[ ] POWERUPS: Shield powerup
-[ ] POWERUPS: "lazer bullet powerup" ??
-
-[ ] bug test the shit out of it
-
-[ ] More More Tips
+ extras
+ [ ] More More Tips

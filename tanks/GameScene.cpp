@@ -79,6 +79,8 @@ void GameScene::update() {
 			PowerupEntity* pe = new PowerupEntity(rand() % 10, rand() % 10, (PowerupType)(rand() % 3));
 			pe->scene = this;
 			objects.push_back(pe);
+
+			playSound("powerup-land!");
 		}
 		for (std::size_t i = 0; i != objects.size(); ++i) {
 			auto obj = objects[i];

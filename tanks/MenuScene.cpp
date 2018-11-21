@@ -194,6 +194,7 @@ void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
 	if (event.code == sf::Keyboard::Escape) {
 		if (sub) {
 			sub->closing = true;
+			playSound("menu/deactivate");
 			return;
 		}
 	}
@@ -213,6 +214,7 @@ void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
 				index++;
 				if (selected + 1 == index) {
 					executeAction(item.target, this);
+					if(item.target != "close-sub") playSound("menu/activate");
 					break;
 				}
 			}
@@ -220,6 +222,7 @@ void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
 				index++;
 				if (selected + 1 == index) {
 					toggleBoolean(item.target);
+					getMenuToggle(item.target) ? playSound("menu/activate") : playSound("menu/deactivate");
 					break;
 				}
 			}

@@ -185,10 +185,22 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 }
 
 void TankChooseMenuScene::event_onKeyPress(sf::Event::KeyEvent ev) {
-	if (ev.code == playerControls1.action) player1 = !player1;
-	if (ev.code == playerControls2.action) player2 = !player2;
-	if (ev.code == playerControls3.action) player3 = !player3;
-	if (ev.code == playerControls4.action) player4 = !player4;
+	if (ev.code == playerControls1.action) {
+		player1 = !player1;
+		player1 ? playSound("menu/activate") : playSound("menu/deactivate");
+	}
+	if (ev.code == playerControls2.action) {
+		player2 = !player2;
+		player2 ? playSound("menu/activate") : playSound("menu/deactivate");
+	}
+	if (ev.code == playerControls3.action) {
+		player3 = !player3;
+		player3 ? playSound("menu/activate") : playSound("menu/deactivate");
+	}
+	if (ev.code == playerControls4.action) {
+		player4 = !player4;
+		player4 ? playSound("menu/activate") : playSound("menu/deactivate");
+	}
 
 	if (ev.code == playerControls1.left) playerDummy1.keyLeft = true;
 	if (ev.code == playerControls2.left) playerDummy2.keyLeft = true;

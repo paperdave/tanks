@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "GameScene.h"
 #include "MenuScene.h"
+#include "Resources.h"
 #include "Window.h"
 #include "Transition.h"
 #include "TankChooseMenuScene.h"
@@ -56,6 +57,7 @@ void registerActions() {
 	});
 	registerAction("close-sub", [](MenuScene* menu) {
 		menu->closing = true;
+		playSound("menu/deactivate");
 	});
 	registerAction("exit", [](MenuScene* menu) {
 		window.close();
