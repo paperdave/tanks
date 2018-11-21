@@ -32,6 +32,7 @@ public:
 	bool collisionAt(double x, double y);
 	
 	int id;
+	int activePowerupID;
 	double x = 30;
 	double y = 30;
 	double dir = 90;
@@ -56,5 +57,6 @@ public:
 	int reload = 30;
 	bool rapidFire = false;
 	bool usingLargeBullets = false;
+
 };
 

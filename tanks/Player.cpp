@@ -137,6 +137,7 @@ void Player::update() {
 	}
 	PowerupEntity* powerup_collision = (PowerupEntity*)collisionWith(PowerupEntityType);
 	if (powerup_collision && !activePowerup) {
+			activePowerupID = powerup_collision->powerupType;
 		switch (powerup_collision->powerupType) {
 		case PowerupTypeSpeed: activatePowerup(new SpeedPowerup()); break;
 		case PowerupTypeRapidFire: activatePowerup(new RapidFirePowerup()); break;
@@ -173,6 +174,22 @@ void Player::render(sf::RenderTarget* g) {
 
 	sBot.setRotation(dir);
 	sBot.setColor(color);
+
+	if (activePowerup) {
+		sBot.setTexture(getTexture("tank0/powered"));
+		sBot.setOrigin(sBot.getLocalBounds().width / 2 * 0.8, sBot.getLocalBounds().height / 2);
+		sBot.setPosition(x,y);
+		sBot.setColor(getPowerupColor((PowerupType)activePowerupID));
+
+		g->draw(sBot);
+		sBot.move(0, -2);
+		g->draw(sBot);
+		sBot.move(0, -2);
+		g->draw(sBot);
+		sBot.move(0, -2);
+		g->draw(sBot);
+
+	}
 
 	sBot.setPosition(x + lengthdir_x(-gunOffset, (double)dir), y + lengthdir_y(-gunOffset, dir) - 4);
 
