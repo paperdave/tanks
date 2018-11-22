@@ -3,7 +3,6 @@
 #include "Resources.h"
 #include "MenuScene.h"
 #include "Utility.h"
-#include "Easing.h"
 
 double easeout(double argument0, double argument1, double argument2) {
 	auto _chng = argument1 - argument0;
@@ -105,6 +104,7 @@ void TankChooseMenuScene::update() {
 	if (gamescene) {
 		gamescene->update();
 		transition_gamescene += 1;
+		if (transition_gamescene == 5) playSound("menu/round_switch");
 		if (transition_gamescene >= 60) {
 			setScene(gamescene);
 		}
