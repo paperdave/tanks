@@ -3,6 +3,30 @@
 #include "Resources.h"
 #include "MenuScene.h"
 #include "Utility.h"
+#include "Easing.h"
+
+double easeout(double argument0, double argument1, double argument2) {
+	auto _chng = argument1 - argument0;
+	return _chng * (-powf(2, -10 * argument2) + 1) + argument0;
+}
+double easein(double argument0, double argument1, double argument2) {
+	auto _chng = argument1 - argument0;
+	return _chng * powf(2, 10 * (argument2 - 1)) + argument0;
+}
+double easeinout(double argument0, double argument1, double argument2) {
+	auto _pos = argument2;
+	auto _chng = argument1 - argument0;
+	auto _mid = (argument0 + argument1) / 2;
+
+	if (_pos < .5) {
+		return easein(argument0, _mid, _pos * 2);
+	}
+	else {
+		return easeout(_mid, argument1, (_pos - .5) * 2);
+	}
+
+
+}
 
 TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr, std::string titleText, float yOffsetV) {
 	playerDummy1.id = 1;
@@ -34,7 +58,7 @@ TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr, std::string t
 }
 
 TankChooseMenuScene::~TankChooseMenuScene() {
-	if(ms && ms!=currentScene && ms!=nextScene)delete ms;
+	if(ms && ms!=currentScene && ms!=nextScene) delete ms;
 }
 
 void TankChooseMenuScene::update() {
@@ -49,19 +73,20 @@ void TankChooseMenuScene::update() {
 	if (player3) count++;
 	if (player4) count++;
 
-	if (count > 1) {
-		if (timeOut >= 90) {
-			setScene(new GameScene(player1, player2, player3, player4, endAction));
+	if (!gamescene) {
+		if (count > 1) {
+			if (timeOut >= 90) {
+				gamescene = new GameScene(player1, player2, player3, player4, endAction);
+			}
+			else {
+				timeOut++;
+			}
 		}
 		else {
-			timeOut++;
+			timeOut = timeOut * 0.6;
 		}
+	
 	}
-	else {
-		timeOut = timeOut * 0.6;
-	}
-
-
 	if (!closing) {
 
 		yOffset *= 0.8f;
@@ -75,6 +100,14 @@ void TankChooseMenuScene::update() {
 
 	if (ms) {
 		ms->update();
+	}
+
+	if (gamescene) {
+		gamescene->update();
+		transition_gamescene += 1;
+		if (transition_gamescene >= 60) {
+			setScene(gamescene);
+		}
 	}
 }
 
@@ -107,6 +140,8 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	}
 
 	sf::View view = g->getView();
+	view.move(easeinout(0, 1280, (((double)transition_gamescene) / 60.0)), 0);
+
 	g->setView(g->getDefaultView());
 
 	//BG
@@ -211,11 +246,21 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 		g->setView(g->getDefaultView());
 		ms->render(g);
 	}
+	if (gamescene) {
+		auto view = g->getDefaultView();
+		view.move(easeinout(-1280, 0, (((double)transition_gamescene) / 60.0)), 0);
+		g->setView(view);
+		gamescene->render(g);
+	}
 }
 
 void TankChooseMenuScene::event_onKeyPress(sf::Event::KeyEvent ev) {
 	if (ms) {
 		ms->event_onKeyPress(ev);
+		return;
+	}
+	if (gamescene) {
+		gamescene->event_onKeyPress(ev);
 		return;
 	}
 

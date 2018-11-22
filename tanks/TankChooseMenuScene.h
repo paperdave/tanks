@@ -25,6 +25,8 @@ private:
 	bool closing = false;
 
 	Scene* ms;
+	Scene* gamescene;
+	int transition_gamescene = 0;
 public:
 	TankChooseMenuScene(std::string endActionStr, std::string titleText, float yOffset = 0);
 	virtual ~TankChooseMenuScene();

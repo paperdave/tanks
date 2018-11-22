@@ -101,6 +101,9 @@
     <ClCompile Include="Config.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
+    <ClCompile Include="Easing.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Build Files">
@@ -274,6 +277,9 @@
       <Filter>Scenes\Tank Menu Scene</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Easing.h">
       <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>

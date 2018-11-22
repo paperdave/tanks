@@ -2,6 +2,8 @@
 #include <vector>
 #include <iostream>
 
+#define PI           3.14159265358979323846
+
 double toRad(double deg);
 double lengthdir_x(double length, double dir);
 double lengthdir_y(double length, double dir);

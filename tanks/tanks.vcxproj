@@ -76,6 +76,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="Easing.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="LargeBullet.h" />
@@ -111,6 +112,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="Easing.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="LargeBullet.cpp" />

@@ -9,7 +9,6 @@
 #include <sstream>
 #include <string>
 
-#define PI           3.14159265358979323846
 
 using namespace std::chrono;
 std::random_device rd;
