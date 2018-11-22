@@ -104,7 +104,7 @@ void TankChooseMenuScene::update() {
 	if (gamescene) {
 		gamescene->update();
 		transition_gamescene += 1;
-		if (transition_gamescene == 5) playSound("menu/round_switch");
+		if (transition_gamescene == 15) playSound("menu/round_switch");
 		if (transition_gamescene >= 60) {
 			setScene(gamescene);
 		}

@@ -87,6 +87,9 @@ void Bullet::update() {
 		if (collisionComboX == 2) {
 			my *= -1;
 			mx *= -1;
+			y += mx;
+			x += my;
+
 		}
 	}
 	else {
@@ -99,6 +102,11 @@ void Bullet::update() {
 		if (collisionComboY == 2) {
 			my *= -1;
 			mx *= -1;
+			y += mx;
+			x += my;
+			y += mx;
+			x += my;
+
 		}
 	}
 	else {

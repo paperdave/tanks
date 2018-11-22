@@ -6,10 +6,8 @@
 Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
- [X] TRANSITIONS TO QUICK PLAY MENU
- [ ] TRANSITIONS TO ACTUAL GAME
- - maybe reveal one square at a time in a cool pattern
- [ ] SOUND: ROUND START
+ [ ] IMPROVE ON THE GAME START ANIMATION
+ [ ] make bbox big
  [ ] music?
 
  extras

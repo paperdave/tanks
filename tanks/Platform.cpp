@@ -4,25 +4,15 @@
 #include <vector>
 #include <codecvt>
 
-#if _WIN32
-#include <Windows.h>
+#include <thread>
 
-struct thread_data {
-	void(*func)();
-	thread_data(void(*f)()) : func(f) {}
-};
-
-DWORD WINAPI thread_func(LPVOID lpParameter) {
-	thread_data *td = (thread_data*)lpParameter;
-	td->func();
-	delete td;
-	return 0;
-}
-
-// Creates a thread calling `void f()`
 void spawnThread(void(*f)()) {
-	CreateThread(NULL, 0, thread_func, new thread_data(f), 0, 0);
+	std::thread thread(f);
+	thread.detach();
 }
+
+#if _WIN32
+#include <windows.h>
 
 // Creates a pop up console window.
 void createDevConsole() {
@@ -40,5 +30,13 @@ void destroyDevConsole() {
 }
 
 #else
-#error Incompatible Platform
+
+// Creates a pop up console window. Not implemented for linux
+void createDevConsole() {
+}
+
+void destroyDevConsole() {
+}
+
 #endif
+
