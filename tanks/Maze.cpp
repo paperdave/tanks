@@ -14,8 +14,8 @@ Maze::~Maze() {
 }
 
 bool Maze::wallRight(int spaceX, int spaceY, bool def = true) {
-	if (spaceY >= 9) return def;
-	if (spaceX > 9) return def;
+	if (spaceY > 9) return def;
+	if (spaceX >= 9) return def;
 	if (spaceY < 0) return def;
 	if (spaceX < 0) return def;
 
@@ -40,8 +40,8 @@ bool Maze::wallLeft(int spaceX, int spaceY, bool def = true) {
 bool Maze::wallUp(int spaceX, int spaceY, bool def = true) {
 	if (spaceX > 9) return def;
 	if (spaceY > 9) return def;
-	if (spaceY < 0) return def;
-	if (spaceX <= 0) return def;
+	if (spaceY <= 0) return def;
+	if (spaceX < 0) return def;
 
 	return grid[spaceX][spaceY - 1].down;
 }

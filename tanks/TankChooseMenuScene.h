@@ -18,9 +18,16 @@ private:
 
 	std::string endAction;
 	std::string title;
+
+	float yOffset;
+	float fadeOffset;
+
+	bool closing = false;
+
+	Scene* ms;
 public:
-	TankChooseMenuScene(std::string endActionStr, std::string titleText);
-	~TankChooseMenuScene();
+	TankChooseMenuScene(std::string endActionStr, std::string titleText, float yOffset = 0);
+	virtual ~TankChooseMenuScene();
 
 	void render(sf::RenderTarget* g);
 	void update();

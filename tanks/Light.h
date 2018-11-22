@@ -8,8 +8,9 @@ public:
 	sf::Color color;
 	int startx;
 	int starty;
+	int falloff;
 	int visitedmap[10][10];
-	Light(sf::Color c, int x, int y);
+	Light(sf::Color c, int x, int y, int falloff = 45);
 	~Light();
 
 	void update();

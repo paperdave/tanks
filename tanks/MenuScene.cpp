@@ -20,7 +20,8 @@ MenuScene* startingMenuScene() {
 	return menu;
 }
 MenuScene::~MenuScene() {
-	if (sub) delete sub;
+	if (sub && sub != currentScene && sub != nextScene) delete sub;
+	if (tcms && tcms != currentScene && tcms != nextScene) delete tcms;
 }
 
 void MenuScene::update() {
@@ -60,13 +61,19 @@ void MenuScene::update() {
 		titleImageYO *= 0.88f;
 	}
 	else {
+		titleImageYO = lerp(titleImageYO, 1, 0.1f);
 		yOffset = lerp(yOffset, 1, 0.1f);
+
+		if (level == 0 && tcms && yOffset > 0.99f) {
+			setScene(tcms);
+		}
 	}
 
 	selectBox.left = lerp(selectBox.left, selectBoxTarget.left, 0.2);
 	selectBox.top = lerp(selectBox.top, selectBoxTarget.top, 0.35);
 	selectBox.height = lerp(selectBox.height, selectBoxTarget.height, 0.35);
 
+	escapeAction = "exit";
 	if (sub) {
 		sub->update();
 		if (sub->closing && sub->yOffset > 0.99) {
@@ -75,8 +82,9 @@ void MenuScene::update() {
 		}
 		escapeAction = "null";
 	}
-	else {
-		escapeAction = "exit";
+	if (tcms) {
+		tcms->update();
+		escapeAction = "null";
 	}
 }
 
@@ -188,15 +196,22 @@ void MenuScene::render(sf::RenderTarget* g) {
 	if (sub) {
 		sub->render(g);
 	}
+
+	if (tcms) tcms->render(g);
 }
 
 void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
+	if (tcms) {
+		tcms->event_onKeyPress(event);
+		return;
+	}
 	if (event.code == sf::Keyboard::Escape) {
 		if (sub) {
 			sub->closing = true;
 			playSound("menu/deactivate");
 			return;
 		}
+
 	}
 
 	if (sub && !sub->closing) return sub->event_onKeyPress(event);
@@ -231,6 +246,7 @@ void MenuScene::event_onKeyPress(sf::Event::KeyEvent event) {
 }
 void MenuScene::event_onKeyRelease(sf::Event::KeyEvent event) {
 	if (sub && !sub->closing) return sub->event_onKeyRelease(event);
+	if (tcms) return tcms->event_onKeyRelease(event);
 
 }
 

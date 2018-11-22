@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "PlayerControls.h"
 #include "Powerup.h"
+#include "Light.h"
 #include "SFML/Graphics.hpp"
 
 class GameObject;
@@ -58,5 +59,6 @@ public:
 	bool rapidFire = false;
 	bool usingLargeBullets = false;
 
+	Light* amblight = nullptr;
 };
 

@@ -1,11 +1,12 @@
 #include "pch.h"
 #include "Light.h"
 
-Light::Light(sf::Color c, int x, int y) {
+Light::Light(sf::Color c, int x, int y, int falloff) {
 	color = c;
 	startx = x;
 	starty = y;
 	type = GameObjectType::LightEffectType;
+	this->falloff = falloff;
 }
 Light::~Light() {
 
@@ -20,10 +21,10 @@ void Light::drawSquare(int posx, int posy, float opacity) {
 	visitedmap[posx][posy] = opacity;
 
 	Maze m = getMaze();
-	if (!m.wallUp(posx, posy, true)) drawSquare(posx, posy - 1, opacity - 50);
-	if (!m.wallDown(posx, posy, true)) drawSquare(posx, posy + 1, opacity - 50);
-	if (!m.wallLeft(posx, posy, true)) drawSquare(posx - 1, posy, opacity - 50);
-	if (!m.wallRight(posx, posy, true)) drawSquare(posx + 1, posy, opacity - 50);
+	if (!m.wallUp(posx, posy, true)) drawSquare(posx, posy - 1, opacity - falloff);
+	if (!m.wallDown(posx, posy, true)) drawSquare(posx, posy + 1, opacity - falloff);
+	if (!m.wallLeft(posx, posy, true)) drawSquare(posx - 1, posy, opacity - falloff);
+	if (!m.wallRight(posx, posy, true)) drawSquare(posx + 1, posy, opacity - falloff);
 }
 void Light::render(sf::RenderTarget* g) {
 	for (size_t i = 0; i < 10; i++)
@@ -44,7 +45,7 @@ void Light::render(sf::RenderTarget* g) {
 			rect.setSize(sf::Vector2f(60, 60));
 			g->draw(rect, sf::BlendAdd);
 
-			rect.setFillColor(sf::Color(color.r, color.g, color.b, visitedmap[i][j] / 3.6));
+			rect.setFillColor(sf::Color(color.r, color.g, color.b, visitedmap[i][j] / 3));
 			g->draw(rect);
 		}
 	}

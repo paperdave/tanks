@@ -103,12 +103,16 @@ void GameScene::update() {
 			if (roundEndTimeout <= 0) {
 				state = RoundState::RoundStateEnded;
 				roundEndTimeout = 120;
+				playSound("round-end");
 			}
 		}
 		if (playersAlive == 0) {
 			state = RoundState::RoundStateEnded;
 			winner = -1;
 			roundEndTimeout = 120;
+
+			playSound("round-end-d");
+
 		}
 		
 		break;
@@ -186,6 +190,7 @@ void GameScene::render(sf::RenderTarget* g) {
 
 	sf::RectangleShape board;
 	board.setFillColor(sf::Color(229, 229, 229, 255));
+	//board.setFillColor(sf::Color(0, 0, 0, 255));
 	board.setOutlineColor(sf::Color(0, 0, 0, 255));
 	board.setOutlineThickness(4);
 	board.setPosition(0, 0);

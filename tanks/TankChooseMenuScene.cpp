@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "TankChooseMenuScene.h"
 #include "Resources.h"
+#include "MenuScene.h"
+#include "Utility.h"
 
-TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr, std::string titleText) {
+TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr, std::string titleText, float yOffsetV) {
 	playerDummy1.id = 1;
 	playerDummy2.id = 2;
 	playerDummy3.id = 3;
@@ -24,10 +26,15 @@ TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr, std::string t
 
 	endAction = endActionStr;
 	title = titleText;
+
+	yOffset = yOffsetV;
+	fadeOffset = 1 - yOffsetV;
+
+	escapeAction = "null";
 }
 
 TankChooseMenuScene::~TankChooseMenuScene() {
-
+	if(ms && ms!=currentScene && ms!=nextScene)delete ms;
 }
 
 void TankChooseMenuScene::update() {
@@ -52,6 +59,22 @@ void TankChooseMenuScene::update() {
 	}
 	else {
 		timeOut = timeOut * 0.6;
+	}
+
+
+	if (!closing) {
+
+		yOffset *= 0.8f;
+		if (fadeOffset <= 0.95) fadeOffset += 0.05;
+
+	}
+	else {
+		yOffset = lerp(yOffset, 1, 0.2);
+		if (fadeOffset >= 0.05) fadeOffset -= 0.05;
+	}
+
+	if (ms) {
+		ms->update();
 	}
 }
 
@@ -89,14 +112,15 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	//BG
 	sf::RectangleShape bg;
 	bg.setSize(sf::Vector2f(g->getSize().x, g->getSize().y));
-	bg.setFillColor(sf::Color(230, 230, 230));
+	auto bgval = lerp(255,230,fadeOffset);
+	bg.setFillColor(sf::Color(bgval, bgval, bgval));
 	g->draw(bg, sf::BlendMultiply);
 
 	g->setView(view);
 
 	// DRAW BAR
 	sf::RectangleShape bar;
-	bar.setPosition(8, g->getSize().y - g->getSize().y / 16.0f - 8);
+	bar.setPosition(8, g->getSize().y - g->getSize().y / 16.0f - 8 + g->getSize().y*yOffset);
 	bar.setSize(sf::Vector2f(g->getSize().x - 18, g->getSize().y / 16.0f));
 	bar.setFillColor(sf::Color(107, 107, 107));
 	bar.setOutlineThickness(8);
@@ -114,7 +138,7 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	sf::Text splashtext;
 	splashtext.setFont(getFont("clean"));
 	splashtext.setString(timeOut == 0 ? "Waiting for Players..." : "Game is Starting...");
-	splashtext.setPosition(g->getSize().x / 2, g->getSize().y - (g->getSize().y / 32.0f));
+	splashtext.setPosition(g->getSize().x / 2, g->getSize().y - (g->getSize().y / 32.0f) + g->getSize().y*yOffset);
 	splashtext.setCharacterSize(24);
 	splashtext.setOrigin(splashtext.getLocalBounds().width / 2, 1.5*splashtext.getLocalBounds().height);
 	splashtext.setFillColor(sf::Color::White);
@@ -124,7 +148,7 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	sf::Text top;
 	top.setFont(getFont("clean"));
 	top.setString(title);
-	top.setPosition(g->getSize().x / 2, 50);
+	top.setPosition(g->getSize().x / 2, 50 + g->getSize().y*yOffset);
 	top.setCharacterSize(48);
 	top.setOrigin(top.getLocalBounds().width / 2, 1.5*top.getLocalBounds().height);
 	top.setFillColor(sf::Color::Black);
@@ -133,7 +157,7 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	// DRAW PLAYERS
 	view.move(
 		((g->getSize().x / -3.25f)),
-		((g->getSize().y / -2.0f)));
+		((g->getSize().y / -2.0f)) - g->getSize().y * yOffset);
 	view.zoom(0.5);
 
 	g->setView(view);
@@ -182,9 +206,19 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	playerDummy4.render(g);
 	controls.setTexture(getTexture("key/numpad"));
 	g->draw(controls);
+
+	if (ms) {
+		g->setView(g->getDefaultView());
+		ms->render(g);
+	}
 }
 
 void TankChooseMenuScene::event_onKeyPress(sf::Event::KeyEvent ev) {
+	if (ms) {
+		ms->event_onKeyPress(ev);
+		return;
+	}
+
 	if (ev.code == playerControls1.action) {
 		player1 = !player1;
 		player1 ? playSound("menu/activate") : playSound("menu/deactivate");
@@ -212,6 +246,10 @@ void TankChooseMenuScene::event_onKeyPress(sf::Event::KeyEvent ev) {
 	if (ev.code == playerControls3.right) playerDummy3.keyRight = true;
 	if (ev.code == playerControls4.right) playerDummy4.keyRight = true;
 
+	if (ev.code == sf::Keyboard::Escape) {
+		closing = true;
+		ms = new MenuScene();
+	}
 }
 void TankChooseMenuScene::event_onKeyRelease(sf::Event::KeyEvent ev) {
 	if (ev.code == playerControls1.left) playerDummy1.keyLeft = false;

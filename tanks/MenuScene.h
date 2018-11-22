@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "Menu.h"
+#include "TankChooseMenuScene.h"
 #include "SFML/Graphics.hpp"
 
 class MenuScene : public Scene {
@@ -18,6 +19,7 @@ public:
 	sf::IntRect selectBox;
 
 	MenuScene* sub;
+	
 	int level;
 
 	MenuScene(std::string menuID, int level = 0);
@@ -34,6 +36,8 @@ public:
 	void setSubMenu(std::string newMenu);
 
 	bool closing = false;
+
+	TankChooseMenuScene* tcms = nullptr;
 };
 
 MenuScene* startingMenuScene();

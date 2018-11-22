@@ -44,7 +44,8 @@ void registerActions() {
 	
 	// Quick Play
 	registerAction("quick-play", [](MenuScene* menu) {
-		setScene(new TankChooseMenuScene("quick-play-transition", "Quick Play"));
+		menu->tcms = new TankChooseMenuScene("quick-play-transition", "Quick Play", 1);
+		menu->closing = true;
 	});
 	registerAction("quick-play-transition", [](MenuScene* menu) {
 		setScene(new Transition(new TankChooseMenuScene("quick-play-transition", "Quick Play")));

@@ -29,7 +29,7 @@ Player::Player(sf::Vector2i position, int playerID) {
 	id = playerID;
 }
 Player::~Player() {
-
+	if (amblight) delete amblight;
 }
 
 // Keybinds
@@ -52,6 +52,8 @@ void Player::HandleKeypress(int code, bool state) {
 }
 
 void Player::update() {
+	int squareX = (int)(x / 60);
+	int squareY = (int)(y / 60);
 	dir = fmod(dir, 360) + 360;
 	if (keyLeft == true) {
 		dir -= turnSpeed;
@@ -91,6 +93,8 @@ void Player::update() {
 		keyAction = rapidFire;
 		gunOffset = 20;
 
+		createObject(new Light(sf::Color(200, 200, 200, 30), squareX, squareY, 5));
+
 		if (usingLargeBullets) {
 			createObject(new LargeBullet(x + lengthdir_x(10, dir - 4), y + lengthdir_y(10, dir - 4), dir, bulletSpeed));
 		}
@@ -127,8 +131,6 @@ void Player::update() {
 
 		screenShake(10, 30);
 		
-		int squareX = (int)(x / 60);
-		int squareY = (int)(y / 60);
 		createObject(new Light(color, squareX, squareY));
 
 		playSound("tank/dead");
@@ -146,9 +148,21 @@ void Player::update() {
 		destroyOther(powerup_collision);
 		playSound("tank/powerup");
 	}
+	
+	if (!amblight) {
+		amblight = new Light(sf::Color(150, 150, 150, 30), squareX, squareY, 8);
+		//amblight = new Light(sf::Color(150, 150, 150, 100), squareX, squareY, 15);
+		amblight->scene = scene;
+	}
+
+	amblight->startx = squareX;
+	amblight->starty = squareY;
+
 }
 
 void Player::render(sf::RenderTarget* g) {
+	if (amblight) amblight->render(g);
+
 	sf::Texture &texL0 = getTexture("tank0/layer0");
 	sf::Texture &texL1 = getTexture("tank0/layer1");
 	sf::Texture &texL2 = getTexture("tank0/layer2");
