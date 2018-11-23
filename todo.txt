@@ -1,14 +1,10 @@
-﻿Thinkings
-
-- medium game
-- more gamemodes?
-
-Finish items in the todo list, doesnt have to be in order, but
+﻿Finish items in the todo list, doesnt have to be in order, but
 going downwards is generally the right order
 
- [ ] IMPROVE ON THE GAME START ANIMATION
- [ ] make bbox big
- [ ] music?
+ [ ] make bullet bbox smaller
+
+ [ ] shield powerup?
 
  extras
  [ ] More More Tips
+ [ ] IMPROVE ON THE GAME START ANIMATION

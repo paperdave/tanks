@@ -23,8 +23,6 @@ double easeinout(double argument0, double argument1, double argument2) {
 	else {
 		return easeout(_mid, argument1, (_pos - .5) * 2);
 	}
-
-
 }
 
 TankChooseMenuScene::TankChooseMenuScene(std::string endActionStr, std::string titleText, float yOffsetV) {
@@ -140,7 +138,7 @@ void TankChooseMenuScene::render(sf::RenderTarget* g) {
 	}
 
 	sf::View view = g->getView();
-	view.move(easeinout(0, 1280, (((double)transition_gamescene) / 60.0)), 0);
+	view.move(easeinout(0, g->getSize().x, (((double)transition_gamescene) / 60.0)), 0);
 
 	g->setView(g->getDefaultView());
 

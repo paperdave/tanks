@@ -183,11 +183,11 @@ void Player::render(sf::RenderTarget* g) {
 
 	sf::Sprite sBot;
 
-	sBot.setScale(0.7f, 0.7f);
-
-	sBot.setRotation(dir);
 
 	if (activePowerup) {
+		sf::Sprite sBot;
+		sBot.setScale(0.7f, 0.7f);
+		sBot.setRotation(dir);
 		sBot.setTexture(getTexture("tank0/powered"));
 		sBot.setOrigin(sBot.getLocalBounds().width / 2 * 0.8, sBot.getLocalBounds().height / 2);
 		sBot.setPosition(x,y + 2);
@@ -202,6 +202,8 @@ void Player::render(sf::RenderTarget* g) {
 		g->draw(sBot);
 	}
 
+	sBot.setScale(0.7f, 0.7f);
+	sBot.setRotation(dir);
 	sBot.setTexture(texL4);
 	sBot.setOrigin(sTop.getOrigin());
 	sBot.setColor(color);

@@ -1,5 +1,5 @@
 Your bullets can hit yourself.
-The Wall Builder powerup lets you place walls, you can deflect bullets with this.
+Use shields to protect against damage.
 Play up to four players at once.
 Check out davecode.me for more cool stuff.
 Shields only last for 15 seconds.
@@ -8,3 +8,5 @@ The Large Bullet powerup creates many bullets on contact, which is extremely dea
 Keeping a TODO List is really useful for making things, for example this game.
 This game was copied from a flash game called Tank Trouble.
 This game was made by one person, Dave.
+If you have an extra keyboard, you can plug that in for easier multiplayer.
+There may be an update to this.
