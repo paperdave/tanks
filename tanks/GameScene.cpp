@@ -10,6 +10,12 @@
 #include "SFML/Graphics.hpp"
 #include "Window.h"
 #include "Menu.h"
+
+int streakP1 = 0;
+int streakP2 = 0;
+int streakP3 = 0;
+int streakP4 = 0;
+
 GameScene::GameScene(bool usePlayer1, bool usePlayer2, bool usePlayer3, bool usePlayer4, std::string afterGameFinished) {
 	wallSurface.create(600, 600);
 	wallSideSurface.create(600, 600);
@@ -129,6 +135,16 @@ void GameScene::update() {
 		}
 
 		if (topBarsOffset2 < 12) {
+			if (winner != 1) streakP1 = 0;
+			if (winner != 2) streakP2 = 0;
+			if (winner != 3) streakP3 = 0;
+			if (winner != 4) streakP4 = 0;
+
+			if (winner == 1) streakP1++;
+			if (winner == 2) streakP2++;
+			if (winner == 3) streakP3++;
+			if (winner == 4) streakP4++;
+
 			if (afterAction == "") {
 				setScene(new Transition(cloneStartState()));
 			}

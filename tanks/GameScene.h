@@ -5,6 +5,11 @@
 #include <deque>
 #include <SFML/Graphics.hpp>
 
+extern int streakP1;
+extern int streakP2;
+extern int streakP3;
+extern int streakP4;
+
 class GameObject;
 
 enum RoundState {

@@ -85,7 +85,7 @@ void Player::update() {
 	if (reload > 0) {
 		reload--;
 	}
-
+	
 	if (activePowerup) {
 		activePowerup->update();
 	}
@@ -119,6 +119,10 @@ void Player::update() {
 
 	gunOffset *= 0.5;
 
+	bounds.left = x - (30 / 2) + 4;
+	bounds.top = y - (30 / 2) + 4;
+	bounds.width = 20;
+	bounds.height = 20;
 	Bullet* collision = (Bullet*)collisionWith(BulletType);
 	if (collision && collision->beforeTime <= 0) {
 		if (typeid(*collision).name() == typeid(LargeBullet).name()) {
@@ -157,6 +161,9 @@ void Player::update() {
 
 	amblight->startx = squareX;
 	amblight->starty = squareY;
+
+	bounds.width = 30;
+	bounds.height = 30;
 
 }
 

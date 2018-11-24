@@ -4,6 +4,7 @@
 #include "MenuScene.h"
 #include "Utility.h"
 
+
 double easeout(double argument0, double argument1, double argument2) {
 	auto _chng = argument1 - argument0;
 	return _chng * (-powf(2, -10 * argument2) + 1) + argument0;
