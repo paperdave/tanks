@@ -1,4 +1,4 @@
-# Dave's Tanks (Post-Camp Rewrite)
+# Dave's Tanks
 Shoot Stuff! You have one life to kill other tanks in a fast paced battle arena.
 
 ## Build Instructions
